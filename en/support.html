@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Go!Raddy</title>
+<meta name="description" content="Go!Raddy customer support — bug reports, payment issues, suggestions.">
+<link rel="alternate" hreflang="ko" href="https://goraddy.olo-g.com/support.html">
+<link rel="alternate" hreflang="en" href="https://goraddy.olo-g.com/en/support.html">
+<link rel="alternate" hreflang="x-default" href="https://goraddy.olo-g.com/support.html">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><img src="../assets/logo.webp" alt="Go!Raddy"></a>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="notice.html">News</a>
+      <a href="patch-notes.html">Patch Notes</a>
+      <a href="probability.html">Drop Rates</a>
+      <a href="support.html" class="on">Support</a>
+      <a href="../support.html" class="lang" lang="ko">한국어</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<h1>Contact Us</h1>
+<p class="lead">Bug reports, payment issues, suggestions — send us the form below and we'll get back to you.</p>
+
+<div class="card">
+  <form class="inquiry" id="inqForm">
+    <p class="form-hint" id="prefillNotice" style="display:none;">🐳 Coming from the game? Your account info has been filled in automatically.</p>
+
+    <div>
+      <label for="inqType">Inquiry Type</label>
+      <select id="inqType" name="type">
+        <option value="Bug Report">Bug Report</option>
+        <option value="Payment Issue">Payment Issue</option>
+        <option value="Account Issue">Account Issue</option>
+        <option value="Suggestion">Suggestion</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="inqNick">In-game Nickname</label>
+      <input id="inqNick" name="nick" type="text" placeholder="e.g. PochiFan" maxlength="20" required>
+    </div>
+
+    <div>
+      <label for="inqDevice">Device / OS (optional)</label>
+      <input id="inqDevice" name="device" type="text" placeholder="e.g. iPhone 15 / iOS 19">
+    </div>
+
+    <!-- Bug report only -->
+    <div class="cond cond-bug">
+      <label for="inqWhere">Where did it happen?</label>
+      <input id="inqWhere" name="where" type="text" placeholder="e.g. Stage 3-8 / Fishing screen / Lobby">
+    </div>
+
+    <!-- Payment issue only -->
+    <div class="cond cond-pay" style="display:none;">
+      <label for="inqOrder">Store Order Number</label>
+      <input id="inqOrder" name="order" type="text" placeholder="Google Play: GPA.XXXX-XXXX… / App Store receipt order ID">
+      <p class="form-hint">You can find the order number in your store receipt email. Including it speeds things up a lot!</p>
+    </div>
+
+    <div>
+      <label for="inqBody">Message</label>
+      <textarea id="inqBody" name="body" required placeholder="Tell us when it happened, on which screen, and what went wrong — the more detail, the faster we can help."></textarea>
+    </div>
+
+    <div>
+      <label for="inqFile">Attach a screenshot (optional, 1 image)</label>
+      <input id="inqFile" type="file" accept="image/*">
+      <p class="form-hint" id="fileHint">Images are automatically compressed before sending.</p>
+    </div>
+
+    <div class="cond cond-bug">
+      <label>Have a video? (optional)</label>
+      <p class="form-hint">Videos are <strong>easiest to send by email</strong> — the button below opens an email pre-filled with your form. Just attach the video file and send.</p>
+      <button type="button" class="btn sub" id="videoMailBtn" style="margin-top:0.2rem;">📎 Send video by email</button>
+      <p class="form-hint" style="margin-top:0.6rem;">Prefer a link? <input id="inqVideo" name="video" type="url" placeholder="YouTube (unlisted) / Drive share link" style="margin-top:0.3rem;"></p>
+    </div>
+
+    <!-- In-game prefill (hidden) -->
+    <input type="hidden" name="uid" id="inqUid">
+    <input type="hidden" name="ver" id="inqVer">
+    <input type="hidden" name="source" id="inqSource" value="web-en">
+    <!-- Honeypot (spam guard) -->
+    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+
+    <div class="form-actions">
+      <button type="submit" class="btn" id="sendBtn">Send Inquiry</button>
+    </div>
+    <p class="form-hint" id="formHint">If your inquiry needs a reply, please make sure your nickname is correct — replies and rewards are sent to your in-game mailbox.</p>
+    <p class="form-hint">Form not working? <a href="#" id="mailFallback">Email us at goraddycs@olo-g.com</a></p>
+  </form>
+</div>
+
+<h2>Before You Ask (FAQ)</h2>
+
+<div class="card">
+  <h3>I paid but didn't receive my items</h3>
+  <p>Fully close and restart the app first. If the items still haven't arrived, send us your <strong>store purchase receipt (order number)</strong> along with your in-game nickname. We'll verify and deliver them.</p>
+</div>
+
+<div class="card">
+  <h3>I received a reward but can't see it</h3>
+  <p>Check your in-game mailbox and the Event tab first. Delivery can be delayed on an unstable network. If it still doesn't appear, let us know your nickname and which reward is missing.</p>
+</div>
+
+<div class="card">
+  <h3>The game freezes or won't progress</h3>
+  <p>Try in this order: restart the app → reboot your device → update to the latest version from the store. If that doesn't fix it, tell us your <strong>device model, OS version, and the screen where it froze</strong> so we can investigate quickly.</p>
+</div>
+
+<div class="card">
+  <h3>How do refunds work?</h3>
+  <p>In-app purchase refunds follow each store's policy. For Google Play, see <a href="https://support.google.com/googleplay/answer/2479637" target="_blank" rel="noopener">Play refund help</a>; for the App Store, see <a href="https://support.apple.com/118223" target="_blank" rel="noopener">Apple refund requests</a>. Refunded items may be reclaimed in-game.</p>
+</div>
+
+<h2>Community</h2>
+<div class="card">
+  <p>Get Go!Raddy news faster. (Channels in preparation — links will appear here when they open)</p>
+</div>
+
+</main>
+
+<footer class="site">
+  <img class="foot-logo" src="../assets/logo.webp" alt="Go!Raddy">
+  <div>
+    <a href="terms.html">Terms of Service</a> ·
+    <a href="privacy.html">Privacy Policy</a> ·
+    <a href="probability.html">Drop Rates</a>
+  </div>
+  <div class="legal">© 2026 OLO-G. All rights reserved. · Go! Raddy™</div>
+</footer>
+
+<script>
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxvRgyYcMjzOMdC-4JXPaOndKpVzodgOpzZgiONIjSyQMtO5nhtotLg8d0N-iljhi4mjg/exec';
+const CS_EMAIL = 'goraddycs@olo-g.com';
+
+const form = document.getElementById('inqForm');
+const hint = document.getElementById('formHint');
+const btn = document.getElementById('sendBtn');
+const typeSel = document.getElementById('inqType');
+
+// ===== In-game prefill (URL params) =====
+// e.g. support.html?source=ingame&nick=Pochi&uid=u_12345&ver=1.0088&device=iPhone15%20iOS19&type=Bug%20Report
+(function prefill() {
+  const q = new URLSearchParams(location.search);
+  if (q.get('nick')) document.getElementById('inqNick').value = q.get('nick');
+  if (q.get('device')) document.getElementById('inqDevice').value = q.get('device');
+  if (q.get('uid')) document.getElementById('inqUid').value = q.get('uid');
+  if (q.get('ver')) document.getElementById('inqVer').value = q.get('ver');
+  if (q.get('type')) typeSel.value = q.get('type');
+  if (q.get('source') === 'ingame') {
+    document.getElementById('inqSource').value = 'ingame-en';
+    document.getElementById('prefillNotice').style.display = 'block';
+  }
+  updateCond();
+})();
+
+// ===== Conditional fields by type =====
+function updateCond() {
+  const t = typeSel.value;
+  document.querySelectorAll('.cond-bug').forEach(el => el.style.display = (t === 'Bug Report') ? '' : 'none');
+  document.querySelectorAll('.cond-pay').forEach(el => el.style.display = (t === 'Payment Issue') ? '' : 'none');
+}
+typeSel.addEventListener('change', updateCond);
+
+// ===== Image resize (max 1600px, JPEG) =====
+function fileToResizedDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const MAX = 1600;
+      let { width: w, height: h } = img;
+      if (w > MAX || h > MAX) { const r = Math.min(MAX / w, MAX / h); w = Math.round(w * r); h = Math.round(h * r); }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(img.src);
+      resolve(c.toDataURL('image/jpeg', 0.82));
+    };
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+// ===== Submit =====
+form.addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    const data = new URLSearchParams(new FormData(form));
+    const fileInput = document.getElementById('inqFile');
+    if (fileInput.files[0]) {
+      const f = fileInput.files[0];
+      if (!f.type.startsWith('image/')) throw new Error('img');
+      data.set('attach', await fileToResizedDataURL(f));
+    }
+    await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: data });
+    form.reset();
+    updateCond();
+    btn.textContent = 'Sent!';
+    hint.innerHTML = '✅ Your inquiry has been received. We\'ll reply via your in-game mailbox or the news page. (1–3 business days)';
+    setTimeout(() => { btn.disabled = false; btn.textContent = 'Send Inquiry'; }, 4000);
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = 'Send Inquiry';
+    hint.innerHTML = '⚠️ Sending failed. Please use the email link below.';
+  }
+});
+
+// ===== Email (video attach / fallback) — pre-filled with form contents =====
+function mailFallback(withVideo) {
+  const type = typeSel.value;
+  const nick = document.getElementById('inqNick').value.trim();
+  const device = document.getElementById('inqDevice').value.trim();
+  const where = document.getElementById('inqWhere').value.trim();
+  const order = document.getElementById('inqOrder').value.trim();
+  const uid = document.getElementById('inqUid').value.trim();
+  const ver = document.getElementById('inqVer').value.trim();
+  const body = document.getElementById('inqBody').value.trim();
+
+  const subject = `[Go!Raddy Support] [${type}] ${nick || 'No nickname'}${withVideo ? ' (video attached)' : ''}`;
+  const lines = [
+    `■ Inquiry type: ${type}`,
+    `■ In-game nickname: ${nick || '(please enter your nickname here)'}`,
+    `■ Device/OS: ${device || '(e.g. iPhone 15 / iOS 19)'}`
+  ];
+  if (type === 'Bug Report') lines.push(`■ Where it happened: ${where || '(e.g. Stage 3-8 / Fishing screen)'}`);
+  if (type === 'Payment Issue') lines.push(`■ Store order number: ${order || '(found in your store receipt email)'}`);
+  if (uid) lines.push(`■ UID: ${uid}`);
+  if (ver) lines.push(`■ App version: ${ver}`);
+  lines.push('', '■ Message:', body || '(tell us when, on which screen, and what happened)');
+  lines.push('', withVideo
+    ? '※ Please attach your video file to this email! (Screenshots welcome too)'
+    : '※ If you have screenshots or videos, attach them directly to this email.');
+
+  location.href = `mailto:${CS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+}
+document.getElementById('mailFallback').addEventListener('click', (e) => { e.preventDefault(); mailFallback(false); });
+document.getElementById('videoMailBtn').addEventListener('click', () => mailFallback(true));
+</script>
+
+</body>
+</html>

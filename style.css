@@ -74,6 +74,14 @@ nav.menu a {
 }
 nav.menu a:hover { background: var(--sky-light); }
 nav.menu a.on { background: var(--navy); color: #fff; }
+nav.menu a.lang {
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+  margin-left: 0.35rem;
+  font-size: 0.82rem;
+  padding: 0.32rem 0.65rem;
+  align-self: center;
+}
 
 /* ----- 본문 공통 ----- */
 main { max-width: var(--maxw); margin: 0 auto; padding: 2.2rem 1.2rem 4rem; }
@@ -94,12 +102,14 @@ a { color: var(--sea-deep); }
 ul { padding-left: 1.2rem; }
 li { margin: 0.3rem 0; }
 
-/* ===== 홈: 히어로 (키아트 → 바다 띠 유기적 연결) ===== */
-.hero { background: var(--sky); position: relative; }
+/* ===== 홈: 히어로 (키아트 → 바다 띠 유기적 연결) =====
+   키아트 하단의 수중 띠 색(#337de8)에서 시작해 --sea-deep까지 내려가는 단일 색 체인.
+   파도 SVG는 반투명 흰 거품으로 — 수면 아래 빛줄기처럼 보이게. */
+.hero { background: linear-gradient(180deg, var(--sky) 0%, var(--sky) 70%, #337de8 100%); position: relative; }
 .hero-art { display: block; width: 100%; max-width: 1600px; margin: 0 auto; }
 
 .hero-band {
-  background: linear-gradient(175deg, var(--sea) 0%, var(--sea-deep) 100%);
+  background: linear-gradient(180deg, #337de8 0%, #2a8ada 55%, var(--sea-deep) 100%);
   color: #fff;
   text-align: center;
   padding: 3rem 1.2rem 3.6rem;
@@ -111,7 +121,7 @@ li { margin: 0.3rem 0; }
   position: absolute;
   top: -1px; left: 0; right: 0;
   height: 34px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C200,38 400,2 600,20 C800,38 1000,2 1200,20 L1200,0 L0,0 Z" fill="%23c9ecf7"/></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C200,38 400,2 600,20 C800,38 1000,2 1200,20 L1200,0 L0,0 Z" fill="%23ffffff" fill-opacity="0.16"/></svg>');
   background-repeat: repeat-x;
   background-size: 1200px 100%;
   animation: waveFlow 16s linear infinite;
