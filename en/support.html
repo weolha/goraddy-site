@@ -43,6 +43,7 @@
         <option value="Payment Issue">Payment Issue</option>
         <option value="Account Issue">Account Issue</option>
         <option value="Suggestion">Suggestion</option>
+        <option value="Account/Data Deletion Request">Account/Data Deletion Request</option>
         <option value="Other">Other</option>
       </select>
     </div>
@@ -50,6 +51,12 @@
     <div>
       <label for="inqNick">In-game Nickname</label>
       <input id="inqNick" name="nick" type="text" placeholder="e.g. PochiFan" maxlength="20" required>
+    </div>
+
+    <div>
+      <label for="inqEmail">Email for reply (optional)</label>
+      <input id="inqEmail" name="email" type="email" placeholder="e.g. raddy@example.com" maxlength="80" autocomplete="email">
+      <p class="form-hint">Leave it and we'll reply by email. Used only to respond to your inquiry, then deleted. <a href="privacy.html" target="_blank">Privacy Policy</a></p>
     </div>
 
     <div>
@@ -98,7 +105,7 @@
     <div class="form-actions">
       <button type="submit" class="btn" id="sendBtn">Send Inquiry</button>
     </div>
-    <p class="form-hint" id="formHint">If your inquiry needs a reply, please make sure your nickname is correct — replies and rewards are sent to your in-game mailbox.</p>
+    <p class="form-hint" id="formHint">Leave an email and we'll reply there. Rewards are delivered to your in-game mailbox by nickname, so please make sure it's correct.</p>
     <p class="form-hint">Form not working? <a href="#" id="mailFallback">Email us at goraddycs@olo-g.com</a></p>
   </form>
 </div>
@@ -118,6 +125,11 @@
 <div class="card">
   <h3>The game freezes or won't progress</h3>
   <p>Try in this order: restart the app → reboot your device → update to the latest version from the store. If that doesn't fix it, tell us your <strong>device model, OS version, and the screen where it froze</strong> so we can investigate quickly.</p>
+</div>
+
+<div class="card">
+  <h3>I want to delete my account or data</h3>
+  <p>Select <strong>Account/Data Deletion Request</strong> as the inquiry type and send it with your nickname. Contacting us from inside the game makes account verification faster. Deleted data (progress, items, and purchase history) <strong>cannot be recovered</strong>, so please request carefully.</p>
 </div>
 
 <div class="card">
@@ -208,11 +220,19 @@ form.addEventListener('submit', async (ev) => {
       if (!f.type.startsWith('image/')) throw new Error('img');
       data.set('attach', await fileToResizedDataURL(f));
     }
-    await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: data });
+    const res = await fetch(ENDPOINT, { method: 'POST', body: data });
+    let ticket = '';
+    try {
+      const j = JSON.parse(await res.text());
+      if (!j.ok) throw new Error('server');
+      ticket = j.ticket || '';
+    } catch (pe) {
+      if (!res.ok) throw pe; // treat legacy text response as success
+    }
     form.reset();
     updateCond();
     btn.textContent = 'Sent!';
-    hint.innerHTML = '✅ Your inquiry has been received. We\'ll reply via your in-game mailbox or the news page. (1–3 business days)';
+    hint.innerHTML = '✅ Your inquiry has been received.' + (ticket ? ' Ticket: <strong>' + ticket + '</strong> (mention it if you follow up)' : '') + '<br>If you left an email we\'ll reply there; rewards go to your in-game mailbox. (1–3 business days)';
     setTimeout(() => { btn.disabled = false; btn.textContent = 'Send Inquiry'; }, 4000);
   } catch (e) {
     btn.disabled = false;
