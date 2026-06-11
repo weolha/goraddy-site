@@ -26,19 +26,45 @@
 
 <main>
 <h1>문의하기</h1>
-<p class="lead">버그 제보, 결제 문제, 건의사항 — 무엇이든 보내주세요. 확인 후 순차적으로 답변드립니다.</p>
+<p class="lead">버그 제보, 결제 문제, 건의사항 — 아래 양식을 작성하면 문의 메일이 자동으로 완성됩니다.</p>
 
-<div class="cta-box">
-  <strong>이메일로 문의하기</strong><br>
-  아래 버튼을 누르면 문의 양식이 채워진 메일이 열립니다.
-  <br><a class="btn" href="mailto:weolha@olo-g.com?subject=%5B%EA%B3%A0%EB%9E%98%EB%94%94%20%EB%AC%B8%EC%9D%98%5D%20&body=%E2%96%A0%20%EB%AC%B8%EC%9D%98%20%EC%9C%A0%ED%98%95%20(%EB%B2%84%EA%B7%B8%2F%EA%B2%B0%EC%A0%9C%2F%EA%B3%84%EC%A0%95%2F%EA%B1%B4%EC%9D%98)%3A%0A%0A%E2%96%A0%20%EA%B2%8C%EC%9E%84%20%EB%82%B4%20%EB%8B%89%EB%84%A4%EC%9E%84%3A%0A%0A%E2%96%A0%20%EA%B8%B0%EA%B8%B0%20%EA%B8%B0%EC%A2%85%20%EB%B0%8F%20OS%3A%0A%0A%E2%96%A0%20%EB%AC%B8%EC%9D%98%20%EB%82%B4%EC%9A%A9%3A%0A">weolha@olo-g.com 으로 문의</a>
+<div class="card">
+  <form class="inquiry" id="inqForm">
+    <div>
+      <label for="inqType">문의 유형</label>
+      <select id="inqType">
+        <option>버그 제보</option>
+        <option>결제 문제</option>
+        <option>계정 문제</option>
+        <option>건의사항</option>
+        <option>기타</option>
+      </select>
+    </div>
+    <div>
+      <label for="inqNick">게임 내 닉네임</label>
+      <input id="inqNick" type="text" placeholder="예: 뽀찌사랑" maxlength="20">
+    </div>
+    <div>
+      <label for="inqDevice">기기 기종 / OS (선택)</label>
+      <input id="inqDevice" type="text" placeholder="예: iPhone 15 / iOS 19">
+    </div>
+    <div>
+      <label for="inqBody">문의 내용</label>
+      <textarea id="inqBody" placeholder="언제, 어떤 화면에서, 무슨 일이 있었는지 적어주시면 더 빨리 도와드릴 수 있어요. 결제 문제는 스토어 주문번호를 함께 적어주세요."></textarea>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="btn" id="sendBtn">📨 메일 앱으로 보내기</button>
+      <button type="button" class="btn sub" id="copyBtn">내용 복사하기</button>
+    </div>
+    <p class="form-hint" id="copyHint">메일 앱이 없다면 [내용 복사하기]를 눌러 <strong>goraddycs@olo-g.com</strong>으로 직접 보내주세요.</p>
+  </form>
 </div>
 
 <h2>문의 전 확인해주세요 (FAQ)</h2>
 
 <div class="card">
   <h3>결제했는데 아이템이 들어오지 않았어요</h3>
-  <p>앱을 완전히 종료 후 다시 실행해보세요. 그래도 들어오지 않았다면 <strong>스토어 구매 영수증(주문번호)</strong>과 게임 닉네임을 함께 이메일로 보내주세요. 확인 후 지급해드립니다.</p>
+  <p>앱을 완전히 종료 후 다시 실행해보세요. 그래도 들어오지 않았다면 <strong>스토어 구매 영수증(주문번호)</strong>과 게임 닉네임을 함께 보내주세요. 확인 후 지급해드립니다.</p>
 </div>
 
 <div class="card">
@@ -72,6 +98,43 @@
   </div>
   <div class="legal">© 2026 OLO-G. All rights reserved. · Go! Raddy™</div>
 </footer>
+
+<script>
+const CS_EMAIL = 'goraddycs@olo-g.com';
+
+function buildMail() {
+  const type = document.getElementById('inqType').value;
+  const nick = document.getElementById('inqNick').value.trim();
+  const device = document.getElementById('inqDevice').value.trim();
+  const body = document.getElementById('inqBody').value.trim();
+  const subject = `[고래디 문의] [${type}] ${nick || '닉네임 미입력'}`;
+  const lines = [
+    `■ 문의 유형: ${type}`,
+    `■ 게임 내 닉네임: ${nick || '(미입력)'}`,
+    `■ 기기/OS: ${device || '(미입력)'}`,
+    '',
+    '■ 문의 내용:',
+    body || '(내용을 입력해주세요)'
+  ];
+  return { subject, body: lines.join('\n') };
+}
+
+document.getElementById('sendBtn').addEventListener('click', () => {
+  const m = buildMail();
+  location.href = `mailto:${CS_EMAIL}?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body)}`;
+});
+
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const m = buildMail();
+  const text = `받는 사람: ${CS_EMAIL}\n제목: ${m.subject}\n\n${m.body}`;
+  try {
+    await navigator.clipboard.writeText(text);
+    document.getElementById('copyHint').innerHTML = '✅ 복사되었습니다! 메일로 <strong>goraddycs@olo-g.com</strong>에 붙여넣어 보내주세요.';
+  } catch (e) {
+    prompt('아래 내용을 복사해서 ' + CS_EMAIL + '로 보내주세요:', text);
+  }
+});
+</script>
 
 </body>
 </html>
