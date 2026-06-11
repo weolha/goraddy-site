@@ -78,9 +78,10 @@
     </div>
 
     <div class="cond cond-bug">
-      <label for="inqVideo">영상 링크 (선택)</label>
-      <input id="inqVideo" name="video" type="url" placeholder="유튜브(일부 공개)·구글 드라이브 등 영상 링크">
-      <p class="form-hint">영상은 유튜브에 '일부 공개'로 올리거나 드라이브 공유 링크로 보내주시면 확인할 수 있어요.</p>
+      <label>영상이 있나요? (선택)</label>
+      <p class="form-hint">영상은 <strong>메일 첨부가 가장 편해요</strong> — 아래 버튼을 누르면 작성한 내용이 담긴 메일이 열립니다. 영상 파일만 첨부해서 보내주세요.</p>
+      <button type="button" class="btn sub" id="videoMailBtn" style="margin-top:0.2rem;">📎 영상 메일로 보내기</button>
+      <p class="form-hint" style="margin-top:0.6rem;">링크로 보내고 싶다면: <input id="inqVideo" name="video" type="url" placeholder="유튜브(일부 공개)·드라이브 공유 링크" style="margin-top:0.3rem;"></p>
     </div>
 
     <!-- 인게임 프리필 (hidden) -->
@@ -216,26 +217,36 @@ form.addEventListener('submit', async (ev) => {
   }
 });
 
-// ===== 이메일 폴백 =====
-function mailFallback() {
+// ===== 이메일 (영상 첨부 / 폴백) — 작성 내용을 양식으로 미리 채움 =====
+function mailFallback(withVideo) {
   const type = typeSel.value;
   const nick = document.getElementById('inqNick').value.trim();
   const device = document.getElementById('inqDevice').value.trim();
+  const where = document.getElementById('inqWhere').value.trim();
+  const order = document.getElementById('inqOrder').value.trim();
+  const uid = document.getElementById('inqUid').value.trim();
+  const ver = document.getElementById('inqVer').value.trim();
   const body = document.getElementById('inqBody').value.trim();
-  const subject = `[고래디 문의] [${type}] ${nick || '닉네임 미입력'}`;
+
+  const subject = `[고래디 문의] [${type}] ${nick || '닉네임 미입력'}${withVideo ? ' (영상 첨부)' : ''}`;
   const lines = [
     `■ 문의 유형: ${type}`,
-    `■ 게임 내 닉네임: ${nick || '(미입력)'}`,
-    `■ 기기/OS: ${device || '(미입력)'}`,
-    '',
-    '■ 문의 내용:',
-    body || '(내용을 입력해주세요)',
-    '',
-    '※ 스크린샷·영상은 이 메일에 직접 첨부해주세요.'
+    `■ 게임 내 닉네임: ${nick || '(여기에 닉네임을 적어주세요)'}`,
+    `■ 기기/OS: ${device || '(예: iPhone 15 / iOS 19)'}`
   ];
+  if (type === '버그 제보') lines.push(`■ 발생 위치: ${where || '(예: 스테이지 3-8 / 낚시 화면)'}`);
+  if (type === '결제 문제') lines.push(`■ 스토어 주문번호: ${order || '(결제 영수증 메일에서 확인할 수 있어요)'}`);
+  if (uid) lines.push(`■ UID: ${uid}`);
+  if (ver) lines.push(`■ 앱 버전: ${ver}`);
+  lines.push('', '■ 문의 내용:', body || '(언제, 어떤 화면에서, 무슨 일이 있었는지 적어주세요)');
+  lines.push('', withVideo
+    ? '※ 영상 파일을 이 메일에 첨부해서 보내주세요! (스크린샷도 함께 첨부 가능)'
+    : '※ 스크린샷·영상이 있다면 이 메일에 직접 첨부해주세요.');
+
   location.href = `mailto:${CS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
 }
-document.getElementById('mailFallback').addEventListener('click', (e) => { e.preventDefault(); mailFallback(); });
+document.getElementById('mailFallback').addEventListener('click', (e) => { e.preventDefault(); mailFallback(false); });
+document.getElementById('videoMailBtn').addEventListener('click', () => mailFallback(true));
 </script>
 
 </body>
