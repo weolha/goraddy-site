@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>고!래디 — 스토어로 이동 중</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .go-wrap{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:24px}
+  .go-wrap img{width:140px;height:auto}
+  .go-wrap .sub{color:#5b7186;font-size:.95rem}
+  .go-wrap .fallback{margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="go-wrap">
+  <img src="../assets/logo.webp" alt="고!래디 Go! Raddy">
+  <p id="goMsg">스토어로 이동 중입니다…</p>
+  <p class="sub" id="goSub">자동으로 이동하지 않으면 아래 버튼을 눌러주세요.</p>
+  <div class="store-buttons fallback">
+    <a class="store-btn gp" id="btnGp" href="https://play.google.com/store/apps/details?id=com.ologgames.goraddy">Google Play</a>
+    <a class="store-btn" id="btnIos" href="https://apps.apple.com/kr/app/go-raddy/id6748856004">App Store</a>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+ * /go/ 리다이렉트 — 마케팅 링크/QR 체계 (GoRaddy repo docs/marketing/마케팅_링크체계.md)
+ * 사용법: /go/<코드>  (404.html이 /go/?c=<코드>로 재작성) 또는 /go/?c=<코드>
+ * 새 코드는 반드시 링크체계 문서 표에 먼저 추가한 뒤 아래 CODES에 반영할 것.
+ * ============================================================ */
+
+// GA4 웹 스트림 측정 ID — GA4(goraddy-7e768)에 웹 스트림 생성 후 'G-XXXXXXXXXX'를 실제 값으로 치환.
+// 빈 문자열이면 측정 없이 리다이렉트만 동작.
+var GA_MEASUREMENT_ID = '';
+
+// App Store Connect 캠페인 프로바이더 토큰 — ASC → 분석 → 캠페인에서 확인 후 치환 (링크체계 §0)
+var APPLE_PT = 'PT';
+
+// 코드 → UTM 매핑 (링크체계 §2 표와 1:1)
+var CODES = {
+  'clicker': { source: 'clicker_prize', medium: 'offline_qr', campaign: 'fanart2606' }
+  // 행사 QR 예: 'ev-gstar2611': { source: 'event_offline_gstar', medium: 'offline_qr', campaign: 'gstar2611' }
+};
+
+// 패턴 매핑: sticker-<학교약칭> → sticker_univ_<학교약칭> / offline_qr / univ2606
+function resolveCode(code) {
+  if (CODES[code]) return CODES[code];
+  var m = code.match(/^sticker-([a-z0-9]+)$/);
+  if (m) return { source: 'sticker_univ_' + m[1], medium: 'offline_qr', campaign: 'univ2606' };
+  // 미등록 코드 — QR을 죽이지 않도록 코드 자체를 source로 살려서 통과
+  return { source: code || 'unknown', medium: 'offline_qr', campaign: 'unmapped' };
+}
+
+function getCode() {
+  var q = new URLSearchParams(location.search).get('c');
+  return (q || '').toLowerCase().replace(/[^a-z0-9_-]/g, '');
+}
+
+function detectOS() {
+  var ua = navigator.userAgent;
+  if (/android/i.test(ua)) return 'android';
+  if (/iphone|ipad|ipod/i.test(ua)) return 'ios';
+  // iPadOS 13+는 Mac으로 위장 — 터치 지원 여부로 판별
+  if (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1) return 'ios';
+  return 'other';
+}
+
+function buildPlayUrl(p) {
+  var referrer = encodeURIComponent(
+    'utm_source=' + p.source + '&utm_medium=' + p.medium + '&utm_campaign=' + p.campaign
+  );
+  return 'https://play.google.com/store/apps/details?id=com.ologgames.goraddy&referrer=' + referrer;
+}
+
+function buildIosUrl(p) {
+  return 'https://apps.apple.com/kr/app/go-raddy/id6748856004?pt=' + APPLE_PT +
+         '&ct=' + encodeURIComponent(p.source + '_' + p.campaign) + '&mt=8';
+}
+
+(function main() {
+  var code = getCode();
+  var params = resolveCode(code);
+  var os = detectOS();
+
+  var playUrl = buildPlayUrl(params);
+  var iosUrl = buildIosUrl(params);
+  document.getElementById('btnGp').href = playUrl;
+  document.getElementById('btnIos').href = iosUrl;
+
+  var dest = os === 'android' ? playUrl : os === 'ios' ? iosUrl : '../index.html';
+  if (os === 'other') {
+    document.getElementById('goMsg').textContent = '고!래디 공식 사이트로 이동합니다…';
+    document.getElementById('goSub').textContent = '모바일에서 QR을 스캔하면 스토어로 바로 이동합니다.';
+  }
+
+  var redirected = false;
+  function go() {
+    if (redirected) return;
+    redirected = true;
+    location.replace(dest);
+  }
+
+  // GA4 — 스캔 수 측정 (qr_scan 이벤트: code/os/스토어). 전송 완료 콜백 후 이동, 800ms 타임아웃 폴백.
+  if (GA_MEASUREMENT_ID) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID, { transport_type: 'beacon', send_page_view: false });
+    gtag('event', 'qr_scan', {
+      qr_code: code || '(none)',
+      qr_os: os,
+      utm_source_out: params.source,
+      utm_campaign_out: params.campaign,
+      event_callback: go
+    });
+    setTimeout(go, 800);
+  } else {
+    setTimeout(go, 150);
+  }
+})();
+</script>
+</body>
+</html>
