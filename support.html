@@ -30,30 +30,66 @@
 
 <div class="card">
   <form class="inquiry" id="inqForm">
+    <p class="form-hint" id="prefillNotice" style="display:none;">🐳 게임에서 오셨네요! 계정 정보가 자동으로 채워졌어요.</p>
+
     <div>
       <label for="inqType">문의 유형</label>
       <select id="inqType" name="type">
-        <option>버그 제보</option>
-        <option>결제 문제</option>
-        <option>계정 문제</option>
-        <option>건의사항</option>
-        <option>기타</option>
+        <option value="버그 제보">버그 제보</option>
+        <option value="결제 문제">결제 문제</option>
+        <option value="계정 문제">계정 문제</option>
+        <option value="건의사항">건의사항</option>
+        <option value="기타">기타</option>
       </select>
     </div>
+
     <div>
       <label for="inqNick">게임 내 닉네임</label>
       <input id="inqNick" name="nick" type="text" placeholder="예: 뽀찌사랑" maxlength="20" required>
     </div>
+
     <div>
       <label for="inqDevice">기기 기종 / OS (선택)</label>
       <input id="inqDevice" name="device" type="text" placeholder="예: iPhone 15 / iOS 19">
     </div>
+
+    <!-- 버그 제보 전용 -->
+    <div class="cond cond-bug">
+      <label for="inqWhere">어디서 발생했나요?</label>
+      <input id="inqWhere" name="where" type="text" placeholder="예: 스테이지 3-8 / 낚시 화면 / 로비">
+    </div>
+
+    <!-- 결제 문제 전용 -->
+    <div class="cond cond-pay" style="display:none;">
+      <label for="inqOrder">스토어 주문번호</label>
+      <input id="inqOrder" name="order" type="text" placeholder="Google Play: GPA.XXXX-XXXX… / App Store 영수증 주문 ID">
+      <p class="form-hint">주문번호는 스토어 결제 영수증 메일에서 확인할 수 있어요. 있으면 처리가 훨씬 빨라집니다!</p>
+    </div>
+
     <div>
       <label for="inqBody">문의 내용</label>
-      <textarea id="inqBody" name="body" required placeholder="언제, 어떤 화면에서, 무슨 일이 있었는지 적어주시면 더 빨리 도와드릴 수 있어요. 결제 문제는 스토어 주문번호를 함께 적어주세요."></textarea>
+      <textarea id="inqBody" name="body" required placeholder="언제, 어떤 화면에서, 무슨 일이 있었는지 적어주시면 더 빨리 도와드릴 수 있어요."></textarea>
     </div>
+
+    <div>
+      <label for="inqFile">스크린샷 첨부 (선택, 이미지 1장)</label>
+      <input id="inqFile" type="file" accept="image/*">
+      <p class="form-hint" id="fileHint">이미지는 자동으로 용량을 줄여 전송돼요.</p>
+    </div>
+
+    <div class="cond cond-bug">
+      <label for="inqVideo">영상 링크 (선택)</label>
+      <input id="inqVideo" name="video" type="url" placeholder="유튜브(일부 공개)·구글 드라이브 등 영상 링크">
+      <p class="form-hint">영상은 유튜브에 '일부 공개'로 올리거나 드라이브 공유 링크로 보내주시면 확인할 수 있어요.</p>
+    </div>
+
+    <!-- 인게임 프리필 (hidden) -->
+    <input type="hidden" name="uid" id="inqUid">
+    <input type="hidden" name="ver" id="inqVer">
+    <input type="hidden" name="source" id="inqSource" value="web">
     <!-- 허니팟 (스팸 가드) -->
     <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+
     <div class="form-actions">
       <button type="submit" class="btn" id="sendBtn">문의 보내기</button>
     </div>
@@ -102,26 +138,74 @@
 </footer>
 
 <script>
-// ⚠️ 설치 후 교체: setup/inquiry-backend.gs 배포로 얻은 웹 앱 URL
 const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxvRgyYcMjzOMdC-4JXPaOndKpVzodgOpzZgiONIjSyQMtO5nhtotLg8d0N-iljhi4mjg/exec';
 const CS_EMAIL = 'goraddycs@olo-g.com';
 
 const form = document.getElementById('inqForm');
 const hint = document.getElementById('formHint');
 const btn = document.getElementById('sendBtn');
+const typeSel = document.getElementById('inqType');
 
+// ===== 인게임 프리필 (URL 파라미터) =====
+// 예: support.html?source=ingame&nick=뽀찌&uid=u_12345&ver=1.0088&device=iPhone15%20iOS19&type=버그%20제보
+(function prefill() {
+  const q = new URLSearchParams(location.search);
+  if (q.get('nick')) document.getElementById('inqNick').value = q.get('nick');
+  if (q.get('device')) document.getElementById('inqDevice').value = q.get('device');
+  if (q.get('uid')) document.getElementById('inqUid').value = q.get('uid');
+  if (q.get('ver')) document.getElementById('inqVer').value = q.get('ver');
+  if (q.get('type')) typeSel.value = q.get('type');
+  if (q.get('source') === 'ingame') {
+    document.getElementById('inqSource').value = 'ingame';
+    document.getElementById('prefillNotice').style.display = 'block';
+  }
+  updateCond();
+})();
+
+// ===== 유형별 조건부 필드 =====
+function updateCond() {
+  const t = typeSel.value;
+  document.querySelectorAll('.cond-bug').forEach(el => el.style.display = (t === '버그 제보') ? '' : 'none');
+  document.querySelectorAll('.cond-pay').forEach(el => el.style.display = (t === '결제 문제') ? '' : 'none');
+}
+typeSel.addEventListener('change', updateCond);
+
+// ===== 이미지 리사이즈 (최대 1600px, JPEG) =====
+function fileToResizedDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const MAX = 1600;
+      let { width: w, height: h } = img;
+      if (w > MAX || h > MAX) { const r = Math.min(MAX / w, MAX / h); w = Math.round(w * r); h = Math.round(h * r); }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(img.src);
+      resolve(c.toDataURL('image/jpeg', 0.82));
+    };
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+// ===== 제출 =====
 form.addEventListener('submit', async (ev) => {
   ev.preventDefault();
-
-  if (ENDPOINT.startsWith('PASTE_')) { mailFallback(); return; }
-
   btn.disabled = true;
   btn.textContent = '보내는 중...';
 
   try {
     const data = new URLSearchParams(new FormData(form));
+    const fileInput = document.getElementById('inqFile');
+    if (fileInput.files[0]) {
+      const f = fileInput.files[0];
+      if (!f.type.startsWith('image/')) throw new Error('img');
+      data.set('attach', await fileToResizedDataURL(f));
+    }
     await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body: data });
     form.reset();
+    updateCond();
     btn.textContent = '접수 완료!';
     hint.innerHTML = '✅ 문의가 접수되었습니다. 확인 후 게임 우편함 또는 공지로 답변드릴게요. (영업일 기준 1~3일)';
     setTimeout(() => { btn.disabled = false; btn.textContent = '문의 보내기'; }, 4000);
@@ -132,8 +216,9 @@ form.addEventListener('submit', async (ev) => {
   }
 });
 
+// ===== 이메일 폴백 =====
 function mailFallback() {
-  const type = document.getElementById('inqType').value;
+  const type = typeSel.value;
   const nick = document.getElementById('inqNick').value.trim();
   const device = document.getElementById('inqDevice').value.trim();
   const body = document.getElementById('inqBody').value.trim();
@@ -144,15 +229,13 @@ function mailFallback() {
     `■ 기기/OS: ${device || '(미입력)'}`,
     '',
     '■ 문의 내용:',
-    body || '(내용을 입력해주세요)'
+    body || '(내용을 입력해주세요)',
+    '',
+    '※ 스크린샷·영상은 이 메일에 직접 첨부해주세요.'
   ];
   location.href = `mailto:${CS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
 }
-
-document.getElementById('mailFallback').addEventListener('click', (e) => {
-  e.preventDefault();
-  mailFallback();
-});
+document.getElementById('mailFallback').addEventListener('click', (e) => { e.preventDefault(); mailFallback(); });
 </script>
 
 </body>
