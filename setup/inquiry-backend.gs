@@ -25,15 +25,21 @@
 var SHEET_ID = '1tRmfAYqbOknDcFaX_DLeDNmcCSsvfgTBO_sztlIi5jY'; // 고래디 문의 접수
 var ATTACH_FOLDER = '고래디 문의 첨부';
 var CS_MAIL = 'goraddycs@olo-g.com'; // 회신 수신 주소 (replyTo)
+// TODO: 도메인 전환(goraddy.olo-g.com) 완료 시 이 값만 교체
+var SITE_URL = 'https://weolha.github.io/goraddy-site';
+
+// 주의: 이모지(🐳 등)는 Gmail 일반 텍스트 발송에서 깨지므로 메일 문구에 사용 금지
 var MAIL_KO = {
   subject: '[고!래디] 문의하신 내용에 답변드려요',
   hello: '님, 안녕하세요!\n\n', helloNoNick: '안녕하세요!\n\n',
-  sign: '\n\n— 고!래디 운영팀 드림 🐳\n본 메일은 문의 답변 회신용입니다. 추가 문의: https://goraddy.olo-g.com/support.html'
+  sign: '\n\n— 고!래디 운영팀 드림\n본 메일은 문의 답변 회신용입니다. 추가 문의: ' + SITE_URL + '/support.html',
+  quoteTitle: '접수하신 문의'
 };
 var MAIL_EN = {
   subject: '[Go!Raddy] A reply to your inquiry',
   hello: ', hello!\n\n', helloNoNick: 'Hello!\n\n',
-  sign: '\n\n— The Go!Raddy Team 🐳\nThis email is a reply to your support inquiry. Need more help? https://goraddy.olo-g.com/en/support.html'
+  sign: '\n\n— The Go!Raddy Team\nThis email is a reply to your support inquiry. Need more help? ' + SITE_URL + '/en/support.html',
+  quoteTitle: 'Your inquiry'
 };
 
 // 컬럼 인덱스 (1-based)
@@ -63,7 +69,7 @@ function doPost(e) {
           var file = folder.createFile(Utilities.newBlob(bytes, 'image/jpeg', name));
           attachLinks.push(file.getUrl());
         }
-      } catch (fe) { attachLinks.push('(첨부 저장 실패)'); }
+      } catch (fe) { attachLinks.push('(첨부 저장 실패: ' + String(fe).slice(0, 120) + ')'); }
     }
     if (p.video && String(p.video).trim()) attachLinks.push(String(p.video).trim().slice(0, 200));
 
@@ -159,13 +165,31 @@ function apiSend(sheet, p) {
 
   // 영어 문의(source: web-en / ingame-en)는 영어 인사·서명·제목
   var L = source.indexOf('en') !== -1 ? MAIL_EN : MAIL_KO;
-  var body = (nick ? nick + L.hello : L.helloNoNick) + memo + L.sign;
+
+  // 접수번호(접수시각 기준, doPost와 동일 규칙) + 문의 원문 인용
+  var time = sheet.getRange(row, COL.time).getValue();
+  var type = String(sheet.getRange(row, COL.type).getValue());
+  var inqBody = String(sheet.getRange(row, COL.body).getValue());
+  var dateStr = time instanceof Date ? Utilities.formatDate(time, 'Asia/Seoul', 'yyMMdd') : '';
+  var ticket = 'GR-' + dateStr + '-' + row;
+  var quote = '\n\n────────────────\n' + L.quoteTitle + ' (' + ticket +
+    (time instanceof Date ? ' · ' + Utilities.formatDate(time, 'Asia/Seoul', 'yyyy-MM-dd HH:mm') : '') + ')\n' +
+    (type ? '· ' + type + '\n' : '') + inqBody;
+
+  var body = (nick ? nick + L.hello : L.helloNoNick) + memo + L.sign + quote;
   // replyTo 명시: 발송 계정과 무관하게 유저 회신은 항상 CS 메일함으로
-  GmailApp.sendEmail(email, L.subject, body, { name: '고!래디 Go! Raddy', replyTo: CS_MAIL });
+  GmailApp.sendEmail(email, L.subject + ' (' + ticket + ')', body, { name: '고!래디 Go! Raddy', replyTo: CS_MAIL });
 
   sheet.getRange(row, COL.status).setValue('답변완료');
   sheet.getRange(row, COL.repliedAt).setValue(new Date());
   return json({ ok: true, row: row, sentTo: email.replace(/^(..).*(@.*)$/, '$1***$2') });
+}
+
+// ───────────────────────── 최초 1회: 권한 승인 ─────────────────────────
+// 웹앱 호출로는 권한 창이 안 뜸. 편집기에서 이 함수를 직접 실행 → 권한 검토 → 허용.
+// 실행 후 CS 메일함에 테스트 메일이 도착하면 Gmail 발송 권한 승인 완료.
+function authorizeGmailTest() {
+  GmailApp.sendEmail(CS_MAIL, '[고!래디] Gmail 권한 승인 테스트', '이 메일이 도착하면 발송 권한이 정상 승인된 것입니다.');
 }
 
 // ───────────────────────── 유틸 ─────────────────────────

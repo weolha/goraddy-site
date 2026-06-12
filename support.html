@@ -23,7 +23,7 @@
       <a href="patch-notes.html">패치노트</a>
       <a href="probability.html">확률 고지</a>
       <a href="support.html" class="on">문의</a>
-      <a href="en/support.html" class="lang" lang="en">EN</a>
+      <a href="en/support.html" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
     </nav>
   </div>
 </header>
@@ -107,6 +107,7 @@
     </div>
     <p class="form-hint" id="formHint">이메일을 남기시면 메일로 답변드려요. 보상 지급은 닉네임 기준으로 게임 우편함에 보내드리니 닉네임을 꼭 정확히 적어주세요.</p>
     <p class="form-hint">양식 전송이 안 될 때는 <a href="#" id="mailFallback">이메일(goraddycs@olo-g.com)로 보내기</a></p>
+    <p class="form-hint" id="mailManual" style="display:none;">메일 앱이 열리지 않았나요? <strong>goraddycs@olo-g.com</strong>으로 직접 보내주세요. <button type="button" class="btn sub" id="copyMailBtn" style="margin-left:0.4rem;">작성 내용 복사</button></p>
   </form>
 </div>
 
@@ -268,9 +269,22 @@ function mailFallback(withVideo) {
     : '※ 스크린샷·영상이 있다면 이 메일에 직접 첨부해주세요.');
 
   location.href = `mailto:${CS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+
+  // 메일 앱이 연결 안 된 환경(데스크톱 등) 대비 — 수동 발송 안내 + 복사 버튼 노출
+  const m = document.getElementById('mailManual');
+  m.style.display = 'block';
+  m.dataset.copy = `받는 사람: ${CS_EMAIL}\n제목: ${subject}\n\n${lines.join('\n')}`;
 }
 document.getElementById('mailFallback').addEventListener('click', (e) => { e.preventDefault(); mailFallback(false); });
 document.getElementById('videoMailBtn').addEventListener('click', () => mailFallback(true));
+document.getElementById('copyMailBtn').addEventListener('click', async () => {
+  const b = document.getElementById('copyMailBtn');
+  try {
+    await navigator.clipboard.writeText(document.getElementById('mailManual').dataset.copy || '');
+    b.textContent = '복사됐어요!';
+  } catch (e) { b.textContent = '복사 실패 — 직접 적어주세요'; }
+  setTimeout(() => { b.textContent = '작성 내용 복사'; }, 3000);
+});
 </script>
 
 </body>

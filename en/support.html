@@ -23,7 +23,7 @@
       <a href="patch-notes.html">Patch Notes</a>
       <a href="probability.html">Drop Rates</a>
       <a href="support.html" class="on">Support</a>
-      <a href="../support.html" class="lang" lang="ko">한국어</a>
+      <a href="../support.html" class="lang" lang="ko"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.5" fill="#0047a0"/><path d="M4.5 10a5.5 5.5 0 0 1 11 0 2.75 2.75 0 0 0-5.5 0 2.75 2.75 0 0 1-5.5 0z" fill="#cd2e3a"/></svg>한국어</a>
     </nav>
   </div>
 </header>
@@ -107,6 +107,7 @@
     </div>
     <p class="form-hint" id="formHint">Leave an email and we'll reply there. Rewards are delivered to your in-game mailbox by nickname, so please make sure it's correct.</p>
     <p class="form-hint">Form not working? <a href="#" id="mailFallback">Email us at goraddycs@olo-g.com</a></p>
+    <p class="form-hint" id="mailManual" style="display:none;">Mail app didn't open? Send it directly to <strong>goraddycs@olo-g.com</strong>. <button type="button" class="btn sub" id="copyMailBtn" style="margin-left:0.4rem;">Copy message</button></p>
   </form>
 </div>
 
@@ -268,9 +269,22 @@ function mailFallback(withVideo) {
     : '※ If you have screenshots or videos, attach them directly to this email.');
 
   location.href = `mailto:${CS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+
+  // Fallback for devices without a mail handler (desktop browsers etc.)
+  const m = document.getElementById('mailManual');
+  m.style.display = 'block';
+  m.dataset.copy = `To: ${CS_EMAIL}\nSubject: ${subject}\n\n${lines.join('\n')}`;
 }
 document.getElementById('mailFallback').addEventListener('click', (e) => { e.preventDefault(); mailFallback(false); });
 document.getElementById('videoMailBtn').addEventListener('click', () => mailFallback(true));
+document.getElementById('copyMailBtn').addEventListener('click', async () => {
+  const b = document.getElementById('copyMailBtn');
+  try {
+    await navigator.clipboard.writeText(document.getElementById('mailManual').dataset.copy || '');
+    b.textContent = 'Copied!';
+  } catch (e) { b.textContent = 'Copy failed — please type it manually'; }
+  setTimeout(() => { b.textContent = 'Copy message'; }, 3000);
+});
 </script>
 
 </body>
