@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OLO-G — 페이지를 찾을 수 없습니다</title>
+<title>고!래디 — 페이지를 찾을 수 없습니다</title>
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="stylesheet" href="style.css">
 <script>
-/* /go/<코드> 딥링크 폴백 — GitHub Pages는 동적 경로가 없으므로
- * 404로 들어온 .../go/<코드>를 .../go/?c=<코드>로 재작성한다.
- * 루트(/go/snu)·서브패스(/goraddy/go/snu)·임시 URL(/goraddy-site/...) 모두 대응. */
+/* /go/<코드> 경로 폴백 — GitHub Pages는 동적 경로가 없으므로
+ * 404로 들어온 /go/<코드>를 /go/?c=<코드>로 재작성한다.
+ * 커스텀 도메인(/go/snu)과 임시 URL(/goraddy-site/go/snu) 모두 대응. */
 (function () {
   var path = location.pathname;
   var idx = path.indexOf('/go/');
@@ -24,15 +24,14 @@
 })();
 </script>
 <style>
-  .nf-wrap{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px}
-  .nf-wrap img{height:60px;width:auto}
-  .nf-wrap h1{font-size:3rem;margin:0.2rem 0}
+  .nf-wrap{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px}
+  .nf-wrap img{width:140px;height:auto}
   .nf-wrap a{font-weight:700}
 </style>
 </head>
 <body>
 <div class="nf-wrap">
-  <img src="assets/logo.png" alt="OLO-G">
+  <img src="assets/logo.webp" alt="고!래디 Go! Raddy" onerror="this.src='assets/logo.webp'">
   <h1>404</h1>
   <p>페이지를 찾을 수 없습니다.</p>
   <a href="index.html">홈으로 돌아가기</a>
