@@ -104,6 +104,45 @@ nav.menu a.lang .flag {
   box-shadow: 0 0 0 1px rgba(20, 54, 92, 0.15);
 }
 
+/* ----- 전체 메뉴 (마스터 탭) ----- */
+.allmenu { position: relative; flex: none; margin-left: 0.1rem; }
+.allmenu-btn {
+  display: flex;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--navy);
+  padding: 0.4rem;
+  border-radius: 10px;
+}
+.allmenu-btn:hover { background: var(--sky-light); }
+.allmenu-btn svg { width: 22px; height: 22px; }
+.allmenu-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 12px);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 0.55rem;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  z-index: 60;
+}
+.allmenu-panel a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.93rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.allmenu-panel a:hover { background: var(--sky-light); }
+.allmenu-panel a.on { color: var(--sea-deep); }
+.allmenu-panel .divider { height: 1px; background: var(--sky); opacity: 0.55; margin: 0.4rem 0.4rem; }
+
 /* ----- 본문 공통 ----- */
 main { max-width: var(--maxw); margin: 0 auto; padding: 2.2rem 1.2rem 4rem; }
 h1 { font-size: 1.9rem; color: var(--navy); margin-bottom: 0.4rem; }
@@ -373,18 +412,26 @@ footer.site .foot-logo { height: 34px; margin-bottom: 0.7rem; opacity: 0.95; }
 
 /* ===== 모바일 ===== */
 @media (max-width: 560px) {
-  .brand img { height: 34px; }
-  /* 메뉴는 줄바꿈 대신 한 줄 가로 스크롤 */
+  .brand img { height: 30px; }
+  /* 로고·메뉴·전체메뉴를 한 줄에 — 넘치면 메뉴만 가로 스크롤 */
+  .nav-inner { flex-wrap: nowrap; gap: 0.35rem; }
   nav.menu {
+    flex: 1 1 auto;
+    min-width: 0;
     max-width: 100%;
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
   nav.menu::-webkit-scrollbar { display: none; }
-  nav.menu a { font-size: 0.84rem; padding: 0.32rem 0.55rem; }
-  nav.menu a.lang { padding: 0.28rem 0.6rem 0.28rem 0.4rem; }
-  nav.menu a.lang .flag { width: 15px; height: 15px; }
+  nav.menu a { font-size: 0.82rem; padding: 0.32rem 0.45rem; }
+  /* 탭 제목 축약: 홈은 로고로 대체, 긴 라벨은 짧은 라벨로 */
+  nav.menu a[data-m="hide"] { display: none; }
+  nav.menu a[data-short] { font-size: 0; }
+  nav.menu a[data-short]::before { content: attr(data-short); font-size: 0.82rem; }
+  /* 언어칩은 국기 아이콘만 */
+  nav.menu a.lang { font-size: 0; gap: 0; padding: 0.3rem; margin-left: 0.15rem; }
+  nav.menu a.lang .flag { width: 16px; height: 16px; }
   /* 키아트를 아래로 살짝 더 길게 (가로 크롭 최소화) */
   .hero-art { height: 64vw; object-fit: cover; object-position: center; }
   .hero-band { padding-top: 2.6rem; }

@@ -18,13 +18,28 @@
   <div class="nav-inner">
     <a class="brand" href="index.html"><img src="assets/logo.webp" alt="고!래디 Go! Raddy"></a>
     <nav class="menu">
-      <a href="index.html">홈</a>
-      <a href="notice.html" class="on">공지사항</a>
-      <a href="patch-notes.html">패치노트</a>
-      <a href="probability.html">확률 고지</a>
+      <a href="index.html" data-m="hide">홈</a>
+      <a href="notice.html" class="on" data-short="공지">공지사항</a>
+      <a href="patch-notes.html" data-short="패치">패치노트</a>
+      <a href="probability.html" data-short="확률">확률 고지</a>
       <a href="support.html">문의</a>
       <a href="en/notice.html" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
     </nav>
+    <div class="allmenu">
+      <button class="allmenu-btn" type="button" aria-label="전체 메뉴" aria-expanded="false" aria-haspopup="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <div class="allmenu-panel" hidden>
+        <a href="index.html">홈</a>
+        <a href="notice.html">공지사항</a>
+        <a href="patch-notes.html">패치노트</a>
+        <a href="probability.html">확률 고지</a>
+        <a href="support.html">문의</a>
+        <div class="divider"></div>
+        <a href="terms.html">이용약관</a>
+        <a href="privacy.html">개인정보처리방침</a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -60,5 +75,21 @@
   <div class="legal">© 2026 OLO-G. All rights reserved. · Go! Raddy™</div>
 </footer>
 
+<script>
+// 전체 메뉴 토글
+(function () {
+  const btn = document.querySelector('.allmenu-btn');
+  const panel = document.querySelector('.allmenu-panel');
+  if (!btn || !panel) return;
+  const close = () => { panel.setAttribute('hidden', ''); btn.setAttribute('aria-expanded', 'false'); };
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (panel.hasAttribute('hidden')) { panel.removeAttribute('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    else close();
+  });
+  document.addEventListener('click', (e) => { if (!panel.hasAttribute('hidden') && !panel.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>

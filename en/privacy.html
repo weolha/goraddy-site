@@ -17,13 +17,28 @@
   <div class="nav-inner">
     <a class="brand" href="index.html"><img src="../assets/logo.webp" alt="Go!Raddy"></a>
     <nav class="menu">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-m="hide">Home</a>
       <a href="notice.html">News</a>
-      <a href="patch-notes.html">Patch Notes</a>
-      <a href="probability.html">Drop Rates</a>
-      <a href="support.html">Support</a>
+      <a href="patch-notes.html" data-short="Patch">Patch Notes</a>
+      <a href="probability.html" data-short="Rates">Drop Rates</a>
+      <a href="support.html" data-short="Help">Support</a>
       <a href="../privacy.html" class="lang" lang="ko"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.5" fill="#0047a0"/><path d="M4.5 10a5.5 5.5 0 0 1 11 0 2.75 2.75 0 0 0-5.5 0 2.75 2.75 0 0 1-5.5 0z" fill="#cd2e3a"/></svg>한국어</a>
     </nav>
+    <div class="allmenu">
+      <button class="allmenu-btn" type="button" aria-label="All menu" aria-expanded="false" aria-haspopup="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <div class="allmenu-panel" hidden>
+        <a href="index.html">Home</a>
+        <a href="notice.html">News</a>
+        <a href="patch-notes.html">Patch Notes</a>
+        <a href="probability.html">Drop Rates</a>
+        <a href="support.html">Support</a>
+        <div class="divider"></div>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -94,5 +109,21 @@ Privacy inquiries: <a href="mailto:goraddycs@olo-g.com">goraddycs@olo-g.com</a> 
   <div class="legal">© 2026 OLO-G. All rights reserved. · Go! Raddy™</div>
 </footer>
 
+<script>
+// 전체 메뉴 토글
+(function () {
+  const btn = document.querySelector('.allmenu-btn');
+  const panel = document.querySelector('.allmenu-panel');
+  if (!btn || !panel) return;
+  const close = () => { panel.setAttribute('hidden', ''); btn.setAttribute('aria-expanded', 'false'); };
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (panel.hasAttribute('hidden')) { panel.removeAttribute('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    else close();
+  });
+  document.addEventListener('click', (e) => { if (!panel.hasAttribute('hidden') && !panel.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
