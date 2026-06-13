@@ -45,8 +45,6 @@ h1, h2, h3, .brand, .ver, .badge, .btn, .pill {
   font-weight: 800;
 }
 
-@keyframes waveFlow { from { background-position-x: 0; } to { background-position-x: -1200px; } }
-
 /* ----- 헤더 ----- */
 header.site {
   background: rgba(255, 255, 255, 0.92);
@@ -102,26 +100,6 @@ nav.menu a.lang .flag {
   box-shadow: 0 0 0 1px rgba(20, 54, 92, 0.15);
 }
 
-/* ----- 전체 메뉴 ----- */
-.allmenu { position: relative; flex: none; margin-left: 0.1rem; }
-.allmenu-btn {
-  display: flex; background: none; border: none; cursor: pointer;
-  color: var(--navy); padding: 0.4rem; border-radius: 10px;
-}
-.allmenu-btn:hover { background: var(--sky-light); }
-.allmenu-btn svg { width: 22px; height: 22px; }
-.allmenu-panel {
-  position: absolute; right: 0; top: calc(100% + 12px);
-  background: #fff; border-radius: 16px; box-shadow: var(--shadow);
-  padding: 0.55rem; min-width: 200px; display: flex; flex-direction: column; z-index: 60;
-}
-.allmenu-panel a {
-  color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.93rem;
-  padding: 0.45rem 0.85rem; border-radius: 10px; white-space: nowrap;
-}
-.allmenu-panel a:hover { background: var(--sky-light); }
-.allmenu-panel .divider { height: 1px; background: var(--sky); opacity: 0.55; margin: 0.4rem 0.4rem; }
-
 /* ----- 본문 공통 ----- */
 main { max-width: var(--maxw); margin: 0 auto; padding: 2.2rem 1.2rem 4rem; }
 h1 { font-size: 1.9rem; color: var(--navy); margin-bottom: 0.4rem; }
@@ -138,44 +116,20 @@ main p { margin: 0.6rem 0; }
 ul { padding-left: 1.2rem; }
 li { margin: 0.3rem 0; }
 
-/* ===== 히어로 (로고 중심, 차분한 회사 톤) ===== */
+/* ===== 히어로 (로고 중심, 차분·미니멀 — 게임 사이트와 구분) ===== */
 .hero {
-  background: linear-gradient(180deg, var(--sky-light) 0%, var(--sky) 60%, #337de8 100%);
-  position: relative; text-align: center;
-  padding: 3.6rem 1.2rem 0;
+  background: linear-gradient(180deg, #ffffff 0%, var(--sky-light) 100%);
+  text-align: center;
+  padding: 3.8rem 1.2rem 3.2rem;
+  border-bottom: 1px solid rgba(43, 163, 212, 0.14);
 }
-.hero .logo-big { height: 92px; width: auto; margin-bottom: 1.2rem; }
-.hero-band {
-  background: linear-gradient(180deg, #337de8 0%, #2a8ada 55%, var(--sea-deep) 100%);
-  color: #fff; text-align: center; padding: 2.6rem 1.2rem 5rem;
-  position: relative; margin-top: 1.4rem;
-}
-.hero-band::after {
-  content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 38px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C200,38 400,2 600,20 C800,38 1000,2 1200,20 L1200,40 L0,40 Z" fill="%23ffffff"/></svg>');
-  background-repeat: repeat-x; background-size: 1200px 100%;
-  animation: waveFlow 16s linear infinite;
-}
-.hero h1 {
-  color: var(--navy); font-size: 1.55rem; margin-bottom: 0.5rem;
-}
+.hero .logo-big { height: 88px; width: auto; margin-bottom: 1.3rem; }
+.hero h1 { color: var(--navy); font-size: 1.7rem; margin-bottom: 0.4rem; }
 .hero .tagline-en {
   display: block; color: var(--sea-deep); font-size: 1.05rem; letter-spacing: 0.01em;
-  margin-bottom: 1.8rem; font-family: 'SeoulAlrim', sans-serif;
+  margin-bottom: 1.2rem; font-family: 'SeoulAlrim', sans-serif;
 }
-.hero-band h2 { color: #fff; font-size: 1.75rem; text-shadow: 0 3px 0 rgba(20, 54, 92, 0.3); margin: 0 0 0.5rem; }
-.hero-band p { color: rgba(255,255,255,0.95); max-width: 620px; margin: 0 auto; }
-
-.bubbles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-.bubbles span {
-  position: absolute; bottom: -30px; border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14); border: 2px solid rgba(255, 255, 255, 0.22);
-  animation: rise linear infinite;
-}
-@keyframes rise {
-  from { transform: translateY(0) scale(1); opacity: 1; }
-  to   { transform: translateY(-440px) scale(1.25); opacity: 0; }
-}
+.hero .hero-sub { color: var(--text-dim); max-width: 560px; margin: 0 auto; font-size: 1rem; }
 
 /* ===== 행복 3단계 / 미션 인트로 ===== */
 .three-up { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.2rem 0; }
@@ -248,6 +202,43 @@ li { margin: 0.3rem 0; }
 .pill.soon { background: var(--yellow); }
 .pill.ghost { background: transparent; border: 1.5px dashed var(--text-dim); color: var(--text-dim); }
 
+/* ===== 히어로 CTA 버튼 ===== */
+.hero-cta { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-top: 1.6rem; }
+
+/* ===== 아트 피처 (대표작 키아트 배너) ===== */
+.game-feature { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin: 1rem 0; }
+.game-feature .art { display: block; width: 100%; height: auto; background: var(--sky-light); }
+.game-feature .body { padding: 1.3rem 1.5rem 1.5rem; }
+.game-feature .body h3 { margin: 0 0 0.3rem; font-size: 1.3rem; color: var(--navy); }
+.game-feature .body .tags { margin: 0.3rem 0 0.5rem; display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.game-feature .body p { color: var(--text-dim); margin: 0.4rem 0 0.9rem; }
+
+/* ===== 스크린샷 스트립 ===== */
+.shots { display: flex; gap: 0.7rem; overflow-x: auto; padding-bottom: 0.4rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.shots::-webkit-scrollbar { display: none; }
+.shots img { height: 210px; width: auto; border-radius: 14px; box-shadow: var(--shadow-sm); flex: none; }
+
+/* ===== 게임 미니 그리드 (대문) ===== */
+.games-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.9rem; margin: 1rem 0; }
+.game-mini {
+  display: flex; align-items: center; gap: 0.9rem;
+  background: var(--card); border-radius: 18px; padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-sm); text-decoration: none; color: var(--text);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.game-mini:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.game-mini .ic {
+  width: 52px; height: 52px; flex: none; border-radius: 14px; background: var(--sky-light);
+  display: flex; align-items: center; justify-content: center; font-size: 1.7rem; overflow: hidden;
+}
+.game-mini .ic.img { background-size: cover; background-position: center; }
+.game-mini .ic.letter { font-family: 'SeoulAlrim', sans-serif; font-size: 1.25rem; color: #fff; }
+.game-mini .gm-meta { min-width: 0; }
+.game-mini .gm-meta strong { display: block; color: var(--navy); font-family: 'SeoulAlrim', sans-serif; font-size: 1rem; }
+.game-mini .gm-meta span { font-size: 0.8rem; color: var(--text-dim); }
+.game-mini.flag { background: linear-gradient(160deg, #eaf7fd 0%, #d6eefb 100%); }
+.more-link { display: inline-block; margin-top: 0.5rem; font-weight: 700; }
+
 /* ===== 버튼 / CTA ===== */
 .btn {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -287,20 +278,12 @@ li { margin: 0.3rem 0; }
 .reveal.show { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .hero-band::after, footer.site::before { animation: none !important; }
-  .bubbles { display: none; }
 }
 
 /* ===== 푸터 ===== */
 footer.site {
   background: var(--navy); color: rgba(255, 255, 255, 0.75); font-size: 0.85rem;
-  padding: 2.8rem 1.2rem 2.2rem; text-align: center; position: relative; margin-top: 2.5rem;
-}
-footer.site::before {
-  content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 34px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,20 C200,38 400,2 600,20 C800,38 1000,2 1200,20 L1200,0 L0,0 Z" fill="%23ffffff"/></svg>');
-  background-repeat: repeat-x; background-size: 1200px 100%;
-  animation: waveFlow 22s linear infinite reverse;
+  padding: 2.8rem 1.2rem 2.2rem; text-align: center; margin-top: 2.5rem;
 }
 footer.site .foot-logo { height: 30px; margin-bottom: 0.7rem; opacity: 0.95; filter: brightness(0) invert(1); }
 footer.site a { color: #fff; text-decoration: none; margin: 0 0.5rem; }
@@ -312,6 +295,7 @@ footer.site .legal { margin-top: 0.7rem; font-size: 0.78rem; color: rgba(255, 25
 @media (max-width: 620px) {
   .three-up { grid-template-columns: 1fr; }
   .value-grid { grid-template-columns: 1fr; }
+  .games-grid { grid-template-columns: 1fr; }
   .timeline { grid-template-columns: 1fr; }
   .game-card { flex-direction: column; text-align: center; }
   .game-card .thumb { width: 100%; height: 160px; }
@@ -327,11 +311,35 @@ footer.site .legal { margin-top: 0.7rem; font-size: 0.78rem; color: rgba(255, 25
   nav.menu a { font-size: 0.85rem; padding: 0.32rem 0.5rem; }
   nav.menu a.lang { font-size: 0; gap: 0; padding: 0.3rem; margin-left: 0.15rem; }
   nav.menu a.lang .flag { width: 16px; height: 16px; }
-  .hero { padding-top: 2.6rem; }
-  .hero .logo-big { height: 70px; }
-  .hero h1 { font-size: 1.3rem; }
-  .hero-band h2 { font-size: 1.4rem; }
-  .hero-band p { font-size: 0.95rem; }
+  .hero { padding: 2.6rem 1rem 2.4rem; }
+  .hero .logo-big { height: 66px; }
+  .hero h1 { font-size: 1.35rem; }
+  .hero .tagline-en { font-size: 0.98rem; }
+  .hero .hero-sub { font-size: 0.95rem; }
   main { padding: 1.6rem 1rem 3rem; }
   .spec { grid-template-columns: 100px 1fr; }
+  .shots img { height: 160px; }
 }
+
+/* ===== 푸터 SNS 아이콘 ===== */
+footer.site .social { display: flex; gap: 0.55rem; justify-content: center; margin: 0.2rem 0 0.7rem; }
+footer.site .social a {
+  display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center;
+  border-radius: 50%; background: rgba(255, 255, 255, 0.12); color: #fff; transition: background 0.15s ease;
+}
+footer.site .social a:hover { background: rgba(255, 255, 255, 0.26); }
+footer.site .social svg { width: 17px; height: 17px; fill: currentColor; }
+
+/* ===== 링크 리스트 (문의 페이지) ===== */
+.links-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.6rem; margin: 1rem 0; }
+.link-row {
+  display: flex; align-items: center; gap: 0.7rem; background: var(--card);
+  border-radius: 14px; padding: 0.8rem 1rem; box-shadow: var(--shadow-sm);
+  text-decoration: none; color: var(--text); transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.link-row:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.link-row .ico { width: 36px; height: 36px; flex: none; border-radius: 11px; background: var(--sky-light); display: flex; align-items: center; justify-content: center; }
+.link-row .ico svg { width: 19px; height: 19px; fill: var(--sea-deep); }
+.link-row .lr-t { min-width: 0; }
+.link-row strong { display: block; color: var(--navy); font-size: 0.95rem; font-family: 'SeoulAlrim', sans-serif; }
+.link-row span { font-size: 0.8rem; color: var(--text-dim); }
