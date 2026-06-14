@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# 검색 색인 제외 (리다이렉트·임베드·중복)
+Disallow: /goraddy/go/
+Disallow: /goraddy/notice-embed.html
+
+Sitemap: https://olo-g.com/sitemap.xml
