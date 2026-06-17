@@ -250,7 +250,7 @@ li { margin: 0.3rem 0; }
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-img { opacity: 1; transform: none; transition: none; }
   .hero-band::after, footer.site::before { animation: none !important; }
-  .bubbles { display: none; }
+  .bubbles, .bubble-field, .summon-layer, .aqua-counter { display: none; }
 }
 
 /* ===== 홈: 뉴스/정보 ===== */
@@ -447,3 +447,18 @@ footer.site .foot-logo { height: 34px; margin-bottom: 0.7rem; opacity: 0.95; }
 /* ===== 웹뷰 임베드 ===== */
 body.embed { background: #fff; }
 body.embed main { padding: 1rem 1rem 2rem; }
+
+
+/* ===== 히어로 인터랙션: 버블 터뜨리기 + 아쿠아 출격 ===== */
+.aqua-counter{position:absolute;top:14px;right:14px;z-index:7;display:flex;align-items:center;gap:7px;background:rgba(20,54,92,.66);color:#fff;font-weight:800;font-size:.88rem;padding:7px 12px;border-radius:12px;backdrop-filter:blur(3px)}
+.aqua-counter svg{width:14px;height:17px;flex:none}
+.aqua-counter .aqua-bar{width:46px;height:5px;background:rgba(255,255,255,.25);border-radius:999px;overflow:hidden}
+.aqua-counter .aqua-bar i{display:block;height:100%;width:0;background:#7fd0ec;border-radius:999px;transition:width .35s ease}
+.bubble-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4}
+.bubble-field .bub{position:absolute;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.3);cursor:pointer;pointer-events:auto;box-sizing:border-box}
+.bubble-field .bub::after{content:'';position:absolute;top:18%;left:22%;width:26%;height:26%;border-radius:50%;background:rgba(255,255,255,.55)}
+.bubble-field .ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.9);pointer-events:none}
+.bubble-field .drop{position:absolute;pointer-events:none;transition:all .55s cubic-bezier(.4,.1,.2,1);z-index:7}
+.summon-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:6}
+.summon-layer img{position:absolute;will-change:transform}
+@keyframes aquaRing{0%{transform:scale(.3);opacity:.8}100%{transform:scale(1.9);opacity:0}}

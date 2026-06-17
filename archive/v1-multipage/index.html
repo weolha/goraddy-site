@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>게임 — OLO-G Games Inc. (오로지게임즈)</title>
-<meta name="description" content="오로지게임즈가 출시한 게임들 — 전진형 디펜스 '고!래디(Go! Raddy)', 힐링 키우기 '퐁퐁두두·퐁퐁두두2', 캐주얼 'Aim! the Center'. 스토어 다운로드 링크 제공.">
-<meta property="og:title" content="게임 — OLO-G Games Inc. (오로지게임즈)">
-<meta property="og:description" content="오로지게임즈가 만든 게임들.">
+<title>OLO-G Games Inc. (오로지게임즈) — A Spoonful of Happiness</title>
+<meta name="description" content="오로지게임즈(OLO-G Games Inc.)는 세상 모두를 조금 더 행복하게 만드는 게임을 만듭니다. 대표작 이동형 타워 디펜스 '고!래디(Go! Raddy)'. 사업 제휴·보도 문의를 환영합니다.">
+<meta property="og:title" content="OLO-G Games Inc. — A Spoonful of Happiness">
+<meta property="og:description" content="세상 모두를 조금 더 행복하게. 오로지게임즈 공식 사이트.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://olo-g.com/games.html">
+<meta property="og:url" content="https://olo-g.com/">
 <meta property="og:image" content="https://olo-g.com/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -16,11 +16,46 @@
 <meta name="twitter:title" content="OLO-G Games Inc.">
 <meta name="twitter:image" content="https://olo-g.com/assets/og.jpg">
 <meta property="og:site_name" content="OLO-G Games Inc.">
-<link rel="canonical" href="https://olo-g.com/games.html">
+<link rel="canonical" href="https://olo-g.com/">
+<link rel="alternate" hreflang="ko" href="https://olo-g.com/">
+<link rel="alternate" hreflang="en" href="https://olo-g.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://olo-g.com/">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://olo-g.com/#org",
+      "name": "OLO-G Games Inc.",
+      "alternateName": "오로지게임즈",
+      "url": "https://olo-g.com/",
+      "logo": "https://olo-g.com/assets/logo.png"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://olo-g.com/#website",
+      "name": "OLO-G Games Inc.",
+      "url": "https://olo-g.com/",
+      "publisher": { "@id": "https://olo-g.com/#org" },
+      "inLanguage": "ko"
+    },
+    {
+      "@type": "VideoGame",
+      "@id": "https://olo-g.com/goraddy/#game",
+      "name": "고!래디 Go! Raddy",
+      "url": "https://olo-g.com/goraddy/",
+      "applicationCategory": "Game",
+      "operatingSystem": "iOS, Android",
+      "publisher": { "@id": "https://olo-g.com/#org" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -28,26 +63,34 @@
   <div class="nav-inner">
     <a class="brand" href="index.html"><img src="assets/logo.png" alt="OLO-G Games Inc. 오로지게임즈"></a>
     <nav class="menu">
-      <a href="index.html">홈</a>
+      <a href="index.html" class="on">홈</a>
       <a href="about.html">소개</a>
-      <a href="games.html" class="on">게임</a>
+      <a href="games.html">게임</a>
       <a href="contact.html">문의</a>
       <a href="en/index.html" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <h1>게임</h1>
-  <p class="lead">오로지게임즈가 지금까지 출시한 네 개의 게임입니다. 힐링부터 캐주얼, 그리고 전략 디펜스까지 — 매번 새로운 장르로 뛰어듭니다.</p>
+<section class="hero">
+  <img class="logo-big" src="assets/logo.png" alt="OLO-G Games Inc. 오로지게임즈">
+  <h1>A Spoonful of Happiness</h1>
+  <span class="tagline-en">오로지만의 캐릭터와 세계관으로, 세상을 더 행복하게.</span>
+  <div class="hero-cta">
+    <a class="btn" href="goraddy/index.html" target="_blank" rel="noopener">🐳 고!래디 만나러 가기 →</a>
+    <a class="btn sub" href="games.html">게임 전체 보기</a>
+  </div>
+</section>
 
-  <h2 class="reveal">대표작</h2>
+<main>
+
+  <h2 class="reveal">대표작 — 고!래디</h2>
   <div class="game-feature reveal">
     <img class="art" src="assets/games/goraddy/feature.webp" alt="고!래디 키 비주얼 — 고래 래디와 바다 친구들, 야자수 섬의 코코넛 군단" loading="lazy">
     <div class="body">
       <h3>고!래디 <span style="font-weight:400; color:var(--text-dim); font-size:0.9rem;">Go! Raddy</span></h3>
       <div class="tags"><span class="pill">전진형 횡스크롤 디펜스</span><span class="pill">iOS · Android</span><span class="pill">2026</span></div>
-      <p>바다를 돌파하는 ‘전진형 이동 기지’가 특징인 횡스크롤 디펜스. 제자리에서 적을 기다리는 기존 방식과 달리, 고래 래디가 직접 전진하며 ‘아쿠아’를 모으고 아군을 강화합니다. 실시간 ‘버블’ 시스템으로 매 판 다른 전략을 짜며 끝없이 성장하세요.</p>
+      <p>바다를 돌파하는 ‘전진형 이동 기지’ 횡스크롤 디펜스. 고래 래디가 직접 전진하며 ‘아쿠아’를 모으고, 실시간 ‘버블’ 시스템으로 매 판 다른 전략을 짜며 끝없이 성장하는 오로지의 주력작입니다.</p>
       <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
         <a class="btn" href="goraddy/index.html" target="_blank" rel="noopener">공식 사이트 ↗</a>
         <a class="btn sub" href="https://play.google.com/store/apps/details?id=com.ologgames.goraddy" target="_blank" rel="noopener">Google Play</a>
@@ -62,50 +105,52 @@
   </div>
 
   <h2 class="reveal">오로지의 게임들</h2>
-  <div class="game-feature reveal">
-    <img class="art" src="assets/games/aim/feature.webp" alt="Aim! the Center 키 비주얼" loading="lazy">
-    <div class="body">
-      <h3>Aim! the Center</h3>
-      <div class="tags"><span class="pill">하이퍼캐주얼</span><span class="pill">iOS · Android</span><span class="pill">2025</span></div>
-      <p>양옆에서 좁혀오는 벽, 점점 줄어드는 공간. 중앙을 조준해 탭하고 최대한 높이 올라가세요. 단순한 조작과 매끄러운 모션의 한입 캐주얼 게임입니다. <em>Stay focused and keep aiming at the center!</em></p>
-      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-        <a class="btn sub" href="https://play.google.com/store/apps/details?id=com.OlogGames.AimtheCenter" target="_blank" rel="noopener">Google Play</a>
-        <a class="btn sub" href="https://apps.apple.com/kr/app/id6743078809" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
+  <div class="games-grid reveal">
+    <a class="game-mini flag" href="goraddy/index.html" target="_blank" rel="noopener">
+      <span class="ic img" style="background-image:url('assets/games/goraddy/icon.png')"></span>
+      <span class="gm-meta"><strong>고!래디</strong><span>전진형 디펜스 · 2026</span></span>
+    </a>
+    <a class="game-mini" href="https://play.google.com/store/apps/details?id=com.OlogGames.AimtheCenter" target="_blank" rel="noopener">
+      <span class="ic img" style="background-image:url('assets/games/aim/icon.png')"></span>
+      <span class="gm-meta"><strong>Aim! the Center</strong><span>하이퍼캐주얼 · 2025</span></span>
+    </a>
+    <a class="game-mini" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo2" target="_blank" rel="noopener">
+      <span class="ic img" style="background-image:url('assets/games/ponpondoodoo2/icon.png')"></span>
+      <span class="gm-meta"><strong>퐁퐁두두2</strong><span>힐링 키우기 · 2024</span></span>
+    </a>
+    <a class="game-mini" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo" target="_blank" rel="noopener">
+      <span class="ic img" style="background-image:url('assets/games/ponpondoodoo/icon.png')"></span>
+      <span class="gm-meta"><strong>퐁퐁두두</strong><span>힐링 키우기 · 2021</span></span>
+    </a>
   </div>
-  <div class="game-feature reveal">
-    <img class="art" src="assets/games/ponpondoodoo2/feature.webp" alt="퐁퐁두두2 키 비주얼 — 다양한 퐁퐁이 친구들" loading="lazy">
-    <div class="body">
-      <h3>퐁퐁두두2 <span style="font-weight:400; color:var(--text-dim); font-size:0.9rem;">ponpondoodoo2</span></h3>
-      <div class="tags"><span class="pill">힐링</span><span class="pill">키우기</span><span class="pill">iOS · Android</span><span class="pill">2024</span></div>
-      <p>하루 10분, 나의 성격을 알아가는 힐링 키우기 게임. 잔잔한 음악과 함께 몽글몽글한 퐁퐁이를 키워보세요. 구글 ‘교사 추천’·앱스토어 피처드 선정, 일본에도 출시되었습니다.</p>
-      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-        <a class="btn sub" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo2" target="_blank" rel="noopener">Google Play</a>
-        <a class="btn sub" href="https://apps.apple.com/kr/app/id6445818248" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-  </div>
-  <div class="game-feature reveal">
-    <img class="art" src="assets/games/ponpondoodoo/feature.webp" alt="퐁퐁두두 키 비주얼 — 퐁퐁이 친구들과 로고" loading="lazy">
-    <div class="body">
-      <h3>퐁퐁두두 <span style="font-weight:400; color:var(--text-dim); font-size:0.9rem;">ponpondoodoo</span></h3>
-      <div class="tags"><span class="pill">힐링</span><span class="pill">키우기</span><span class="pill">iOS · Android</span><span class="pill">2021</span></div>
-      <p>퐁퐁이를 키우며 나를 되돌아보는, 오로지의 출발점이 된 첫 작품. 하루 15분만 즐기도록 설계된 잔잔한 힐링 게임으로 앱스토어 4위·45만 다운로드를 기록했습니다.</p>
-      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-        <a class="btn sub" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo" target="_blank" rel="noopener">Google Play</a>
-        <a class="btn sub" href="https://apps.apple.com/kr/app/id1550902440" target="_blank" rel="noopener">App Store</a>
-      </div>
-    </div>
-  </div>
+  <a class="more-link reveal" href="games.html">게임 전체 보기 →</a>
 
-  <p class="reveal" style="color:var(--text-dim); font-size:0.9rem; margin-top:1rem;">오로지게임즈의 모든 게임은 <a href="https://apps.apple.com/kr/developer/olo-g-games-inc/id1673957310" target="_blank" rel="noopener">App Store</a> · <a href="https://play.google.com/store/apps/dev?id=7587639988569311041" target="_blank" rel="noopener">Google Play</a> 개발자 페이지에서도 만날 수 있어요.</p>
+  <h2 class="reveal">우리가 게임을 만드는 이유</h2>
+  <p class="lead reveal">‘오로지’ 우리에게 중요한 가치에만 집중하고, ‘-ology’의 경지를 추구합니다. 그 두 마음을 담아 <strong>OLO-G</strong>입니다.</p>
+  <div class="three-up reveal">
+    <div class="item">
+      <span class="emo">🧑‍🤝‍🧑</span>
+      <strong>우리</strong>
+      <p>하고 싶은 일을, 행복하게 합니다. 행복의 조건은 저마다 다르지만, 좋아하는 사람들과 진짜 만들고 싶은 걸 만드는 것 — 그 행복이 게임에 진심으로 담깁니다.</p>
+    </div>
+    <div class="item">
+      <span class="emo">🎁</span>
+      <strong>고객</strong>
+      <p>다양한 고객의 입장에서 생각하며, 즐거움과 감동과 행복을 주는 선물 같은 게임을 만들어갑니다.</p>
+    </div>
+    <div class="item">
+      <span class="emo">🌏</span>
+      <strong>세상</strong>
+      <p>행복은 바이러스처럼 번져나갑니다! 우리에게서 플레이어에게로, 플레이어에게서 다시 곁의 누군가에게로. 그렇게 세상은 조금 더 행복해집니다.</p>
+    </div>
+  </div>
 
   <div class="cta-box reveal">
-    <strong>퍼블리싱·협업에 관심 있으신가요?</strong><br>
-    오로지의 차기작과 함께할 파트너를 찾고 있습니다.
-    <br><a class="btn" href="contact.html">사업 문의하기</a>
+    <strong>함께 더 큰 항해를 떠날 파트너를 찾습니다</strong><br>
+    퍼블리싱·UA 마케팅, 글로벌 로컬라이즈와 라이브 운영, 수익화·사업, 그리고 투자까지 — 작은 팀이 더 멀리 갈 수 있도록 함께할 분을 기다립니다.
+    <br><a class="btn" href="contact.html">문의하기</a>
   </div>
+
 </main>
 
 <footer class="site">
@@ -132,8 +177,10 @@
 
 <script>
 const io = new IntersectionObserver((entries) => {
-  for (const e of entries) { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } }
-}, { threshold: 0.12 });
+  for (const e of entries) {
+    if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+  }
+}, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
