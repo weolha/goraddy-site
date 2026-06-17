@@ -29,10 +29,21 @@
 - **게임 사이트:** 패치노트·공지·확률 갱신 등 모든 규칙은 `goraddy/README.md` 참고. (원본은 GoRaddy repo `docs/liveops/패치노트.md`)
 - 커밋·푸시 → Pages 자동 배포(1~2분).
 
-## 배포 전 TODO
+## 배포 전 체크리스트 (출시 go/no-go)
 
-- **도메인:** GitHub Pages 커스텀 도메인을 `olo-g.com` 루트로 설정(현재는 임시 사이트 운영 중, 미배포).
-- **스토어 URL:** App Store/Play 등록 `privacy-policy` 경로가 `goraddy.olo-g.com/...`이면 `olo-g.com/goraddy/...`로 갱신하거나 `goraddy.olo-g.com → olo-g.com/goraddy` 리다이렉트 유지.
-- **마케팅 `/go/` 링크:** 기존 `goraddy.olo-g.com/go/<코드>` → 신규 `olo-g.com/goraddy/go/<코드>`. 코드 체계 문서(`GoRaddy repo docs/marketing/마케팅_링크체계.md`)·QR 갱신 필요. (루트 404 폴백은 양쪽 경로 모두 대응)
-- **회사 사이트 콘텐츠:** 대표자명·통신판매업 신고번호(마포 이전 후) 확인, 퐁퐁두두 시리즈 정보 확정.
-- **GA4:** 회사/게임 웹 스트림 분리.
+### ✅ 콘텐츠·품질 — 완료 (2026-06-16 점검)
+- 전 페이지 내부 링크·자산 경로 무결성 (깨진 링크 0)
+- 법인 정보 일치(상호/대표/사업자번호 722-86-02932/통신판매 2025-마포-2730/주소) — 회사 footer·약관·개인정보 동일
+- 카피라이트 `Inc..` 오타 14곳 수정 → `© 2026 OLO-G Games Inc.` 전 페이지 통일
+- 회사 사이트 소셜 카드: `assets/og.jpg`(1200×630) 신규 생성, og:image·twitter:card 5개 페이지 반영
+- SEO: sitemap·robots·canonical·hreflang·JSON-LD 정상, sitemap lastmod 2026-06-16
+- 모바일 헤더 구조(한 줄 nav / 게임 사이트 ☰ allmenu·data-short) 전 페이지 일치
+
+### ⛔ 사용자만 가능한 출시 블로커 (남은 항목)
+- **도메인:** GitHub Pages 커스텀 도메인을 `olo-g.com` 루트로 설정 + DNS(CNAME → weolha.github.io). 현재 미배포.
+- **스토어 URL:** App Store/Play 등록 `privacy-policy` 경로를 `olo-g.com/goraddy/privacy-policy/...`로 갱신하거나 `goraddy.olo-g.com → olo-g.com/goraddy` 리다이렉트 유지.
+- **마케팅 `/go/` 링크:** 기존 `goraddy.olo-g.com/go/<코드>` → 신규 `olo-g.com/goraddy/go/<코드>`. 코드 체계 문서(`GoRaddy repo docs/marketing/마케팅_링크체계.md`)·QR 갱신. (루트 404 폴백은 양쪽 경로 모두 대응)
+- **법률 검토:** 약관·개인정보 시행일 2026.06.10 + "초안" 문구 — 정식 시행 전 법률 검토 필요.
+- **이메일 확정:** 회사 사이트는 문의 CTA=`happy@olo-g.com`, footer·사업자정보=`cs@olo-g.com` 병행 중. 두 메일함이 모두 운영/모니터링되는지 확인(아니면 하나로 통일).
+- **GA4:** 회사/게임 웹 스트림 분리. (게임 `/go/`는 측정 ID `G-QERZLTF3XD` 이미 적용)
+- **선택:** 퐁퐁두두 시리즈 정보 확정, 커뮤니티 채널 오픈 시 `goraddy/support.html` 링크 추가, 라이브 390px 시각 확인(샌드박스 미실행).

@@ -142,18 +142,47 @@ li { margin: 0.3rem 0; }
 .three-up .item p { color: var(--text-dim); font-size: 0.92rem; margin: 0; }
 
 /* ===== 가치 카드 (4축 / 8덕목) ===== */
-.value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin: 1rem 0; }
+/* ===== 가치 4축 ===== */
+.value-axes { margin: 1rem 0; display: flex; flex-direction: column; gap: 1.7rem; }
+.axis-group .axis-head { display: flex; align-items: center; gap: 0.55rem; margin: 0 0 0.7rem; font-family: 'SeoulAlrim', sans-serif; color: var(--navy); font-size: 1.08rem; }
+.axis-head .axis-bar { width: 28px; height: 4px; border-radius: 2px; background: var(--sea); display: inline-block; }
+.value-pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .value-card {
   background: var(--card); border-radius: var(--radius); padding: 1.3rem 1.4rem;
   box-shadow: var(--shadow-sm); border-top: 4px solid var(--sea);
 }
-.value-card .axis {
-  display: inline-block; font-size: 0.74rem; color: var(--sea-deep);
-  background: var(--sky-light); border-radius: 999px; padding: 0.12rem 0.7rem;
-  margin-bottom: 0.5rem; font-family: 'SeoulAlrim', sans-serif;
-}
-.value-card h3 { margin: 0 0 0.3rem; color: var(--navy); }
+.axis-jeong .value-card { border-top-color: var(--coral); }
+.axis-jeong .axis-bar { background: var(--coral); }
+.axis-adventure .value-card { border-top-color: var(--sea); }
+.axis-adventure .axis-bar { background: var(--sea); }
+.axis-ideal .value-card { border-top-color: var(--yellow); }
+.axis-ideal .axis-bar { background: var(--yellow); }
+.axis-persist .value-card { border-top-color: var(--navy); }
+.axis-persist .axis-bar { background: var(--navy); }
+.value-card h4 { margin: 0 0 0.3rem; color: var(--navy); font-size: 1.02rem; }
 .value-card p { color: var(--text-dim); font-size: 0.93rem; margin: 0; }
+
+/* ===== ologgies 멤버십 ===== */
+.member-sub {
+  font-family: 'SeoulAlrim', sans-serif; color: var(--sea-deep);
+  font-size: 0.95rem; margin: 1.4rem 0 0.7rem;
+}
+.member-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 0.8rem; margin: 0.4rem 0 0.4rem; }
+.member-card {
+  background: var(--card); border-radius: 16px; padding: 1.1rem 0.9rem 1rem;
+  text-align: center; box-shadow: var(--shadow-sm); border: 1px solid rgba(43, 163, 212, 0.12);
+}
+.member-card .m-emo { font-size: 1.9rem; display: block; line-height: 1; }
+.member-card .m-name { display: block; color: var(--navy); margin: 0.4rem 0 0.15rem; font-family: 'SeoulAlrim', sans-serif; }
+.member-card .m-role { display: block; color: var(--text-dim); font-size: 0.8rem; }
+.member-card .m-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; justify-content: center; margin-top: 0.55rem; }
+.member-card .m-tags .pill { font-size: 0.66rem; padding: 0.1rem 0.45rem; border-radius: 7px; }
+.pill.pj-goraddy { background: rgba(43,163,212,0.12); color: #4aa6d6; }
+.pill.pj-ppd     { background: rgba(79,176,148,0.13); color: #57b394; }
+.pill.pj-ppd2    { background: rgba(128,136,207,0.14); color: #868dce; }
+.pill.pj-aim     { background: rgba(224,128,104,0.13); color: #e08a72; }
+.member-card.friend { background: #fbfdff; }
+.badge-line { color: var(--text-dim); font-size: 0.9rem; margin-top: 0.4rem; }
 
 /* ===== 인용/슬로건 박스 ===== */
 .quote {
@@ -294,7 +323,7 @@ footer.site .legal { margin-top: 0.7rem; font-size: 0.78rem; color: rgba(255, 25
 /* ===== 모바일 ===== */
 @media (max-width: 620px) {
   .three-up { grid-template-columns: 1fr; }
-  .value-grid { grid-template-columns: 1fr; }
+  .value-pair { grid-template-columns: 1fr; }
   .games-grid { grid-template-columns: 1fr; }
   .timeline { grid-template-columns: 1fr; }
   .game-card { flex-direction: column; text-align: center; }
@@ -343,3 +372,24 @@ footer.site .social svg { width: 17px; height: 17px; fill: currentColor; }
 .link-row .lr-t { min-width: 0; }
 .link-row strong { display: block; color: var(--navy); font-size: 0.95rem; font-family: 'SeoulAlrim', sans-serif; }
 .link-row span { font-size: 0.8rem; color: var(--text-dim); }
+
+
+/* ===== 멤버 모달 ===== */
+.member-card.clickable { cursor: pointer; }
+.member-card.clickable:hover { transform: translateY(-3px); box-shadow: var(--shadow); transition: transform .12s ease, box-shadow .12s ease; }
+.member-card .m-more { display: block; margin-top: 0.55rem; font-size: 0.66rem; color: var(--sea-deep); opacity: 0.85; }
+.m-modal-bg { position: fixed; inset: 0; background: rgba(20,54,92,0.55); display: none; align-items: center; justify-content: center; padding: 1.2rem; z-index: 200; }
+.m-modal-bg.open { display: flex; }
+.m-modal { background: var(--card); border-radius: 20px; max-width: 460px; width: 100%; max-height: 86vh; overflow-y: auto; padding: 1.7rem 1.5rem 1.8rem; box-shadow: 0 24px 60px rgba(20,54,92,0.35); position: relative; text-align: center; }
+.m-modal .m-close { position: absolute; top: 0.7rem; right: 0.9rem; border: none; background: none; font-size: 1.5rem; line-height: 1; color: var(--text-dim); cursor: pointer; }
+.m-modal .mm-emo { font-size: 2.7rem; display: block; line-height: 1; }
+.m-modal .mm-name { font-family: 'SeoulAlrim', sans-serif; color: var(--navy); font-size: 1.3rem; margin: 0.4rem 0 0.1rem; }
+.m-modal .mm-role { color: var(--sea-deep); font-size: 0.9rem; }
+.m-modal .mm-intro { color: var(--text); margin: 1rem 0 1.1rem; font-size: 0.98rem; line-height: 1.6; }
+.m-modal .mm-rows { text-align: left; }
+.m-modal .mm-row { margin: 0.7rem 0; font-size: 0.9rem; color: var(--text-dim); line-height: 1.55; }
+.m-modal .mm-row b { display: block; color: var(--navy); font-family: 'SeoulAlrim', sans-serif; font-weight: 400; font-size: 0.86rem; margin-bottom: 0.1rem; }
+.m-modal .mm-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.2rem; }
+.m-modal .mm-tags .pill { font-size: 0.7rem; padding: 0.12rem 0.5rem; border-radius: 7px; }
+.m-modal .mm-mail { display: inline-block; margin-top: 1.2rem; color: var(--sea-deep); font-weight: 700; text-decoration: none; }
+.m-modal .mm-mail:hover { text-decoration: underline; }
