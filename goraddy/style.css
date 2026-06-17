@@ -250,7 +250,7 @@ li { margin: 0.3rem 0; }
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-img { opacity: 1; transform: none; transition: none; }
   .hero-band::after, footer.site::before { animation: none !important; }
-  .bubbles, .bubble-field, .summon-layer, .aqua-counter { display: none; }
+  .bubbles, .bubble-field, .summon-layer, .aqua-counter, .aqua-hint { display: none; }
 }
 
 /* ===== 홈: 뉴스/정보 ===== */
@@ -450,10 +450,16 @@ body.embed main { padding: 1rem 1rem 2rem; }
 
 
 /* ===== 히어로 인터랙션: 버블 터뜨리기 + 아쿠아 출격 ===== */
-.aqua-counter{position:absolute;top:14px;right:14px;z-index:7;display:flex;align-items:center;gap:7px;background:rgba(20,54,92,.66);color:#fff;font-weight:800;font-size:.88rem;padding:7px 12px;border-radius:12px;backdrop-filter:blur(3px)}
-.aqua-counter svg{width:14px;height:17px;flex:none}
-.aqua-counter .aqua-bar{width:46px;height:5px;background:rgba(255,255,255,.25);border-radius:999px;overflow:hidden}
-.aqua-counter .aqua-bar i{display:block;height:100%;width:0;background:#7fd0ec;border-radius:999px;transition:width .35s ease}
+.aqua-counter{position:absolute;top:13px;right:13px;z-index:7;display:flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-family:'SeoulAlrim',"Apple SD Gothic Neo",sans-serif;font-size:.82rem;padding:5px 13px 5px 7px;border-radius:999px;box-shadow:0 5px 16px rgba(20,54,92,.22)}
+.aqua-counter .aqua-icon{width:27px;height:27px;display:block;flex:none}
+.aqua-counter .aqua-txt b{color:var(--sea-deep);font-size:.98rem}
+.aqua-counter .aqua-bar{width:42px;height:6px;background:var(--sky-light);border-radius:999px;overflow:hidden}
+.aqua-counter .aqua-bar i{display:block;height:100%;width:0;background:var(--sea);border-radius:999px;transition:width .35s ease}
+.aqua-counter.bump{animation:aquaBump .32s ease}
+@keyframes aquaBump{0%,100%{transform:scale(1)}45%{transform:scale(1.09)}}
+.aqua-hint{position:absolute;top:48px;right:13px;z-index:7;background:var(--navy);color:#fff;font-size:.74rem;font-weight:700;padding:5px 11px;border-radius:11px;opacity:0;transform:translateY(-5px);transition:opacity .4s ease,transform .4s ease;pointer-events:none;white-space:nowrap;box-shadow:0 4px 12px rgba(20,54,92,.25)}
+.aqua-hint.show{opacity:1;transform:none}
+.aqua-hint::after{content:"";position:absolute;top:-5px;right:20px;border:5px solid transparent;border-top:0;border-bottom-color:var(--navy)}
 .bubble-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4}
 .bubble-field .bub{position:absolute;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.3);cursor:pointer;pointer-events:auto;box-sizing:border-box}
 .bubble-field .bub::after{content:'';position:absolute;top:18%;left:22%;width:26%;height:26%;border-radius:50%;background:rgba(255,255,255,.55)}

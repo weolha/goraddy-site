@@ -78,10 +78,11 @@
   <img class="hero-art" src="assets/keyart_hero.webp" alt="고!래디 키 비주얼 — 고래 래디와 바다 친구들, 그리고 야자수 섬의 코코넛 군단">
   <div class="hero-band">
     <div class="aqua-counter">
-      <svg viewBox="0 0 16 20" aria-hidden="true"><path d="M8 1 C8 1 15 9 15 14 A7 7 0 0 1 1 14 C1 9 8 1 8 1Z" fill="#7fd0ec" stroke="#bfe6f6" stroke-width="1"/></svg>
-      <span>아쿠아 <span id="aquaNum">0</span>/<span id="aquaGoal">8</span></span>
+      <img class="aqua-icon" src="assets/aqua.webp" alt="" aria-hidden="true">
+      <span class="aqua-txt">아쿠아 <b id="aquaNum">0</b>/<span id="aquaGoal">8</span></span>
       <span class="aqua-bar"><i id="aquaBar"></i></span>
     </div>
+    <div class="aqua-hint" id="aquaHint" aria-hidden="true">🫧 버블을 톡! 터뜨려보세요</div>
     <div class="bubble-field" id="bubbleField" aria-hidden="true"></div>
     <div class="summon-layer" id="summonLayer" aria-hidden="true"></div>
     <h1>고래를 타고, 섬을 무찔러라!</h1>
@@ -206,12 +207,13 @@ document.querySelectorAll('.reveal, .reveal-img').forEach(el => io.observe(el));
   if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var band=document.querySelector('.hero-band'); if(!band) return;
   var field=document.getElementById('bubbleField'), slayer=document.getElementById('summonLayer');
-  var aquaNum=document.getElementById('aquaNum'), aquaBar=document.getElementById('aquaBar');
+  var counter=document.querySelector('.aqua-counter'), aquaNum=document.getElementById('aquaNum'), aquaBar=document.getElementById('aquaBar'), hint=document.getElementById('aquaHint');
   if(!field||!slayer) return;
-  var GOAL=8, aqua=0, busy=false, bubs=[];
-  var units=[{f:'1001_pochi',k:'g'},{f:'1004_gurl',k:'g'},{f:'1007_chiz',k:'g'},{f:'1015_penguin',k:'g'},{f:'1016_frog',k:'g'},{f:'1008_rubberduck',k:'g'},{f:'1023_flyingfish',k:'f'},{f:'1037_babyray',k:'f'},{f:'1011_kraken',k:'b'}];
+  var GOAL=8, aqua=0, busy=false, popped=false, bubs=[];
+  var units=[{f:'1001_pochi',k:'g'},{f:'1004_gurl',k:'g'},{f:'1007_chiz',k:'g'},{f:'1015_penguin',k:'g'},{f:'1016_frog',k:'g'},{f:'1008_rubberduck',k:'g'},{f:'1023_flyingfish',k:'f'},{f:'1037_babyray',k:'f'},{f:'1011_kraken',k:'g'}];
   function W(){return band.clientWidth;} function H(){return band.clientHeight;}
   function update(){ var v=Math.min(aqua,GOAL); aquaNum.textContent=v; aquaBar.style.width=(v/GOAL*100)+'%'; }
+  function bump(){ if(!counter)return; counter.classList.remove('bump'); void counter.offsetWidth; counter.classList.add('bump'); }
   function mk(){
     var size=14+Math.random()*22;
     var b={el:document.createElement('div'),s:size,x:18+Math.random()*(W()-50),y:H()+Math.random()*130,v:0.3+Math.random()*0.5,amp:1+Math.random()*1.6,ph:Math.random()*6.28,dead:false};
@@ -222,25 +224,26 @@ document.querySelectorAll('.reveal, .reveal-img').forEach(el => io.observe(el));
   function recycle(b){ b.s=14+Math.random()*22; b.el.style.width=b.el.style.height=b.s+'px'; b.x=18+Math.random()*(W()-50); b.y=H()+10+Math.random()*80; b.el.style.display='block'; b.dead=false; }
   function pop(b){
     if(b.dead)return; b.dead=true; b.el.style.display='none';
+    if(!popped){ popped=true; if(hint) hint.classList.remove('show'); }
     var r=document.createElement('span'); r.className='ring';
     r.style.cssText='left:'+b.x+'px;top:'+b.y+'px;width:'+b.s+'px;height:'+b.s+'px;animation:aquaRing .45s ease-out forwards';
     field.appendChild(r); setTimeout(function(){r.remove();},460);
     var d=document.createElement('div'); d.className='drop'; d.style.left=b.x+'px'; d.style.top=b.y+'px';
-    d.innerHTML='<svg width="13" height="16" viewBox="0 0 16 20"><path d="M8 1 C8 1 15 9 15 14 A7 7 0 0 1 1 14 C1 9 8 1 8 1Z" fill="#bfe6f6" stroke="#fff" stroke-width="1"/></svg>';
+    d.innerHTML='<img src="assets/aqua.webp" alt="" style="width:18px;height:18px;display:block">';
     field.appendChild(d);
-    requestAnimationFrame(function(){ d.style.left=(W()-38)+'px'; d.style.top='14px'; d.style.opacity='0.2'; d.style.transform='scale(.6)'; });
-    setTimeout(function(){ d.remove(); aqua++; update(); if(aqua>=GOAL) summon(); }, 560);
+    requestAnimationFrame(function(){ d.style.left=(W()-34)+'px'; d.style.top='16px'; d.style.opacity='0.25'; d.style.transform='scale(.55)'; });
+    setTimeout(function(){ d.remove(); aqua++; update(); bump(); if(aqua>=GOAL) summon(); }, 560);
     setTimeout(function(){ recycle(b); }, 780);
   }
   function launch(u){
     var img=document.createElement('img'); img.src='assets/units/'+u.f+'.webp'; img.alt=''; img.setAttribute('aria-hidden','true');
-    var h=u.k==='b'?122:(u.k==='f'?80:94); img.style.height=h+'px'; img.style.left='0';
-    var bottom=u.k==='f'?Math.round(H()*0.4):(u.k==='b'?38:60); img.style.bottom=bottom+'px';
-    img.style.transform='translateX(-140px)'; slayer.appendChild(img);
-    var end=W()+150, dur=u.k==='b'?3200:(u.k==='f'?2500:2800);
+    img.style.left='0';
+    var bottom=u.k==='f'?Math.round(H()*0.42):50; img.style.bottom=bottom+'px';
+    img.style.transform='translateX(-180px)'; slayer.appendChild(img);
+    var end=W()+180, dur=u.k==='f'?2500:2800;
     var frames=u.k==='f'
-      ?[{transform:'translateX(-140px) translateY(0)'},{transform:'translateX('+(end*0.5)+'px) translateY(-18px)'},{transform:'translateX('+end+'px) translateY(0)'}]
-      :[{transform:'translateX(-140px) translateY(0)'},{transform:'translateX('+(end*0.25)+'px) translateY(-8px)'},{transform:'translateX('+(end*0.5)+'px) translateY(0)'},{transform:'translateX('+(end*0.75)+'px) translateY(-8px)'},{transform:'translateX('+end+'px) translateY(0)'}];
+      ?[{transform:'translateX(-180px) translateY(0)'},{transform:'translateX('+(end*0.5)+'px) translateY(-18px)'},{transform:'translateX('+end+'px) translateY(0)'}]
+      :[{transform:'translateX(-180px) translateY(0)'},{transform:'translateX('+(end*0.25)+'px) translateY(-8px)'},{transform:'translateX('+(end*0.5)+'px) translateY(0)'},{transform:'translateX('+(end*0.75)+'px) translateY(-8px)'},{transform:'translateX('+end+'px) translateY(0)'}];
     var an=img.animate(frames,{duration:dur,easing:'ease-in-out'}); an.onfinish=function(){img.remove();};
   }
   function summon(){
@@ -251,6 +254,7 @@ document.querySelectorAll('.reveal, .reveal-img').forEach(el => io.observe(el));
   for(var i=0;i<8;i++) mk();
   function loop(){ for(var i=0;i<bubs.length;i++){var b=bubs[i]; if(b.dead)continue; b.y-=b.v; b.ph+=0.03; b.el.style.left=(b.x+Math.sin(b.ph)*b.amp*6)+'px'; b.el.style.top=b.y+'px'; if(b.y<-32) recycle(b);} requestAnimationFrame(loop); }
   requestAnimationFrame(loop); update();
+  if(hint){ setTimeout(function(){ if(!popped) hint.classList.add('show'); },1200); setTimeout(function(){ hint.classList.remove('show'); },9000); }
 })();
 </script>
 </body>
