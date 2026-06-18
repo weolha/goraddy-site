@@ -451,7 +451,7 @@ body.embed main { padding: 1rem 1rem 2rem; }
 
 /* ===== 히어로 인터랙션: 버블 터뜨리기 + 아쿠아 출격 ===== */
 .aqua-counter{position:absolute;top:13px;right:13px;z-index:7;display:flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-family:'SeoulAlrim',"Apple SD Gothic Neo",sans-serif;font-size:.82rem;padding:5px 13px 5px 7px;border-radius:999px;box-shadow:0 5px 16px rgba(20,54,92,.22)}
-.aqua-counter .aqua-icon{width:27px;height:27px;display:block;flex:none}
+.aqua-counter .aqua-icon{width:20px;height:25px;display:block;flex:none}
 .aqua-counter .aqua-txt b{color:var(--sea-deep);font-size:.98rem}
 .aqua-counter .aqua-bar{width:42px;height:6px;background:var(--sky-light);border-radius:999px;overflow:hidden}
 .aqua-counter .aqua-bar i{display:block;height:100%;width:0;background:var(--sea);border-radius:999px;transition:width .35s ease}
@@ -461,8 +461,10 @@ body.embed main { padding: 1rem 1rem 2rem; }
 .aqua-hint.show{opacity:1;transform:none}
 .aqua-hint::after{content:"";position:absolute;top:-5px;right:20px;border:5px solid transparent;border-top:0;border-bottom-color:var(--navy)}
 .bubble-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:4}
-.bubble-field .bub{position:absolute;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid rgba(255,255,255,.3);cursor:pointer;pointer-events:auto;box-sizing:border-box}
-.bubble-field .bub::after{content:'';position:absolute;top:18%;left:22%;width:26%;height:26%;border-radius:50%;background:rgba(255,255,255,.55)}
+.bubble-field .bub{position:absolute;cursor:pointer;pointer-events:auto;border-radius:50%}
+.bubble-field .bub::before{content:"";position:absolute;inset:25%;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.42);box-sizing:border-box}
+.bubble-field .bub::after{content:"";position:absolute;top:33%;left:35%;width:11%;height:11%;border-radius:50%;background:rgba(255,255,255,.68)}
+.hero-band .store-buttons{position:relative;z-index:8}
 .bubble-field .ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.9);pointer-events:none}
 .bubble-field .drop{position:absolute;pointer-events:none;transition:all .55s cubic-bezier(.4,.1,.2,1);z-index:7}
 .summon-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:6}
