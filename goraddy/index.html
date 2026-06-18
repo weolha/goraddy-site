@@ -78,7 +78,7 @@
   <img class="hero-art" src="assets/keyart_hero.webp" alt="고!래디 키 비주얼 — 고래 래디와 바다 친구들, 그리고 야자수 섬의 코코넛 군단">
   <div class="hero-band">
     <div class="aqua-counter">
-      <img class="aqua-icon" src="assets/aqua.webp?v=5" width="30" height="30" alt="" aria-hidden="true">
+      <img class="aqua-icon" src="assets/aqua.png?v=1" width="30" height="30" alt="" aria-hidden="true">
       <span class="aqua-txt">아쿠아 <b id="aquaNum">0</b>/<span id="aquaGoal">8</span></span>
       <span class="aqua-bar"><i id="aquaBar"></i></span>
     </div>
@@ -229,7 +229,7 @@ document.querySelectorAll('.reveal, .reveal-img').forEach(el => io.observe(el));
     r.style.cssText='left:'+(b.x+b.s*0.25)+'px;top:'+(b.y+b.s*0.25)+'px;width:'+(b.s*0.5)+'px;height:'+(b.s*0.5)+'px;animation:aquaRing .45s ease-out forwards';
     field.appendChild(r); setTimeout(function(){r.remove();},460);
     var d=document.createElement('div'); d.className='drop'; d.style.left=(b.x+b.s*0.5-11)+'px'; d.style.top=(b.y+b.s*0.5-11)+'px';
-    d.innerHTML='<img src="assets/aqua.webp?v=5" width="22" height="22" alt="">';
+    d.innerHTML='<img src="assets/aqua.png?v=1" width="22" height="22" alt="">';
     field.appendChild(d);
     requestAnimationFrame(function(){ d.style.left=(W()-34)+'px'; d.style.top='16px'; d.style.opacity='0.25'; d.style.transform='scale(.55)'; });
     setTimeout(function(){ d.remove(); aqua++; update(); bump(); if(aqua>=GOAL) summon(); }, 560);
