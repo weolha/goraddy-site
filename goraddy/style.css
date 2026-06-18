@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@400;500;600;700&display=swap');
 /* ===== 고!래디 공식 사이트 — 디자인 시스템 v3 (보더리스 · 유기적 흐름) ===== */
 :root {
   --sky: #c9ecf7;
@@ -27,7 +28,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-family: 'Palanquin Dark', "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
   color: var(--text);
   background: #fff;
   line-height: 1.7;
@@ -41,8 +42,8 @@ h1, h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
 
 h1, h2, h3, .brand, .store-btn, .ver, .badge, .btn {
-  font-family: 'SeoulAlrim', "Apple SD Gothic Neo", sans-serif;
-  font-weight: 800;
+  font-family: 'Palanquin Dark', 'SeoulAlrim', "Apple SD Gothic Neo", sans-serif;
+  font-weight: 700;
 }
 
 /* ===== 심리스 파도 (시작·끝 기울기 동일 → 타일링 끊김 없음) ===== */
@@ -274,7 +275,7 @@ li { margin: 0.3rem 0; }
 .more-link { display: inline-block; margin-top: 0.7rem; font-weight: 700; }
 
 .spec { display: grid; grid-template-columns: 110px 1fr; gap: 0.35rem 1rem; margin: 0.5rem 0 0; }
-.spec dt { font-weight: 800; color: var(--sea-deep); font-family: 'SeoulAlrim', sans-serif; }
+.spec dt { font-weight: 700; color: var(--sea-deep); font-family: 'Palanquin Dark', 'SeoulAlrim', sans-serif; }
 .spec dd { margin: 0; }
 
 /* ===== 패치노트 ===== */
@@ -362,7 +363,7 @@ td.num { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 7
   box-shadow: 0 6px 16px rgba(20, 54, 92, 0.25);
   margin-top: 0.8rem;
   transition: transform 0.12s ease;
-  font-family: 'SeoulAlrim', "Apple SD Gothic Neo", sans-serif;
+  font-family: 'Palanquin Dark', 'SeoulAlrim', "Apple SD Gothic Neo", sans-serif;
 }
 .cta-box a.btn:hover, button.btn:hover { transform: translateY(-2px); }
 button.btn.sub { background: var(--sky-light); color: var(--sea-deep); box-shadow: none; }
@@ -435,7 +436,12 @@ footer.site .foot-logo { height: 34px; margin-bottom: 0.7rem; opacity: 0.95; }
   nav.menu a.lang .flag { width: 16px; height: 16px; }
   /* 키아트를 아래로 살짝 더 길게 (가로 크롭 최소화) */
   .hero-art { height: 64vw; object-fit: cover; object-position: center; }
-  .hero-band { padding-top: 2.6rem; }
+  .hero-band { padding: 4.4rem 1rem 6.2rem; }
+  .aqua-counter { top: 9px; right: 9px; gap: 5px; padding: 4px 9px 4px 6px; font-size: .72rem; }
+  .aqua-counter .aqua-icon { width: 22px; height: 22px; }
+  .aqua-counter .aqua-txt b { font-size: .82rem; }
+  .aqua-counter .aqua-bar { display: none; }
+  .aqua-hint { top: 40px; right: 9px; font-size: .68rem; padding: 4px 9px; }
   .hero-band h1 { font-size: 1.5rem; }
   .hero-band p { font-size: 0.95rem; }
   .hero-band p br { display: none; } /* 강제 줄바꿈 해제 — 자연스러운 어절 줄바꿈 */
@@ -470,3 +476,5 @@ body.embed main { padding: 1rem 1rem 2rem; }
 .summon-layer{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:6}
 .summon-layer img{position:absolute;will-change:transform}
 @keyframes aquaRing{0%{transform:scale(.3);opacity:.8}100%{transform:scale(1.9);opacity:0}}
+.bubble-field .pop{position:absolute;pointer-events:none;z-index:6}
+@keyframes popburst{0%{transform:scale(.55);opacity:0}20%{opacity:1}100%{transform:scale(1.18);opacity:0}}

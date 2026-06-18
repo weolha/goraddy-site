@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){var K='olog_lang',EN='en/index.html';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'){s('en');location.replace(EN);return}var p=g();if(p==='ko')return;if(p==='en'){location.replace(EN);return}if((navigator.language||'').toLowerCase().indexOf('ko')!==0)location.replace(EN)})();</script>
 <title>OLO-G Games Inc. (오로지게임즈) — A Spoonful of Happiness</title>
-<meta name="description" content="오로지게임즈(OLO-G Games Inc.)는 세상 모두를 조금 더 행복하게 만드는 게임을 만듭니다. 대표작 이동형 타워 디펜스 '고!래디(Go! Raddy)'. 사업 제휴·보도 문의를 환영합니다.">
+<meta name="description" content="오로지게임즈(OLO-G Games Inc.)는 오로지만의 캐릭터와 세계관으로 세상을 더 행복하게 만드는 게임을 만듭니다. 대표작 이동형 타워 디펜스 '고!래디(Go! Raddy)'. 사업 제휴·보도 문의를 환영합니다.">
 <meta property="og:title" content="OLO-G Games Inc. — A Spoonful of Happiness">
-<meta property="og:description" content="세상 모두를 조금 더 행복하게. 오로지게임즈 공식 사이트.">
+<meta property="og:description" content="오로지만의 캐릭터와 세계관으로, 세상을 더 행복하게. 오로지게임즈 공식 사이트.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://olo-g.com/">
 <meta property="og:image" content="https://olo-g.com/assets/og.jpg">
@@ -24,165 +24,299 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@400;500;600;700&display=swap">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://olo-g.com/#org",
-      "name": "OLO-G Games Inc.",
-      "alternateName": "오로지게임즈",
-      "url": "https://olo-g.com/",
-      "logo": "https://olo-g.com/assets/logo.png"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://olo-g.com/#website",
-      "name": "OLO-G Games Inc.",
-      "url": "https://olo-g.com/",
-      "publisher": { "@id": "https://olo-g.com/#org" },
-      "inLanguage": "ko"
-    },
-    {
-      "@type": "VideoGame",
-      "@id": "https://olo-g.com/goraddy/#game",
-      "name": "고!래디 Go! Raddy",
-      "url": "https://olo-g.com/goraddy/",
-      "applicationCategory": "Game",
-      "operatingSystem": "iOS, Android",
-      "publisher": { "@id": "https://olo-g.com/#org" }
-    }
-  ]
-}
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://olo-g.com/#org","name":"OLO-G Games Inc.","alternateName":"오로지게임즈","url":"https://olo-g.com/","logo":"https://olo-g.com/assets/logo.png"},
+{"@type":"WebSite","@id":"https://olo-g.com/#website","name":"OLO-G Games Inc.","url":"https://olo-g.com/","publisher":{"@id":"https://olo-g.com/#org"},"inLanguage":"ko"},
+{"@type":"VideoGame","@id":"https://olo-g.com/goraddy/#game","name":"고!래디 Go! Raddy","url":"https://olo-g.com/goraddy/","applicationCategory":"Game","operatingSystem":"iOS, Android","publisher":{"@id":"https://olo-g.com/#org"}}
+]}
 </script>
+<style>
+@font-face{font-family:'SeoulAlrim';src:url('assets/SeoulAlrim-XB.woff2') format('woff2');font-weight:800;font-display:swap}
+:root{--sky:#c9ecf7;--sky-light:#eaf6fb;--sea:#2ba3d4;--sea-deep:#1b7fc4;--navy:#14365c;--yellow:#f8d86a;--coral:#ff8a5c;--mint:#6fd1b0;--pink:#f5a8c8;--lav:#b3a8f0;--text:#1d3c5e;--dim:#5b7894}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Palanquin Dark',"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all}
+.dsp{font-family:'Palanquin Dark','SeoulAlrim',"Apple SD Gothic Neo",sans-serif;font-weight:700;color:var(--navy);line-height:1.1;letter-spacing:-.01em}
+a{color:var(--sea-deep);text-decoration:none}
+
+.bloom{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.bloom .sea{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,rgba(43,163,212,.14),rgba(27,127,196,.2));transition:height .25s linear}
+.bloom .bl{position:absolute;border-radius:50%;opacity:0;filter:blur(6px);transition:opacity .9s ease;animation:drift var(--d,16s) ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(12px,-14px)}}
+.bloom .cc{position:absolute;opacity:0;transition:opacity .8s ease;animation:bobf var(--bd,6s) ease-in-out infinite}
+.bloom .cc img{display:block;height:100%;width:auto}
+.deco{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.deco span{position:fixed;border-radius:50%}
+@keyframes floatup{0%{transform:translateY(10px) scale(.4);opacity:0}22%{opacity:.82}100%{transform:translateY(-66px) scale(1);opacity:0}}
+@keyframes bobf{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.brandfix{position:fixed;top:18px;left:22px;z-index:40;display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:6px}
+.brandfix img{height:32px;display:block}
+.bark{position:absolute;top:-14px;left:30px;transform:translate(-50%,2px);background:var(--navy);color:#fff;font-size:13px;font-weight:700;padding:3px 9px;border-radius:10px;opacity:0;white-space:nowrap;pointer-events:none}
+@keyframes bp{0%{transform:translate(-50%,2px) scale(.5);opacity:0}25%{transform:translate(-50%,-9px) scale(1.14);opacity:1}80%{opacity:1}100%{transform:translate(-50%,-18px) scale(1);opacity:0}}
+@keyframes wig{0%,100%{transform:rotate(0)}20%{transform:rotate(-9deg)}40%{transform:rotate(7deg)}60%{transform:rotate(-4deg)}80%{transform:rotate(2deg)}}
+
+.rail{position:fixed;top:0;right:24px;height:100vh;z-index:40;display:flex;align-items:center;pointer-events:none}
+.rail .track{position:absolute;right:5px;top:50%;transform:translateY(-50%);width:2px;height:300px;background:#e7eef4;border-radius:2px}
+.rail .fill{position:absolute;right:5px;top:calc(50% - 150px);width:2px;height:0;background:var(--sea);border-radius:2px;transition:height .12s linear}
+.rail .dots{position:relative;display:flex;flex-direction:column;justify-content:space-between;height:300px}
+.rail a{pointer-events:auto;display:flex;align-items:center;justify-content:flex-end;gap:8px;text-decoration:none}
+.rail .lbl{font-size:11px;font-weight:700;color:#9bb1c3;opacity:0;transition:opacity .2s,color .2s}
+.rail .pip{width:9px;height:9px;border-radius:50%;background:#cfe0ec;transition:all .2s;flex:none}
+.rail a:hover .lbl{opacity:1}
+.rail a.on .pip{background:var(--sea);transform:scale(1.55)}
+.rail a.on .lbl{opacity:1;color:var(--navy)}
+
+.wrap{position:relative;z-index:1}
+section{position:relative;max-width:980px;margin:0 auto;padding:9rem 1.4rem;min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+.slabel{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--sea);margin-bottom:14px}
+.reveal{opacity:0;transform:translate(var(--rx,0px),34px) rotate(var(--rr,0deg)) scale(.96);transition:opacity .9s ease,transform 1s cubic-bezier(.18,.86,.28,1.05)}
+.reveal.show{opacity:1;transform:none}
+.btn{display:inline-flex;align-items:center;gap:7px;background:var(--sea);color:#fff;font-weight:700;font-size:.95rem;padding:.8rem 1.4rem;border-radius:14px;font-family:'Palanquin Dark','SeoulAlrim',sans-serif;transition:transform .12s,background .15s}
+.btn:hover{background:var(--sea-deep);transform:translateY(-2px)}
+.btn.coral{background:var(--coral)}.btn.coral:hover{background:#ef7245}
+.btn.ghost{background:rgba(255,255,255,.85);color:var(--navy);box-shadow:inset 0 0 0 2px var(--sky)}
+.btn.ghost:hover{background:var(--sky-light)}
+
+.hero{min-height:96vh}
+.hero .ey{color:var(--sea);font-size:13px;font-weight:700;letter-spacing:.18em}
+.hero h1{font-size:clamp(2.7rem,7.5vw,4.8rem);margin:.5rem 0 0}
+.hero h1 .dot{color:var(--coral)}
+.hero .sub{color:var(--dim);font-size:clamp(1rem,2.2vw,1.25rem);margin-top:1.1rem;max-width:440px}
+.hero .cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem}
+.hero .scrollcue{color:#9bb1c3;font-size:13px;margin-top:2.6rem;animation:cue 1.9s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+.h2{font-size:clamp(1.7rem,4.5vw,2.7rem)}
+.lead{color:var(--dim);font-size:1.05rem;margin-top:.7rem;max-width:560px}
+.witbox{display:flex;align-items:center;gap:18px;margin:1rem 0}
+.witbox .wit{font-size:clamp(1.7rem,5.5vw,2.8rem)}
+.witbox .c{color:var(--coral)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+.icard{background:rgba(255,255,255,.85);backdrop-filter:blur(2px);border-radius:18px;padding:1.3rem;box-shadow:0 8px 26px rgba(27,127,196,.10)}
+.icard .emo{font-size:1.7rem}
+.icard strong{display:block;color:var(--navy);font-family:'Palanquin Dark','SeoulAlrim',sans-serif;margin:.4rem 0 .3rem}
+.icard p{color:var(--dim);font-size:.92rem}
+.icard{transition:transform .16s ease,box-shadow .16s ease}
+.icard:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(27,127,196,.17)}
+.feat{display:flex;gap:2rem;align-items:center;margin-top:1.6rem;flex-wrap:wrap}
+.feat img.art{width:min(46%,420px);border-radius:20px;flex:1 1 280px}
+.feat .body{flex:1 1 280px}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0 .8rem}
+.pill{background:var(--sky-light);color:var(--sea-deep);font-size:.74rem;font-weight:700;padding:.18rem .6rem;border-radius:8px}
+.gmini{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin-top:1.4rem}
+.gmini a{display:flex;align-items:center;gap:.7rem;background:rgba(255,255,255,.85);border-radius:14px;padding:.7rem .9rem;box-shadow:0 6px 18px rgba(27,127,196,.09);transition:transform .12s}
+.gmini a:hover{transform:translateY(-3px)}
+.gmini .ic{width:42px;height:42px;border-radius:11px;background-size:cover;flex:none}
+.gmini strong{display:block;color:var(--navy);font-size:.95rem;font-family:'Palanquin Dark','SeoulAlrim',sans-serif}
+.gmini span span{display:block;color:var(--dim);font-size:.78rem;font-weight:400}
+.axes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.axes .ax{background:rgba(255,255,255,.85);border-radius:12px;padding:.5rem 1rem;font-weight:700;color:var(--navy);font-family:'Palanquin Dark','SeoulAlrim',sans-serif;box-shadow:0 5px 16px rgba(27,127,196,.09)}
+.axes .ax small{color:var(--dim);font-weight:400;margin-left:.3rem}
+
+.mission{text-align:center;min-height:100vh}
+.mission .big{font-size:clamp(2rem,6.5vw,3.5rem);margin-top:.6rem}
+.mission .big .dot{color:var(--coral)}
+.cta-box{background:#fff;border-radius:22px;padding:2rem 1.6rem;box-shadow:0 18px 46px rgba(27,127,196,.16);margin:2rem auto 0;max-width:560px}
+.cta-box strong{display:block;font-family:'Palanquin Dark','SeoulAlrim',sans-serif;color:var(--navy);font-size:1.2rem;margin-bottom:.5rem}
+.cta-box p{color:var(--dim);font-size:.95rem;margin-bottom:1.1rem}
+.crowd{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:center;gap:0;max-width:820px;margin:3rem auto 0}
+.crowd img{display:block;height:auto;opacity:0;transform:translateY(24px) scale(.8);transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1);margin:0 -9px;cursor:pointer;filter:drop-shadow(0 4px 6px rgba(27,127,196,.12))}
+.crowd img.in{opacity:1;transform:none}
+.crowd img.in:hover{transform:translateY(-7px) rotate(-3deg)}
+@keyframes spk{0%{transform:translateY(8px) scale(.4);opacity:0}25%{opacity:1}100%{transform:translateY(-54px) scale(1.1);opacity:0}}
+
+footer{background:var(--navy);color:rgba(255,255,255,.72);text-align:center;padding:3rem 1.4rem 2.4rem;position:relative;z-index:1;font-size:.85rem}
+footer .flogo{height:30px;filter:brightness(0) invert(1);opacity:.95;margin-bottom:.7rem}
+footer a{color:#fff;margin:0 .5rem}
+footer .biz{margin-top:.9rem;font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.6}
+footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
+
+@media(max-width:760px){
+  .rail{display:none}
+  .bloom .cc{display:none}
+  section{padding:5rem 1.2rem;min-height:auto}
+  .hero{min-height:88vh;padding-top:7rem}
+  .three{grid-template-columns:1fr}
+  .brandfix{top:12px;left:14px}
+  .crowd img{margin:0 -3px;max-height:64px}
+}
+@media(prefers-reduced-motion:reduce){.bloom .bl,.bloom .cc{animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
 </head>
 <body>
 
-<header class="site">
-  <div class="nav-inner">
-    <a class="brand" href="index.html"><img src="assets/logo.png" alt="OLO-G Games Inc. 오로지게임즈"></a>
-    <nav class="menu">
-      <a href="index.html" class="on">홈</a>
-      <a href="about.html">소개</a>
-      <a href="games.html">게임</a>
-      <a href="contact.html">문의</a>
-      <a href="en/index.html" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
-    </nav>
+<div class="bloom" aria-hidden="true">
+  <div class="sea" id="sea"></div>
+
+  <span class="cc" data-a="0.07" data-b="0.20" style="left:5%;top:16%;height:clamp(50px,6.5vw,78px);--bd:5.5s"><img src="assets/chars/1015_penguin.webp" alt=""></span>
+  <span class="cc" data-a="0.14" data-b="0.30" style="left:2%;top:45%;height:clamp(120px,15vw,184px);--bd:6.5s"><img src="assets/chars/raddy.webp" alt=""></span>
+  <span class="cc" data-a="0.24" data-b="0.40" style="right:4%;top:22%;height:clamp(50px,6.5vw,80px);--bd:5s"><img src="assets/chars/1023_flyingfish.webp" alt="" style="transform:scaleX(-1)"></span>
+  <span class="cc" data-a="0.34" data-b="0.50" style="left:7%;top:72%;height:clamp(48px,6vw,74px);--bd:6.2s"><img src="assets/chars/1001_pochi.webp" alt=""></span>
+  <span class="cc" data-a="0.44" data-b="0.60" style="right:6%;top:56%;height:clamp(54px,7vw,84px);--bd:7s"><img src="assets/chars/1037_babyray.webp" alt="" style="transform:scaleX(-1)"></span>
+  <span class="cc" data-a="0.54" data-b="0.70" style="left:4%;top:88%;height:clamp(50px,6.5vw,78px);--bd:5.8s"><img src="assets/chars/1016_frog.webp" alt=""></span>
+  <span class="cc" data-a="0.64" data-b="0.80" style="right:4%;top:84%;height:clamp(52px,6.8vw,80px);--bd:6.6s"><img src="assets/chars/1004_gurl.webp" alt="" style="transform:scaleX(-1)"></span>
+  <span class="cc" data-a="0.70" data-b="0.86" style="right:11%;top:14%;height:clamp(44px,5.5vw,66px);--bd:4.8s"><img src="assets/chars/1018_duck.webp" alt="" style="transform:scaleX(-1)"></span>
+</div>
+<div class="deco" id="deco" aria-hidden="true"></div>
+
+<button class="brandfix" id="logo" aria-label="OLO-G 로고 — 눌러보세요">
+  <img src="assets/logo.png" alt="OLO-G Games Inc. 오로지게임즈">
+  <span class="bark" id="bark">왈!</span>
+</button>
+
+<nav class="rail" aria-label="섹션 이동">
+  <div class="track"></div><div class="fill" id="rfill"></div>
+  <div class="dots">
+    <a href="#home" data-i="0" class="on"><span class="lbl">홈</span><span class="pip"></span></a>
+    <a href="#about" data-i="1"><span class="lbl">소개</span><span class="pip"></span></a>
+    <a href="#games" data-i="2"><span class="lbl">게임</span><span class="pip"></span></a>
+    <a href="#people" data-i="3"><span class="lbl">사람</span><span class="pip"></span></a>
+    <a href="#contact" data-i="4"><span class="lbl">약속</span><span class="pip"></span></a>
   </div>
-</header>
+</nav>
 
-<section class="hero">
-  <img class="logo-big" src="assets/logo.png" alt="OLO-G Games Inc. 오로지게임즈">
-  <h1>A Spoonful of Happiness</h1>
-  <span class="tagline-en">오로지만의 캐릭터와 세계관으로, 세상을 더 행복하게.</span>
-  <div class="hero-cta">
-    <a class="btn" href="goraddy/index.html" target="_blank" rel="noopener">🐳 고!래디 만나러 가기 →</a>
-    <a class="btn sub" href="games.html">게임 전체 보기</a>
-  </div>
-</section>
+<div class="wrap">
 
-<main>
+  <section class="hero" id="home" data-s>
+    <div class="ey reveal">OLO-G GAMES</div>
+    <h1 class="dsp reveal">A Spoonful<br>of Happiness<span class="dot">.</span></h1>
+    <p class="sub reveal">오로지만의 캐릭터와 세계관으로, 세상을 더 행복하게.</p>
+    <div class="cta reveal">
+      <a class="btn coral" href="goraddy/index.html">🐳 고!래디 만나러 가기</a>
+      <a class="btn ghost" href="#games">오로지의 게임들</a>
+    </div>
+    <div class="scrollcue reveal">↓ 스크롤해서 세상을 채워보세요</div>
+  </section>
 
-  <h2 class="reveal">대표작 — 고!래디</h2>
-  <div class="game-feature reveal">
-    <img class="art" src="assets/games/goraddy/feature.webp" alt="고!래디 키 비주얼 — 고래 래디와 바다 친구들, 야자수 섬의 코코넛 군단" loading="lazy">
-    <div class="body">
-      <h3>고!래디 <span style="font-weight:400; color:var(--text-dim); font-size:0.9rem;">Go! Raddy</span></h3>
-      <div class="tags"><span class="pill">전진형 횡스크롤 디펜스</span><span class="pill">iOS · Android</span><span class="pill">2026</span></div>
-      <p>바다를 돌파하는 ‘전진형 이동 기지’ 횡스크롤 디펜스. 고래 래디가 직접 전진하며 ‘아쿠아’를 모으고, 실시간 ‘버블’ 시스템으로 매 판 다른 전략을 짜며 끝없이 성장하는 오로지의 주력작입니다.</p>
-      <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-        <a class="btn" href="goraddy/index.html" target="_blank" rel="noopener">공식 사이트 ↗</a>
-        <a class="btn sub" href="https://play.google.com/store/apps/details?id=com.ologgames.goraddy" target="_blank" rel="noopener">Google Play</a>
-        <a class="btn sub" href="https://apps.apple.com/kr/app/id6748856004" target="_blank" rel="noopener">App Store</a>
+  <section id="about" data-s>
+    <div class="slabel reveal">01 — 소개</div>
+    <div class="witbox reveal">
+      <span class="dsp wit">olog, 어쩌면 <span class="c">dog?</span></span>
+      <svg class="char" id="dog" width="56" height="56" viewBox="0 0 36 36" style="flex:none;cursor:pointer" aria-label="강아지 마크">
+        <path d="M8 10 Q5 3 12 7 L13 15 Z" fill="#1b7fc4"/><path d="M28 10 Q31 3 24 7 L23 15 Z" fill="#1b7fc4"/>
+        <circle cx="18" cy="19" r="11" fill="#2ba3d4"/><circle cx="14" cy="17" r="1.7" fill="#0d2b47"/><circle cx="22" cy="17" r="1.7" fill="#0d2b47"/>
+        <ellipse cx="18" cy="23" rx="5.2" ry="4.2" fill="#eaf6fb"/><path id="tng" d="M15.8 24.5 Q18 30 20.2 24.5 Z" fill="#ff8a5c" opacity="0"/><circle cx="18" cy="21.4" r="1.9" fill="#0d2b47"/>
+      </svg>
+    </div>
+    <p class="lead reveal">o와 l을 조금만 사이좋게 해주면 마치 dog 같이 보이지 않나요? <strong>‘오로지’</strong> 중요한 가치에 집중하고, <strong>‘-ology’</strong>의 경지를 추구한다 — 그 두 마음을 담아 OLO-G입니다.</p>
+    <div class="three">
+      <div class="icard reveal"><span class="emo">🧑‍🤝‍🧑</span><strong>우리</strong><p>하고 싶은 일을, 행복하게. 좋아하는 사람들과 진짜 만들고 싶은 걸 만드는 그 행복이 게임에 담깁니다.</p></div>
+      <div class="icard reveal"><span class="emo">🎁</span><strong>고객</strong><p>다양한 고객의 입장에서 생각하며, 즐거움과 감동과 행복을 주는 선물 같은 게임을 만들어갑니다.</p></div>
+      <div class="icard reveal"><span class="emo">🌏</span><strong>세상</strong><p>행복은 번지는 법. 우리에게서 플레이어에게로, 다시 곁의 누군가에게로. 그렇게 세상은 조금 더 행복해집니다.</p></div>
+    </div>
+    <p class="lead reveal" style="margin-top:1.6rem">오로지의 무대는 게임에만 머물지 않습니다. 만화·음악·문화까지, 사람을 행복하게 하는 것이라면 무엇이든. <a href="about.html">오로지 이야기 더 보기 →</a></p>
+  </section>
+
+  <section id="games" data-s>
+    <div class="slabel reveal">02 — 게임</div>
+    <h2 class="h2 dsp reveal">대표작 — 고!래디</h2>
+    <div class="feat">
+      <img class="art reveal" src="assets/games/goraddy/feature.webp" alt="고!래디 키 비주얼" loading="lazy">
+      <div class="body reveal">
+        <div class="tags"><span class="pill">전진형 횡스크롤 디펜스</span><span class="pill">iOS · Android</span><span class="pill">2026</span></div>
+        <p class="lead" style="margin:0 0 1rem">바다를 돌파하는 ‘전진형 이동 기지’ 디펜스. 고래 래디가 직접 전진하며 ‘아쿠아’를 모으고, 실시간 ‘버블’로 매 판 다른 전략을 짜며 끝없이 성장하는 오로지의 주력작.</p>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap"><a class="btn" href="goraddy/index.html">공식 사이트 ↗</a><a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.ologgames.goraddy" target="_blank" rel="noopener">Google Play</a></div>
       </div>
     </div>
-  </div>
-  <div class="shots reveal">
-    <img src="assets/games/goraddy/shot1.webp" alt="고!래디 게임 화면" loading="lazy">
-    <img src="assets/games/goraddy/shot2.webp" alt="고!래디 게임 화면" loading="lazy">
-    <img src="assets/games/goraddy/shot3.webp" alt="고!래디 게임 화면" loading="lazy">
-  </div>
-
-  <h2 class="reveal">오로지의 게임들</h2>
-  <div class="games-grid reveal">
-    <a class="game-mini flag" href="goraddy/index.html" target="_blank" rel="noopener">
-      <span class="ic img" style="background-image:url('assets/games/goraddy/icon.png')"></span>
-      <span class="gm-meta"><strong>고!래디</strong><span>전진형 디펜스 · 2026</span></span>
-    </a>
-    <a class="game-mini" href="https://play.google.com/store/apps/details?id=com.OlogGames.AimtheCenter" target="_blank" rel="noopener">
-      <span class="ic img" style="background-image:url('assets/games/aim/icon.png')"></span>
-      <span class="gm-meta"><strong>Aim! the Center</strong><span>하이퍼캐주얼 · 2025</span></span>
-    </a>
-    <a class="game-mini" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo2" target="_blank" rel="noopener">
-      <span class="ic img" style="background-image:url('assets/games/ponpondoodoo2/icon.png')"></span>
-      <span class="gm-meta"><strong>퐁퐁두두2</strong><span>힐링 키우기 · 2024</span></span>
-    </a>
-    <a class="game-mini" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo" target="_blank" rel="noopener">
-      <span class="ic img" style="background-image:url('assets/games/ponpondoodoo/icon.png')"></span>
-      <span class="gm-meta"><strong>퐁퐁두두</strong><span>힐링 키우기 · 2021</span></span>
-    </a>
-  </div>
-  <a class="more-link reveal" href="games.html">게임 전체 보기 →</a>
-
-  <h2 class="reveal">우리가 게임을 만드는 이유</h2>
-  <p class="lead reveal">‘오로지’ 우리에게 중요한 가치에만 집중하고, ‘-ology’의 경지를 추구합니다. 그 두 마음을 담아 <strong>OLO-G</strong>입니다.</p>
-  <div class="three-up reveal">
-    <div class="item">
-      <span class="emo">🧑‍🤝‍🧑</span>
-      <strong>우리</strong>
-      <p>하고 싶은 일을, 행복하게 합니다. 행복의 조건은 저마다 다르지만, 좋아하는 사람들과 진짜 만들고 싶은 걸 만드는 것 — 그 행복이 게임에 진심으로 담깁니다.</p>
+    <h2 class="dsp reveal" style="margin-top:3rem;font-size:1.5rem">오로지의 게임들</h2>
+    <div class="gmini reveal">
+      <a href="goraddy/index.html"><span class="ic" style="background-image:url('assets/games/goraddy/icon.png')"></span><span><strong>고!래디</strong><span>전진형 디펜스 · 2026</span></span></a>
+      <a href="https://play.google.com/store/apps/details?id=com.OlogGames.AimtheCenter" target="_blank" rel="noopener"><span class="ic" style="background-image:url('assets/games/aim/icon.png')"></span><span><strong>Aim! the Center</strong><span>하이퍼캐주얼 · 2025</span></span></a>
+      <a href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo2" target="_blank" rel="noopener"><span class="ic" style="background-image:url('assets/games/ponpondoodoo2/icon.png')"></span><span><strong>퐁퐁두두2</strong><span>힐링 키우기 · 2024</span></span></a>
+      <a href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo" target="_blank" rel="noopener"><span class="ic" style="background-image:url('assets/games/ponpondoodoo/icon.png')"></span><span><strong>퐁퐁두두</strong><span>힐링 키우기 · 2021</span></span></a>
     </div>
-    <div class="item">
-      <span class="emo">🎁</span>
-      <strong>고객</strong>
-      <p>다양한 고객의 입장에서 생각하며, 즐거움과 감동과 행복을 주는 선물 같은 게임을 만들어갑니다.</p>
+    <p class="lead reveal" style="margin-top:1.2rem"><a href="games.html">게임 전체 보기 →</a></p>
+  </section>
+
+  <section id="people" data-s>
+    <div class="slabel reveal">03 — 사람</div>
+    <h2 class="h2 dsp reveal">함께한 모든 순간이 올록이</h2>
+    <p class="lead reveal">사람과 모험을 사랑하며 이상을 꿈꾼다. 끈기와 고집으로 그것을 현실로 만든다 — 오로지가 일하는 네 가지 마음입니다.</p>
+    <div class="axes reveal">
+      <span class="ax">정(情)<small>선물 · 친구</small></span>
+      <span class="ax">모험<small>개척 · 두려움</small></span>
+      <span class="ax">이상<small>자유 · 평등</small></span>
+      <span class="ax">고집<small>품질 · 체계</small></span>
     </div>
-    <div class="item">
-      <span class="emo">🌏</span>
-      <strong>세상</strong>
-      <p>행복은 바이러스처럼 번져나갑니다! 우리에게서 플레이어에게로, 플레이어에게서 다시 곁의 누군가에게로. 그렇게 세상은 조금 더 행복해집니다.</p>
+    <p class="lead reveal" style="margin-top:1.6rem">잠깐이라도 함께한 사람은 기간과 상관없이 영원한 오로지의 일원, <strong>‘올록이(ologgies)’</strong>로 남습니다. 떠난 뒤에도 서로의 멋진 발전을 응원해요. <a href="about.html#ologgies">올록이 만나보기 →</a></p>
+  </section>
+
+  <section id="contact" class="mission" data-s>
+    <div class="slabel reveal" style="text-align:center">04 — 약속</div>
+    <div class="big dsp reveal">세상 모두를<br>조금 더 행복하게<span class="dot">.</span></div>
+    <p class="lead reveal" style="margin:1rem auto 0;text-align:center">Let's Make the World a Little Happier</p>
+    <div class="cta-box reveal">
+      <strong>함께 더 큰 항해를 떠날 파트너를 찾습니다</strong>
+      <p>퍼블리싱·UA 마케팅, 글로벌 로컬라이즈와 라이브 운영, 수익화·사업, 그리고 투자까지 — 작은 팀이 더 멀리 갈 수 있도록 함께할 분을 기다립니다.</p>
+      <a class="btn coral" href="contact.html">문의하기</a>
     </div>
-  </div>
+    <div class="crowd" id="crowd" aria-hidden="true">
+      <img src="assets/chars/1011_kraken.webp" alt=""><img src="assets/chars/1006_jawsh.webp" alt=""><img src="assets/chars/1026_seaturtle.webp" alt=""><img src="assets/chars/1012_walkingcat.webp" alt="">
+      <img src="assets/chars/1002_brad.webp" alt=""><img src="assets/chars/1004_gurl.webp" alt="" style="transform:scaleX(-1)"><img src="assets/chars/1007_chiz.webp" alt=""><img src="assets/chars/1005_flamboyager.webp" alt="">
+      <img src="assets/chars/1015_penguin.webp" alt=""><img src="assets/chars/1016_frog.webp" alt=""><img src="assets/chars/1018_duck.webp" alt="" style="transform:scaleX(-1)"><img src="assets/chars/1001_pochi.webp" alt="">
+      <img src="assets/chars/1014_bungeobbang.webp" alt=""><img src="assets/chars/1023_flyingfish.webp" alt="" style="transform:scaleX(-1)"><img src="assets/chars/1025_blowfish.webp" alt=""><img src="assets/chars/1037_babyray.webp" alt="" style="transform:scaleX(-1)">
+      <img src="assets/chars/1010_backsparrow.webp" alt=""><img src="assets/chars/1013_binbag.webp" alt=""><img src="assets/chars/1024_mussel.webp" alt=""><img src="assets/chars/1008_rubberduck.webp" alt="">
+    </div>
+  </section>
 
-  <div class="cta-box reveal">
-    <strong>함께 더 큰 항해를 떠날 파트너를 찾습니다</strong><br>
-    퍼블리싱·UA 마케팅, 글로벌 로컬라이즈와 라이브 운영, 수익화·사업, 그리고 투자까지 — 작은 팀이 더 멀리 갈 수 있도록 함께할 분을 기다립니다.
-    <br><a class="btn" href="contact.html">문의하기</a>
-  </div>
+</div>
 
-</main>
-
-<footer class="site">
-  <img class="foot-logo" src="assets/logo.png" alt="OLO-G Games Inc.">
-  <div>
-    <a href="about.html">소개</a> ·
-    <a href="games.html">게임</a> ·
-    <a href="contact.html">문의</a> ·
-    <a href="goraddy/index.html" target="_blank" rel="noopener">고!래디</a>
-  </div>
-  <div class="social">
-    <a href="https://www.instagram.com/olo_g_games/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.74.07-.9.04-1.38.2-1.7.32-.43.17-.74.37-1.06.7-.32.32-.52.63-.7 1.06-.12.32-.28.8-.32 1.7-.07 1.24-.07 1.6-.07 4.74s0 3.5.07 4.74c.04.9.2 1.38.32 1.7.17.43.37.74.7 1.06.32.32.63.52 1.06.7.32.12.8.28 1.7.32 1.24.07 1.6.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.2 1.7-.32.43-.17.74-.37 1.06-.7.32-.32.52-.63.7-1.06.12-.32.28-.8.32-1.7.07-1.24.07-1.6.07-4.74s0-3.5-.07-4.74c-.04-.9-.2-1.38-.32-1.7a2.85 2.85 0 0 0-.7-1.06 2.85 2.85 0 0 0-1.06-.7c-.32-.12-.8-.28-1.7-.32C15.5 4 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06zm0 1.8A3.14 3.14 0 1 0 15.14 12 3.14 3.14 0 0 0 12 8.86zm6.3-2.96a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15z"/></svg></a>
-    <a href="https://twitter.com/olo_g_games" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 3h2.7l-5.9 6.74L21.3 21h-5.43l-4.25-5.56L6.76 21H4.05l6.3-7.2L2.4 3h5.57l3.84 5.08L17.5 3zm-.95 16.38h1.5L7.02 4.54H5.4l11.15 14.84z"/></svg></a>
-    <a href="https://www.youtube.com/@olo_g_games" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.76-1.77C19.27 5.13 12 5.13 12 5.13s-7.27 0-8.84.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.76 1.77c1.57.4 8.84.4 8.84.4s7.27 0 8.84-.4a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
-    <a href="https://soundcloud.com/olo_g_games" target="_blank" rel="noopener" aria-label="SoundCloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 14.4h1.1v-3.9H1v3.9zm2.1.6h1.1V9h-1.1v6zm2.1 0h1.1V8H5.3v7zm2.1 0h1.1V7.2H7.4V15zm2.2 0h6.2a2.55 2.55 0 0 0 .3-5.08A4.15 4.15 0 0 0 9.9 8.2 3.05 3.05 0 0 0 9.6 15z"/></svg></a>
-    <a href="https://linktr.ee/olo_g_games" target="_blank" rel="noopener" aria-label="모든 링크 (Linktree)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a3 3 0 0 0 4.24 0l2.83-2.83a3 3 0 0 0-4.24-4.24l-1.4 1.4 1.06 1.06 1.4-1.4a1.5 1.5 0 0 1 2.12 2.12l-2.82 2.83a1.5 1.5 0 0 1-2.13 0 .75.75 0 0 0-1.06 1.06zm2.8-2.8a3 3 0 0 0-4.24 0L6.33 13.4a3 3 0 0 0 4.24 4.24l1.4-1.4-1.06-1.06-1.4 1.4a1.5 1.5 0 0 1-2.12-2.12l2.82-2.83a1.5 1.5 0 0 1 2.13 0 .75.75 0 0 0 1.06-1.06z"/></svg></a>
-  </div>
-  <div class="biz">
-    (주)오로지게임즈 · OLO-G Games Inc. · 사업자등록번호 722-86-02932<br>
-    서울특별시 마포구 매봉산로 31, 시너지움 9층 909호 · happy@olo-g.com · 010-2587-4082
-  </div>
+<footer>
+  <img class="flogo" src="assets/logo.png" alt="OLO-G Games Inc.">
+  <div><a href="about.html">소개</a> · <a href="games.html">게임</a> · <a href="contact.html">문의</a> · <a href="goraddy/index.html">고!래디</a></div>
+  <div class="biz">(주)오로지게임즈 · OLO-G Games Inc. · 사업자등록번호 722-86-02932<br>서울특별시 마포구 매봉산로 31, 시너지움 9층 909호 · happy@olo-g.com · 010-2587-4082</div>
   <div class="legal">© 2026 OLO-G Games Inc. All rights reserved.</div>
 </footer>
 
 <script>
-const io = new IntersectionObserver((entries) => {
-  for (const e of entries) {
-    if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+(function(){
+  var logo=document.getElementById('logo'),bark=document.getElementById('bark');
+  var BARK=(document.documentElement.lang==='en')?'Woof!':'왈!';
+  logo.addEventListener('click',function(){
+    bark.textContent=BARK;bark.style.animation='none';void bark.offsetWidth;bark.style.animation='bp 1s ease forwards';
+    var m=logo.querySelector('img');m.style.animation='none';void m.offsetWidth;m.style.animation='wig .6s ease';
+  });
+  var dog=document.getElementById('dog'),tng=document.getElementById('tng');
+  if(dog){dog.addEventListener('mouseenter',function(){dog.style.animation='wig .55s ease';if(tng){tng.setAttribute('opacity','1');setTimeout(function(){tng.setAttribute('opacity','0')},480);}});dog.addEventListener('animationend',function(){dog.style.animation='';});}
+
+  var ccs=[].slice.call(document.querySelectorAll('.bloom .cc'));
+  var sea=document.getElementById('sea'),rfill=document.getElementById('rfill');
+  var secs=[].slice.call(document.querySelectorAll('section[data-s]')),dots=[].slice.call(document.querySelectorAll('.rail a'));
+  function onScroll(){
+    var st=window.scrollY||document.documentElement.scrollTop,dh=document.documentElement.scrollHeight-window.innerHeight;
+    var p=dh>0?Math.min(1,Math.max(0,st/dh)):0;
+    rfill.style.height=(p*300)+'px';
+    sea.style.height=Math.round(p*p*22)+'vh';
+    ccs.forEach(function(e){var a=+e.getAttribute('data-a'),b=+e.getAttribute('data-b');e.style.opacity=Math.min(1,Math.max(0,(p-a)/(b-a))).toString();});
+    var mid=st+window.innerHeight*0.42,act=0;
+    secs.forEach(function(s,i){if(s.offsetTop<=mid)act=i;});
+    dots.forEach(function(d,i){d.classList.toggle('on',i===act);});
   }
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  window.addEventListener('scroll',onScroll,{passive:true});
+
+  var crowd=document.getElementById('crowd'),imgs=[].slice.call(crowd.querySelectorAll('img')),assembled=false;
+  imgs.forEach(function(im){im.addEventListener('mouseenter',function(){im.style.transition='transform .2s ease';});});
+  function assemble(){
+    if(assembled)return;assembled=true;
+    imgs.forEach(function(im,i){setTimeout(function(){im.classList.add('in');},i*55);});
+    setTimeout(function(){
+      for(var i=0;i<20;i++){(function(){var s=document.createElement('span');s.textContent='✦';s.style.cssText='position:absolute;left:'+(8+Math.random()*84)+'%;bottom:'+(8+Math.random()*44)+'%;color:'+(Math.random()<.5?'#f8d86a':'#ff8a5c')+';font-size:'+(12+Math.random()*9)+'px;pointer-events:none;z-index:5;animation:spk '+(0.9+Math.random()*0.7)+'s ease forwards';document.getElementById('contact').appendChild(s);setTimeout(function(){s.remove();},1700);})();}
+    },imgs.length*55+150);
+  }
+  var deco=document.getElementById('deco'),ri=0,pal=['#f8d86a','#ff8a5c','#7fd0ec','#f5a8c8','#6fd1b0','#b3a8f0'];
+  function curP(){var st=window.scrollY||document.documentElement.scrollTop,dh=document.documentElement.scrollHeight-window.innerHeight;return dh>0?Math.min(1,Math.max(0,st/dh)):0;}
+  function sparkle(x,y){var c=pal[pal.length*Math.random()|0],sz=4+Math.random()*7,s=document.createElement('span');s.style.cssText='left:'+x+'px;top:'+y+'px;width:'+sz+'px;height:'+sz+'px;background:'+c+';animation:floatup '+(1.7+Math.random()*1.4)+'s ease-out forwards';deco.appendChild(s);setTimeout(function(){s.remove();},3300);}
+  function burst(el){var r=el.getBoundingClientRect(),n=Math.round(2+curP()*7);for(var i=0;i<n;i++){(function(i){setTimeout(function(){sparkle(r.left+Math.random()*r.width,r.top+r.height*0.2+Math.random()*r.height*0.6);},i*55);})(i);}}
+  setInterval(function(){var p=curP();if(p>0.04&&Math.random()<p*0.8)sparkle(Math.random()*window.innerWidth,window.innerHeight*(0.25+Math.random()*0.65));},240);
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target,par=el.parentNode,d=0;if(par){var sib=[].slice.call(par.children).filter(function(c){return c.classList&&c.classList.contains('reveal');});d=Math.max(0,sib.indexOf(el));}var dir=(ri%2)?-1:1;ri++;el.style.setProperty('--rx',(dir*(34+Math.random()*22)).toFixed(0)+'px');el.style.setProperty('--rr',(dir*(5+Math.random()*5)).toFixed(1)+'deg');el.style.transitionDelay=(d*80)+'ms';el.classList.add('show');io.unobserve(el);setTimeout(function(){burst(el);},d*80+240);}});},{threshold:0.14});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)assemble();});},{threshold:0.3});
+  cio.observe(crowd);
+  onScroll();
+})();
 </script>
 </body>
 </html>
