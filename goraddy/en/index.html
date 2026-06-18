@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var K='olog_lang';document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a){try{localStorage.setItem(K,a.getAttribute('lang')||'ko')}catch(e2){}}})})();</script>
 <title>Go! Raddy — Official Site</title>
 <meta name="description" content="Unstoppable Whale Rush! Go! Raddy is an onward-marching tower defense mobile game. Download, patch notes, news, and support.">
 <meta property="og:title" content="Go! Raddy — Official Site">
@@ -77,15 +78,14 @@
 <section class="hero">
   <img class="hero-art" src="../assets/keyart_hero.webp" alt="Go! Raddy key art — Raddy the whale with his sea friends facing the Coconut Legion's palm tree island">
   <div class="hero-band">
-    <div class="bubbles" aria-hidden="true">
-      <span style="left:8%;  width:14px; height:14px; animation-duration:7s;  animation-delay:0s;"></span>
-      <span style="left:22%; width:9px;  height:9px;  animation-duration:9s;  animation-delay:2s;"></span>
-      <span style="left:38%; width:18px; height:18px; animation-duration:8s;  animation-delay:1s;"></span>
-      <span style="left:55%; width:11px; height:11px; animation-duration:10s; animation-delay:3s;"></span>
-      <span style="left:70%; width:15px; height:15px; animation-duration:7.5s;animation-delay:0.5s;"></span>
-      <span style="left:85%; width:10px; height:10px; animation-duration:9.5s;animation-delay:2.5s;"></span>
-      <span style="left:93%; width:13px; height:13px; animation-duration:8.5s;animation-delay:4s;"></span>
+    <div class="aqua-counter">
+      <img class="aqua-icon" src="../assets/aqua.png?v=1" width="30" height="30" alt="" aria-hidden="true">
+      <span class="aqua-txt">Aqua <b id="aquaNum">0</b>/<span id="aquaGoal">8</span></span>
+      <span class="aqua-bar"><i id="aquaBar"></i></span>
     </div>
+    <div class="aqua-hint" id="aquaHint" aria-hidden="true">🫧 Pop the bubbles!</div>
+    <div class="bubble-field" id="bubbleField" aria-hidden="true"></div>
+    <div class="summon-layer" id="summonLayer" aria-hidden="true"></div>
     <h1>Ride the Whale, Crush the Islands!</h1>
     <p>An <strong>onward-marching tower defense</strong> — stack units and turrets on Raddy and push the line forward.<br>
     Rally your adorable sea friends and conquer the Coconut Legion's islands!</p>
@@ -199,6 +199,68 @@ document.querySelectorAll('.reveal, .reveal-img').forEach(el => io.observe(el));
   });
   document.addEventListener('click', (e) => { if (!panel.hasAttribute('hidden') && !panel.contains(e.target)) close(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+</script>
+<script>
+// 히어로 인터랙션: 버블 터뜨리기 → 아쿠아 → 전군 출격
+(function(){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var band=document.querySelector('.hero-band'); if(!band) return;
+  var field=document.getElementById('bubbleField'), slayer=document.getElementById('summonLayer');
+  var counter=document.querySelector('.aqua-counter'), aquaNum=document.getElementById('aquaNum'), aquaBar=document.getElementById('aquaBar'), hint=document.getElementById('aquaHint');
+  if(!field||!slayer) return;
+  var GOAL=8, aqua=0, busy=false, popped=false, bubs=[];
+  var units=[{f:'1001_pochi',k:'s'},{f:'1004_gurl',k:'a'},{f:'1007_chiz',k:'s'},{f:'1015_penguin',k:'a'},{f:'1016_frog',k:'s'},{f:'1002_brad',k:'s'},{f:'1023_flyingfish',k:'a'},{f:'1037_babyray',k:'d'},{f:'1011_kraken',k:'a'}];
+  function W(){return band.clientWidth;} function H(){return band.clientHeight;}
+  function update(){ var v=Math.min(aqua,GOAL); aquaNum.textContent=v; aquaBar.style.width=(v/GOAL*100)+'%'; }
+  function bump(){ if(!counter)return; counter.classList.remove('bump'); void counter.offsetWidth; counter.classList.add('bump'); }
+  function mk(){
+    var size=44+Math.random()*34;
+    var b={el:document.createElement('div'),s:size,x:14+Math.random()*Math.max(40,W()-size-28),y:H()+Math.random()*130,v:0.3+Math.random()*0.5,amp:1+Math.random()*1.6,ph:Math.random()*6.28,dead:false};
+    b.el.className='bub'; b.el.style.width=b.el.style.height=size+'px';
+    b.el.addEventListener('click',function(e){e.stopPropagation();pop(b);});
+    field.appendChild(b.el); bubs.push(b);
+  }
+  function recycle(b){ b.s=44+Math.random()*34; b.el.style.width=b.el.style.height=b.s+'px'; b.x=14+Math.random()*Math.max(40,W()-b.s-28); b.y=H()+10+Math.random()*80; b.el.style.display='block'; b.dead=false; }
+  function pop(b){
+    if(b.dead)return; b.dead=true; b.el.style.display='none';
+    if(!popped){ popped=true; if(hint) hint.classList.remove('show'); }
+    var r=document.createElement('span'); r.className='ring';
+    r.style.cssText='left:'+(b.x+b.s*0.25)+'px;top:'+(b.y+b.s*0.25)+'px;width:'+(b.s*0.5)+'px;height:'+(b.s*0.5)+'px;animation:aquaRing .45s ease-out forwards';
+    field.appendChild(r); setTimeout(function(){r.remove();},460);
+    var d=document.createElement('div'); d.className='drop'; d.style.left=(b.x+b.s*0.5-11)+'px'; d.style.top=(b.y+b.s*0.5-11)+'px';
+    d.innerHTML='<img src="../assets/aqua.png?v=1" width="22" height="22" alt="">';
+    field.appendChild(d);
+    requestAnimationFrame(function(){ d.style.left=(W()-34)+'px'; d.style.top='16px'; d.style.opacity='0.25'; d.style.transform='scale(.55)'; });
+    setTimeout(function(){ d.remove(); aqua++; update(); bump(); if(aqua>=GOAL) summon(); }, 560);
+    setTimeout(function(){ recycle(b); }, 780);
+  }
+  function launch(u){
+    var img=document.createElement('img'); img.src='../assets/units/'+u.f+'.webp?v=3'; img.alt=''; img.setAttribute('aria-hidden','true');
+    img.style.left='0';
+    var Hh=H(), bottom;
+    if(u.k==='a') bottom=Math.round(Hh*0.54+Math.random()*Hh*0.22);
+    else if(u.k==='s') bottom=Math.round(Hh*0.27+Math.random()*Hh*0.15);
+    else bottom=Math.round(16+Math.random()*Hh*0.18);
+    img.style.bottom=bottom+'px';
+    img.style.transform='translateX(-170px)'; slayer.appendChild(img);
+    var end=W()+170, dur=2300+Math.random()*1600;
+    var amp=(u.k==='a'?13:8)+Math.random()*8, ph=Math.random()*6.28, waves=1.5+Math.random()*1.2;
+    var n=10, frames=[];
+    for(var i=0;i<=n;i++){ var p=i/n; var tx=-170+(end+170)*p; var ty=Math.sin(ph+p*Math.PI*2*waves)*amp; frames.push({transform:'translateX('+tx+'px) translateY('+ty+'px)'}); }
+    var an=img.animate(frames,{duration:dur,easing:'linear'}); an.onfinish=function(){img.remove();};
+  }
+  function summon(){
+    if(busy)return; busy=true;
+    var order=units.slice();
+    for(var k=order.length-1;k>0;k--){ var jj=Math.floor(Math.random()*(k+1)); var tmp=order[k]; order[k]=order[jj]; order[jj]=tmp; }
+    order.forEach(function(u,i){ setTimeout(function(){ launch(u); }, i*120+Math.random()*180); });
+    setTimeout(function(){ aqua=0; update(); busy=false; }, units.length*150+4600);
+  }
+  for(var i=0;i<8;i++) mk();
+  function loop(){ for(var i=0;i<bubs.length;i++){var b=bubs[i]; if(b.dead)continue; b.y-=b.v; b.ph+=0.03; b.el.style.left=(b.x+Math.sin(b.ph)*b.amp*6)+'px'; b.el.style.top=b.y+'px'; if(b.y<-32) recycle(b);} requestAnimationFrame(loop); }
+  requestAnimationFrame(loop); update();
+  if(hint){ setTimeout(function(){ if(!popped) hint.classList.add('show'); },1200); setTimeout(function(){ hint.classList.remove('show'); },9000); }
 })();
 </script>
 </body>
