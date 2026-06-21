@@ -46,11 +46,12 @@ a{color:var(--sea-deep);text-decoration:none}
 @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(12px,-14px)}}
 .floaters .cc{position:absolute;opacity:0;transition:opacity .8s ease;animation:bobf var(--bd,6s) ease-in-out infinite}
 .floaters .cc img{display:block;height:100%;width:auto;translate:var(--px,0px) 0;rotate:var(--pr,0deg);scale:var(--fx,1) 1;transition:translate .55s cubic-bezier(.34,.02,.5,1),rotate .55s ease}
-.deco{position:fixed;inset:0;z-index:4;pointer-events:none;overflow:hidden}
-.floaters{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden}
-.whale{position:fixed;top:5%;right:2%;z-index:3;width:clamp(78px,16vw,230px);pointer-events:auto;cursor:pointer;animation:wsway 9s ease-in-out infinite}
+.deco{position:fixed;inset:0;z-index:9;pointer-events:none;overflow:hidden}
+.floaters{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.whale{position:fixed;top:5%;right:2%;z-index:8;width:clamp(78px,16vw,230px);pointer-events:auto;cursor:pointer;animation:wsway 9s ease-in-out infinite}
 @keyframes wsway{0%,100%{transform:scaleX(-1) translateX(0)}50%{transform:scaleX(-1) translateX(-16px)}}
 .whale img{display:block;width:100%;animation:bobf 5s ease-in-out infinite;filter:drop-shadow(0 9px 16px rgba(27,127,196,.22))}
+.whale .rdy{display:block;width:100%;transform:rotate(var(--tilt,0deg));transform-origin:52% 72%;transition:transform .5s cubic-bezier(.34,.02,.5,1)}
 .deco span{position:fixed;border-radius:50%}
 @keyframes floatup{0%{transform:translateY(12px) scale(.35);opacity:0}20%{opacity:.95}100%{transform:translateY(-72px) scale(1);opacity:0}}
 @keyframes rushup{0%{transform:translate(0,0) scale(.5) rotate(var(--r,0deg));opacity:0}12%{opacity:1}100%{transform:translate(var(--sx,0px),-128vh) scale(1) rotate(0);opacity:.55}}
@@ -58,8 +59,13 @@ a{color:var(--sea-deep);text-decoration:none}
 @keyframes hopflee{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
 .floaters .cc.fleeing{animation:hopflee .3s ease-in-out infinite}
 
-.brandfix{position:fixed;top:18px;left:22px;z-index:40;display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:6px}
-.brandfix img{height:32px;display:block}
+.topbar{position:fixed;top:16px;left:20px;z-index:41;display:flex;align-items:center;gap:12px}
+.brandfix{position:relative;z-index:1;display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:4px}
+.brandfix img{height:30px;display:block}
+.langtog{display:inline-flex;align-items:center;gap:1px;background:rgba(255,255,255,.66);border:1px solid rgba(20,54,92,.09);border-radius:999px;padding:2px;font-weight:800;font-size:11px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.langtog a,.langtog .lt-on{display:block;padding:2px 8px;border-radius:999px;line-height:1.3;color:#9fb3c4;text-decoration:none;transition:background .15s,color .15s}
+.langtog a:hover{color:var(--navy)}
+.langtog .lt-on{background:var(--sea);color:#fff}
 .bloom .sea{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,rgba(120,205,235,.24),rgba(40,150,205,.32));transition:height .3s linear}
 .bloom .sea .wv{position:absolute;left:0;bottom:100%;width:200%;height:40px;line-height:0}
 .bloom .sea .wv svg{width:100%;height:100%;display:block}
@@ -94,7 +100,7 @@ a{color:var(--sea-deep);text-decoration:none}
 .rail a.on .lbl{opacity:1;transform:none;color:var(--navy)}
 
 .wrap{position:relative;z-index:1}
-section{position:relative;max-width:980px;margin:0 auto;padding:9rem clamp(1.4rem,6.5vw,5.5rem);min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+section{position:relative;max-width:840px;margin:0 auto;padding:9rem clamp(1.5rem,6vw,6rem);min-height:90vh;display:flex;flex-direction:column;justify-content:center}
 .slabel{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--sea);margin-bottom:14px}
 html{scroll-snap-type:y proximity}
 section[data-s]{scroll-snap-align:start}
@@ -118,9 +124,16 @@ section[data-s]{scroll-snap-align:start}
 
 .h2{font-size:clamp(1.7rem,4.5vw,2.7rem)}
 .lead{color:var(--dim);font-size:1.05rem;margin-top:.7rem;max-width:560px}
+/* 뒤에 캐릭터가 비쳐도 글이 또렷하게 — 흰 헤일로 */
+.hero h1,.hero .sub,.h2,.lead,.witbox .wit,.mission .big,.slabel{text-shadow:0 1px 10px rgba(255,255,255,.72),0 0 1px rgba(255,255,255,.6)}
 .witbox{display:flex;align-items:center;gap:18px;margin:1rem 0}
 .witbox .wit{font-size:clamp(1.7rem,5.5vw,2.8rem)}
 .witbox .c{color:var(--coral)}
+.witbox .dogmark{height:clamp(46px,8vw,72px);width:auto;flex:none}
+.witbox.mini{margin-top:1.9rem;gap:12px;align-items:flex-start}
+.witbox.mini .dogmark{height:clamp(38px,6.5vw,54px)}
+.witbox.mini .wit-s{font-size:1.02rem;color:var(--dim);max-width:560px;line-height:1.6}
+.witbox.mini .wit-s strong{color:var(--navy)}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
 .icard{background:rgba(255,255,255,.85);backdrop-filter:blur(2px);border-radius:18px;padding:1.3rem;box-shadow:0 8px 26px rgba(27,127,196,.10)}
 .icard .emo{font-size:1.7rem}
@@ -142,6 +155,7 @@ section[data-s]{scroll-snap-align:start}
 .axes{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
 .axes .ax{background:rgba(255,255,255,.85);border-radius:12px;padding:.5rem 1rem;font-weight:700;color:var(--navy);font-family:'Palanquin Dark','SeoulAlrim',sans-serif;box-shadow:0 5px 16px rgba(27,127,196,.09)}
 .axes .ax small{color:var(--dim);font-weight:400;margin-left:.3rem}
+.coremem{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem;margin-top:.85rem}
 
 .mission{text-align:center;min-height:100vh}
 .mission .big{font-size:clamp(2rem,6.5vw,3.5rem);margin-top:.6rem}
@@ -156,16 +170,86 @@ footer .flogo{height:30px;filter:brightness(0) invert(1);opacity:.95;margin-bott
 footer a{color:#fff;margin:0 .5rem}
 footer .biz{margin-top:.9rem;font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.6}
 footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
+footer .social{margin-top:1.1rem;display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap}
+footer .social a{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:10px;background:rgba(255,255,255,.08);margin:0;transition:background .15s,transform .12s}
+footer .social a:hover{background:rgba(255,255,255,.18);transform:translateY(-2px)}
+footer .social svg{width:18px;height:18px;fill:#fff}
 
+/* 인페이지 상세 시트 — '더보기'를 같은 톤으로 그 자리에서 */
+.sheet-bg{position:fixed;inset:0;z-index:60;background:rgba(20,54,92,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;align-items:flex-end;justify-content:center}
+.sheet-bg.open{opacity:1;pointer-events:auto}
+.sheet{background:#fff;width:min(680px,100%);max-height:88vh;overflow:auto;border-radius:24px 24px 0 0;padding:2.4rem clamp(1.3rem,5vw,2.6rem) 2.6rem;transform:translateY(46px);opacity:0;transition:transform .42s cubic-bezier(.2,.85,.25,1.02),opacity .42s;box-shadow:0 -18px 60px rgba(27,127,196,.22);position:relative}
+.sheet-bg.open .sheet{transform:none;opacity:1}
+@media(min-width:761px){.sheet-bg{align-items:center}.sheet{border-radius:24px}}
+.sheet-x{position:absolute;top:14px;right:16px;width:36px;height:36px;border:none;background:var(--sky-light);color:var(--navy);border-radius:50%;font-size:20px;cursor:pointer;line-height:1;transition:background .15s;z-index:1}
+.sheet-x:hover{background:var(--sky)}
+.sheet h3{font-family:'Palanquin Dark','SeoulAlrim',sans-serif;color:var(--navy);font-size:1.25rem;margin:1.5rem 0 .4rem}
+.sheet h3:first-child{margin-top:.2rem}
+.sheet p{color:var(--dim);margin:.5rem 0}
+.sheet .q{background:var(--sky-light);border-radius:14px;padding:1rem 1.2rem;color:var(--navy);font-weight:600;margin:.8rem 0}
+.sheet .q small{display:block;color:var(--dim);font-weight:400;font-size:.85rem;margin-top:.35rem}
+/* 시트 내 게임 카탈로그 */
+.gcat{display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem}
+.grow{display:flex;gap:.9rem;align-items:flex-start;background:var(--sky-light);border-radius:14px;padding:.9rem;transition:transform .12s}
+.grow:hover{transform:translateY(-2px)}
+.gi{width:52px;height:52px;border-radius:13px;background-size:cover;flex:none}
+.gt strong{display:block;color:var(--navy);font-family:'Palanquin Dark','SeoulAlrim',sans-serif;font-size:1rem}
+.gt strong span{font-weight:400;color:var(--dim);font-size:.8rem}
+.gt .gm{display:block;color:var(--sea-deep);font-size:.78rem;font-weight:700;margin:.12rem 0 .3rem}
+.gt .gd{display:block;color:var(--dim);font-size:.85rem}
+/* 시트 내 올록이 멤버 */
+.mem-sub{font-weight:700;color:var(--navy);font-family:'Palanquin Dark','SeoulAlrim',sans-serif;margin:1.3rem 0 .6rem}
+.mem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:.7rem}
+.mem-card{text-align:center;background:#fff;border:1px solid rgba(43,163,212,.12);border-radius:16px;padding:1rem .7rem .85rem;display:flex;flex-direction:column;align-items:center;gap:.16rem;font-family:inherit;box-shadow:0 6px 16px rgba(27,127,196,.08)}
+.mem-card[data-mem]{cursor:pointer;transition:transform .14s,box-shadow .14s,border-color .14s}
+.mem-card[data-mem]:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(27,127,196,.16);border-color:rgba(43,163,212,.32)}
+.mem-card .e{font-size:1.5rem}
+.mem-card .n{font-weight:800;color:var(--navy);font-family:'Palanquin Dark','SeoulAlrim',sans-serif}
+.mem-card .r{font-size:.82rem;color:var(--dim)}
+.mem-card .more{font-size:.74rem;color:var(--sea);font-weight:700;margin-top:.15rem}
+/* 멤버 아바타 — 이미지 있으면 표시, 404면 onerror로 제거되어 이모지 노출 */
+.m-av{position:relative;display:inline-flex;width:56px;height:56px;align-items:center;justify-content:center;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--sky-light),#fff);box-shadow:0 0 0 3px rgba(201,236,247,.7),0 3px 10px rgba(27,127,196,.14);margin-bottom:.3rem;flex:none}
+.m-av .e{font-size:1.45rem;line-height:1}
+.m-av .pic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff}
+.mem-grid.small .m-av{width:40px;height:40px}
+.mem-grid.small .m-av .e{font-size:1rem}
+.mm-av{position:relative;display:flex;width:74px;height:74px;align-items:center;justify-content:center;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--sky-light),#fff);box-shadow:0 0 0 4px rgba(201,236,247,.7),0 4px 14px rgba(27,127,196,.16);margin-bottom:.4rem}
+.mm-av .e{font-size:2.3rem;line-height:1}
+.mm-av .pic{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff}
+.mem-friends{margin-top:1rem}
+.mem-friends summary{cursor:pointer;color:var(--dim);font-size:.9rem;font-weight:600;list-style:none;padding:.3rem 0}
+.mem-friends summary::-webkit-details-marker{display:none}
+.mem-friends summary:hover{color:var(--navy)}
+.mem-grid.small{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:.5rem;margin-top:.7rem;opacity:.8}
+.mem-grid.small .mem-card{padding:.7rem .5rem;box-shadow:0 4px 12px rgba(27,127,196,.07)}
+.mem-grid.small .e{font-size:1.05rem}
+.mem-grid.small .n{font-size:.88rem}
+.mem-grid.small .r{font-size:.72rem}
+.badge-line{margin-top:1.1rem;font-size:.88rem;color:var(--dim);background:var(--sky-light);border-radius:12px;padding:.7rem 1rem}
+.mm-back{display:block;width:fit-content;background:none;border:none;color:var(--sea);font-weight:700;cursor:pointer;font-size:.9rem;padding:0;margin-bottom:.7rem;font-family:inherit}
+.mm-emo{font-size:2.4rem;display:block}
+.mm-name{font-family:'Palanquin Dark','SeoulAlrim',sans-serif;font-weight:800;color:var(--navy);font-size:1.3rem}
+.mm-role{color:var(--dim);font-size:.9rem;margin-bottom:.5rem}
+.mm-intro{color:var(--text);font-style:italic;margin:.4rem 0 .8rem}
+.mm-row{display:block;padding:.5rem 0;border-top:1px solid var(--sky-light);color:var(--dim);font-size:.92rem}
+.mm-row b{display:block;color:var(--navy);font-weight:700;margin-bottom:.1rem}
+.mm-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.3rem}
+.mm-mail{display:inline-block;margin-top:.9rem;color:var(--sea-deep);font-weight:700}
+.pill.pj-goraddy{background:rgba(74,166,214,.16);color:#2b7ba8}
+.pill.pj-ppd{background:rgba(87,179,148,.16);color:#3d8e72}
+.pill.pj-ppd2{background:rgba(134,141,206,.16);color:#5d63a8}
+.pill.pj-aim{background:rgba(224,138,114,.16);color:#c06a52}
+
+/* 캐릭터는 콘텐츠 뒤(z-index:0)에 깔려 어디서나 보이되 글을 안 가림. 모바일에선 하단 군집(.uc)만 솎아냄 */
 @media(max-width:760px){
   .rail{display:none}
-  .floaters .cc:not(.uc):not(.keep){display:none}
-  .floaters .uc.mid{display:none}
+  .floaters .uc{display:none}
    .whale{width:clamp(120px,34vw,172px);top:3%}
   section{padding:5rem 1.2rem;min-height:auto}
   .hero{min-height:88vh;padding-top:7rem}
   .three{grid-template-columns:1fr}
-  .brandfix{top:12px;left:14px}
+  .topbar{top:12px;left:14px;gap:10px}
+  .floaters{opacity:.5}
 }
 @media(prefers-reduced-motion:reduce){.bloom .bl,.floaters .cc{animation:none!important}.reveal,.reveal.show{opacity:1;transform:none;animation:none}}
 </style>
@@ -175,8 +259,8 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
 <div class="bloom" aria-hidden="true">
   <div class="sea" id="sea"><svg class="wv wv2" viewBox="0 0 1440 44" preserveAspectRatio="none"><path d="M0,14.9 L40,14.1 L80,14.2 L120,15.3 L160,17.2 L200,19.7 L240,22.4 L280,25.1 L320,27.5 L360,29.1 L400,29.9 L440,29.8 L480,28.7 L520,26.8 L560,24.3 L600,21.6 L640,18.9 L680,16.5 L720,14.9 L760,14.1 L800,14.2 L840,15.3 L880,17.2 L920,19.7 L960,22.4 L1000,25.1 L1040,27.5 L1080,29.1 L1120,29.9 L1160,29.8 L1200,28.7 L1240,26.8 L1280,24.3 L1320,21.6 L1360,18.9 L1400,16.5 L1440,14.9 L1440,44 L0,44 Z"/></svg><svg class="wv wv1" viewBox="0 0 1440 44" preserveAspectRatio="none"><path d="M0,20 L40,15.9 L80,12.3 L120,9.6 L160,8.2 L200,8.2 L240,9.6 L280,12.3 L320,15.9 L360,20 L400,24.1 L440,27.7 L480,30.4 L520,31.8 L560,31.8 L600,30.4 L640,27.7 L680,24.1 L720,20 L760,15.9 L800,12.3 L840,9.6 L880,8.2 L920,8.2 L960,9.6 L1000,12.3 L1040,15.9 L1080,20 L1120,24.1 L1160,27.7 L1200,30.4 L1240,31.8 L1280,31.8 L1320,30.4 L1360,27.7 L1400,24.1 L1440,20 L1440,44 L0,44 Z"/></svg></div>
 </div>
+<div class="whale" id="whale"><span class="rdy" id="rdy"><img src="assets/chars/raddy.webp" alt="고래 래디"></span></div>
 <div class="floaters" aria-hidden="true">
-  <div class="whale" id="whale"><img src="assets/chars/raddy.webp" alt="고래 래디"></div>
   <span class="cc" data-a="0.03" data-b="0.2" style="left:3%;top:14%;height:clamp(16px,9.9vw,60px);--bd:5.6s"><img src="assets/chars/1015_penguin.webp" alt=""></span>
   <span class="cc" data-a="0.09" data-b="0.26" style="right:3%;top:43%;height:clamp(30px,17.0vw,115px);--bd:4.6s"><img src="assets/chars/1006_jawsh.webp" alt="" style="--fx:-1"></span>
   <span class="cc" data-a="0.15" data-b="0.32" style="left:5%;top:81%;height:clamp(16px,6.3vw,38px);--bd:4.6s"><img src="assets/chars/1008_rubberduck.webp" alt=""></span>
@@ -215,10 +299,16 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
 <div class="deco" id="deco" aria-hidden="true"></div>
 <div class="spoon" id="spoon" aria-hidden="true">🥄 <b id="spoonN">0</b></div>
 
-<button class="brandfix" id="logo" aria-label="OLO-G 로고 — 눌러보세요">
-  <img src="assets/logo.png" alt="OLO-G Games Inc. 오로지게임즈">
-  <span class="bark" id="bark">왈!</span>
-</button>
+<div class="topbar">
+  <button class="brandfix" id="logo" aria-label="OLO-G 로고 — 눌러보세요">
+    <img src="assets/logo.png" alt="OLO-G Games Inc. 오로지게임즈">
+    <span class="bark" id="bark">왈!</span>
+  </button>
+  <div class="langtog" role="group" aria-label="언어 / Language">
+    <span class="lt-on">한국어</span>
+    <a class="lang" lang="en" href="en/index.html?lang=en">EN</a>
+  </div>
+</div>
 
 <nav class="rail" aria-label="섹션 이동">
   <div class="col">
@@ -246,21 +336,18 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
 
   <section id="about" data-s>
     <div class="slabel reveal">01 — 소개</div>
-    <div class="witbox reveal">
-      <span class="dsp wit">olog, 어쩌면 <span class="c">dog?</span></span>
-      <svg class="char" id="dog" width="56" height="56" viewBox="0 0 36 36" style="flex:none;cursor:pointer" aria-label="강아지 마크">
-        <path d="M8 10 Q5 3 12 7 L13 15 Z" fill="#1b7fc4"/><path d="M28 10 Q31 3 24 7 L23 15 Z" fill="#1b7fc4"/>
-        <circle cx="18" cy="19" r="11" fill="#2ba3d4"/><circle cx="14" cy="17" r="1.7" fill="#0d2b47"/><circle cx="22" cy="17" r="1.7" fill="#0d2b47"/>
-        <ellipse cx="18" cy="23" rx="5.2" ry="4.2" fill="#eaf6fb"/><path id="tng" d="M15.8 24.5 Q18 30 20.2 24.5 Z" fill="#ff8a5c" opacity="0"/><circle cx="18" cy="21.4" r="1.9" fill="#0d2b47"/>
-      </svg>
-    </div>
-    <p class="lead reveal">o와 l을 조금만 사이좋게 해주면 마치 dog 같이 보이지 않나요? <strong>‘오로지’</strong> 중요한 가치에 집중하고, <strong>‘-ology’</strong>의 경지를 추구한다 — 그 두 마음을 담아 OLO-G입니다.</p>
+    <h2 class="h2 dsp reveal">행복은 우리에서 시작해, 번집니다</h2>
+    <p class="lead reveal">오로지가 게임을 만드는 단 하나의 이유 — 먼저 우리가 행복하게 만들고, 그 행복을 고객에게, 다시 곁의 누군가에게로 번지게 하는 것.</p>
     <div class="three">
       <div class="icard reveal"><span class="emo">🧑‍🤝‍🧑</span><strong>우리</strong><p>하고 싶은 일을, 행복하게. 좋아하는 사람들과 진짜 만들고 싶은 걸 만드는 그 행복이 게임에 담깁니다.</p></div>
       <div class="icard reveal"><span class="emo">🎁</span><strong>고객</strong><p>다양한 고객의 입장에서 생각하며, 즐거움과 감동과 행복을 주는 선물 같은 게임을 만들어갑니다.</p></div>
       <div class="icard reveal"><span class="emo">🌏</span><strong>세상</strong><p>행복은 번지는 법. 우리에게서 플레이어에게로, 다시 곁의 누군가에게로. 그렇게 세상은 조금 더 행복해집니다.</p></div>
     </div>
-    <p class="lead reveal" style="margin-top:1.6rem">오로지의 무대는 게임에만 머물지 않습니다. 만화·음악·문화까지, 사람을 행복하게 하는 것이라면 무엇이든. <a href="about.html">오로지 이야기 더 보기 →</a></p>
+    <div class="witbox mini reveal">
+      <img class="dogmark" src="assets/ologdog.png" alt="OLO-G가 강아지처럼 보이는 마크">
+      <span class="wit-s">그런데 <strong>olog</strong>, o와 l을 살짝 붙이면 <span class="c">dog</span> 같지 않나요? <strong>‘오로지’</strong> 중요한 가치에 집중하고 <strong>‘-ology’</strong>의 경지를 추구한다 — 그 두 마음을 담은 이름입니다.</span>
+    </div>
+    <p class="lead reveal" style="margin-top:1.6rem">오로지의 무대는 게임에만 머물지 않습니다. 만화·음악·문화까지, 사람을 행복하게 하는 것이라면 무엇이든. <a href="about.html" data-sheet="about">오로지 이야기 더 보기 →</a></p>
   </section>
 
   <section id="games" data-s>
@@ -271,7 +358,7 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
       <div class="body reveal">
         <div class="tags"><span class="pill">전진형 횡스크롤 디펜스</span><span class="pill">iOS · Android</span><span class="pill">2026</span></div>
         <p class="lead" style="margin:0 0 1rem">바다를 돌파하는 ‘전진형 이동 기지’ 디펜스. 고래 래디가 직접 전진하며 ‘아쿠아’를 모으고, 실시간 ‘버블’로 매 판 다른 전략을 짜며 끝없이 성장하는 오로지의 주력작.</p>
-        <div style="display:flex;gap:.5rem;flex-wrap:wrap"><a class="btn" href="goraddy/index.html">공식 사이트 ↗</a><a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.ologgames.goraddy" target="_blank" rel="noopener">Google Play</a></div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap"><a class="btn" href="goraddy/index.html">공식 사이트 ↗</a><a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.ologgames.goraddy" target="_blank" rel="noopener">Google Play</a><a class="btn ghost" href="https://apps.apple.com/kr/app/go-raddy/id6748856004" target="_blank" rel="noopener">App Store</a></div>
       </div>
     </div>
     <h2 class="dsp reveal" style="margin-top:3rem;font-size:1.5rem">오로지의 게임들</h2>
@@ -281,7 +368,7 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
       <a href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo2" target="_blank" rel="noopener"><span class="ic" style="background-image:url('assets/games/ponpondoodoo2/icon.png')"></span><span><strong>퐁퐁두두2</strong><span>힐링 키우기 · 2024</span></span></a>
       <a href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo" target="_blank" rel="noopener"><span class="ic" style="background-image:url('assets/games/ponpondoodoo/icon.png')"></span><span><strong>퐁퐁두두</strong><span>힐링 키우기 · 2021</span></span></a>
     </div>
-    <p class="lead reveal" style="margin-top:1.2rem"><a href="games.html">게임 전체 보기 →</a></p>
+    <p class="lead reveal" style="margin-top:1.2rem"><a href="games.html" data-sheet="games">게임 전체 보기 →</a></p>
   </section>
 
   <section id="people" data-s>
@@ -294,7 +381,13 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
       <span class="ax">이상<small>자유 · 평등</small></span>
       <span class="ax">고집<small>품질 · 체계</small></span>
     </div>
-    <p class="lead reveal" style="margin-top:1.6rem">잠깐이라도 함께한 사람은 기간과 상관없이 영원한 오로지의 일원, <strong>‘올록이(ologgies)’</strong>로 남습니다. 떠난 뒤에도 서로의 멋진 발전을 응원해요. <a href="about.html#ologgies">올록이 만나보기 →</a></p>
+    <h3 class="dsp reveal" style="margin-top:1.9rem;font-size:1.1rem">오로지를 만드는 사람들</h3>
+    <div class="coremem reveal">
+      <button class="mem-card" data-mem="weolha"><span class="m-av"><span class="e">🌕</span><img class="pic" src="assets/members/weolha.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">월하</span><span class="r">대표 · 기획·아트</span><span class="more">자세히 ›</span></button>
+      <button class="mem-card" data-mem="dothoven"><span class="m-av"><span class="e">🕹️</span><img class="pic" src="assets/members/dothoven.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">도토벤</span><span class="r">개발 · 작곡</span><span class="more">자세히 ›</span></button>
+      <button class="mem-card" data-mem="wapu"><span class="m-av"><span class="e">🐶</span><img class="pic" src="assets/members/wapu.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">와푸</span><span class="r">기획 · 개발</span><span class="more">자세히 ›</span></button>
+    </div>
+    <p class="lead reveal" style="margin-top:1.6rem">잠깐이라도 함께한 사람은 기간과 상관없이 영원한 오로지의 일원, <strong>‘올록이(ologgies)’</strong>로 남습니다. 떠난 뒤에도 서로의 멋진 발전을 응원해요. <a href="about.html#ologgies" data-sheet="people">올록이 만나보기 →</a></p>
   </section>
 
   <section id="contact" class="mission" data-s>
@@ -311,11 +404,72 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
 
 </div>
 
+<!-- 인페이지 상세 시트 -->
+<div class="sheet-bg" id="sheetBg" role="dialog" aria-modal="true" aria-label="상세 보기">
+  <div class="sheet"><button class="sheet-x" aria-label="닫기">&times;</button><div class="sheet-body" id="sheetBody"></div></div>
+</div>
+
+<!-- 상세 콘텐츠 소스 (시트가 복제해서 표시) -->
+<div hidden>
+  <div id="d-about">
+    <h3>🐕 이름의 의미</h3>
+    <p><strong>OLO-G</strong>엔 두 마음이 담겨 있어요. <strong>‘오로지’</strong> — 우리에게 중요한 가치에 오로지 집중하고 몰두한다. <strong>‘-ology’</strong> — 집요하게 파고들어 학문의 경지를 추구한다. 그리고 o와 l을 살짝 붙이면… <strong>dog</strong> 🐶. 친근하지만 진심인, 우리다운 위트입니다.</p>
+    <h3>🧭 미션</h3>
+    <div class="q">우리는 세상 모두를 조금 더 행복하게 만들 겁니다.<small>Let's Make the World a Little Happier!</small></div>
+    <p>가장 먼저 <strong>우리</strong>가 행복해야 합니다. 그다음 <strong>고객</strong>, 마지막으로 이 <strong>세상</strong>. 행복한 우리가 고객에게 행복을 전하고, 행복한 고객이 다시 곁의 누군가에게 — 그렇게 세상은 조금 더 행복해집니다.</p>
+    <h3>🔍 비전</h3>
+    <div class="q">Games add ‘A Spoonful of Happiness’ to our lives.<small>게임은 일상의 모든 일에 몰입과 즐거움을 더하는 수단입니다.</small></div>
+    <p>오로지의 무대는 게임에만 머물지 않습니다. 만화·음악·문화까지, 사람을 행복하게 하는 것이라면 무엇이든. 잊고 있던 아름다운 가치들을 찾아내 우리만의 방식으로 전하겠습니다.</p>
+    <p style="margin-top:1.4rem"><a class="btn ghost" href="about.html">소개 페이지 전체 보기 →</a></p>
+  </div>
+
+  <div id="d-games">
+    <h3>오로지의 게임들</h3>
+    <div class="gcat">
+      <a class="grow" href="goraddy/index.html"><span class="gi" style="background-image:url('assets/games/goraddy/icon.png')"></span><span class="gt"><strong>고!래디 <span>Go! Raddy</span></strong><span class="gm">전진형 횡스크롤 디펜스 · 2026 · iOS·Android</span><span class="gd">고래 래디가 직접 전진하며 ‘아쿠아’를 모으고, 실시간 ‘버블’로 매 판 다른 전략을 짜며 끝없이 성장하는 오로지의 주력작.</span></span></a>
+      <a class="grow" href="https://play.google.com/store/apps/details?id=com.OlogGames.AimtheCenter" target="_blank" rel="noopener"><span class="gi" style="background-image:url('assets/games/aim/icon.png')"></span><span class="gt"><strong>Aim! the Center</strong><span class="gm">하이퍼캐주얼 · 2025 · iOS·Android</span><span class="gd">한 손으로 즐기는 직관적인 캐주얼. 짧고 굵게 몰입하는 라이트 게임.</span></span></a>
+      <a class="grow" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo2" target="_blank" rel="noopener"><span class="gi" style="background-image:url('assets/games/ponpondoodoo2/icon.png')"></span><span class="gt"><strong>퐁퐁두두2</strong><span class="gm">힐링 키우기 · 2024 · iOS·Android</span><span class="gd">소중한 것을 모으고 키우는 따뜻한 힐링 게임의 후속작.</span></span></a>
+      <a class="grow" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo" target="_blank" rel="noopener"><span class="gi" style="background-image:url('assets/games/ponpondoodoo/icon.png')"></span><span class="gt"><strong>퐁퐁두두</strong><span class="gm">힐링 키우기 · 2021 · 앱스토어 4위·45만 다운로드</span><span class="gd">오로지를 알린 첫 힐링작. 잔잔하게 모으고 가꾸는 재미.</span></span></a>
+    </div>
+    <p style="margin-top:1.3rem"><a class="btn ghost" href="games.html">게임 페이지 전체 보기 →</a></p>
+  </div>
+
+  <div id="d-people">
+    <h3>🐾 올록이 — 영원한 멤버십</h3>
+    <p>잠깐이라도 함께한 사람은 기간과 상관없이 영원한 오로지의 일원, ‘올록이’로 남습니다. 떠난 뒤에도 서로의 멋진 발전을 응원해요.</p>
+    <div class="mem-sub">🎮 지금 함께하는 올록이</div>
+    <div class="mem-grid">
+      <button class="mem-card" data-mem="weolha"><span class="m-av"><span class="e">🌕</span><img class="pic" src="assets/members/weolha.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">월하</span><span class="r">대표 · 기획·아트</span><span class="more">자세히 ›</span></button>
+      <button class="mem-card" data-mem="dothoven"><span class="m-av"><span class="e">🕹️</span><img class="pic" src="assets/members/dothoven.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">도토벤</span><span class="r">개발 · 작곡</span><span class="more">자세히 ›</span></button>
+      <button class="mem-card" data-mem="wapu"><span class="m-av"><span class="e">🐶</span><img class="pic" src="assets/members/wapu.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">와푸</span><span class="r">기획 · 개발</span><span class="more">자세히 ›</span></button>
+      <div class="mem-card"><span class="m-av"><span class="e">🎧</span><img class="pic" src="assets/members/jin.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">Jin</span><span class="r">사운드</span></div>
+    </div>
+    <details class="mem-friends">
+      <summary>🏅 함께한 친구들 (forever friends) 펼치기</summary>
+      <div class="mem-grid small">
+        <div class="mem-card"><span class="m-av"><span class="e">🗿</span><img class="pic" src="assets/members/chanchan.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">찬찬</span><span class="r">아트</span></div>
+        <div class="mem-card"><span class="m-av"><span class="e">🐾</span><img class="pic" src="assets/members/chaco.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">차코</span><span class="r">디자인</span></div>
+        <div class="mem-card"><span class="m-av"><span class="e">😴</span><img class="pic" src="assets/members/sleepoo.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">슬리푸</span><span class="r">프로그래머</span></div>
+        <div class="mem-card"><span class="m-av"><span class="e">🐥</span><img class="pic" src="assets/members/leesujin.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">이수진</span><span class="r">마케팅 · 기획</span></div>
+        <div class="mem-card"><span class="m-av"><span class="e">🐶</span><img class="pic" src="assets/members/choiwooyoung.png" alt="" loading="lazy" onerror="this.remove()"></span><span class="n">최우영</span><span class="r">웹 디자인</span></div>
+      </div>
+    </details>
+    <p class="badge-line">🏅 오로지와 함께한 모든 분께 olog scout badge를 드립니다. 언제든 재미있는 프로젝트가 생기면 다시 함께해요!</p>
+  </div>
+</div>
+
 <footer id="ftr">
   <svg class="fwave" viewBox="0 0 1440 40" preserveAspectRatio="none"><path d="M0,40 L0,11 L0,11 L48,7.7 L96,5.1 L144,3.4 L192,3 L240,4.1 L288,6.3 L336,9.3 L384,12.7 L432,15.7 L480,17.9 L528,19 L576,18.6 L624,16.9 L672,14.3 L720,11 L768,7.7 L816,5.1 L864,3.4 L912,3 L960,4.1 L1008,6.3 L1056,9.3 L1104,12.7 L1152,15.7 L1200,17.9 L1248,19 L1296,18.6 L1344,16.9 L1392,14.3 L1440,11 L1440,40 Z"/></svg>
   <div class="footin" id="footin">
   <img class="flogo" src="assets/logo.png" alt="OLO-G Games Inc.">
   <div><a href="about.html">소개</a> · <a href="games.html">게임</a> · <a href="contact.html">문의</a> · <a href="goraddy/index.html">고!래디</a></div>
+  <div class="social">
+    <a href="https://www.instagram.com/olo_g_games/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.74.07-.9.04-1.38.2-1.7.32-.43.17-.74.37-1.06.7-.32.32-.52.63-.7 1.06-.12.32-.28.8-.32 1.7-.07 1.24-.07 1.6-.07 4.74s0 3.5.07 4.74c.04.9.2 1.38.32 1.7.17.43.37.74.7 1.06.32.32.63.52 1.06.7.32.12.8.28 1.7.32 1.24.07 1.6.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.2 1.7-.32.43-.17.74-.37 1.06-.7.32-.32.52-.63.7-1.06.12-.32.28-.8.32-1.7.07-1.24.07-1.6.07-4.74s0-3.5-.07-4.74c-.04-.9-.2-1.38-.32-1.7a2.85 2.85 0 0 0-.7-1.06 2.85 2.85 0 0 0-1.06-.7c-.32-.12-.8-.28-1.7-.32C15.5 4 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06zm0 1.8A3.14 3.14 0 1 0 15.14 12 3.14 3.14 0 0 0 12 8.86zm6.3-2.96a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15z"/></svg></a>
+    <a href="https://twitter.com/olo_g_games" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 3h2.7l-5.9 6.74L21.3 21h-5.43l-4.25-5.56L6.76 21H4.05l6.3-7.2L2.4 3h5.57l3.84 5.08L17.5 3zm-.95 16.38h1.5L7.02 4.54H5.4l11.15 14.84z"/></svg></a>
+    <a href="https://www.youtube.com/@olo_g_games" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.76-1.77C19.27 5.13 12 5.13 12 5.13s-7.27 0-8.84.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.76 1.77c1.57.4 8.84.4 8.84.4s7.27 0 8.84-.4a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
+    <a href="https://soundcloud.com/olo_g_games" target="_blank" rel="noopener" aria-label="SoundCloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 14.4h1.1v-3.9H1v3.9zm2.1.6h1.1V9h-1.1v6zm2.1 0h1.1V8H5.3v7zm2.1 0h1.1V7.2H7.4V15zm2.2 0h6.2a2.55 2.55 0 0 0 .3-5.08A4.15 4.15 0 0 0 9.9 8.2 3.05 3.05 0 0 0 9.6 15z"/></svg></a>
+    <a href="https://linktr.ee/olo_g_games" target="_blank" rel="noopener" aria-label="모든 링크 (Linktree)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a3 3 0 0 0 4.24 0l2.83-2.83a3 3 0 0 0-4.24-4.24l-1.4 1.4 1.06 1.06 1.4-1.4a1.5 1.5 0 0 1 2.12 2.12l-2.82 2.83a1.5 1.5 0 0 1-2.13 0 .75.75 0 0 0-1.06 1.06zm2.8-2.8a3 3 0 0 0-4.24 0L6.33 13.4a3 3 0 0 0 4.24 4.24l1.4-1.4-1.06-1.06-1.4 1.4a1.5 1.5 0 0 1-2.12-2.12l2.82-2.83a1.5 1.5 0 0 1 2.13 0 .75.75 0 0 0 1.06-1.06z"/></svg></a>
+  </div>
   <div class="biz">(주)오로지게임즈 · OLO-G Games Inc. · 사업자등록번호 722-86-02932<br>서울특별시 마포구 매봉산로 31, 시너지움 9층 909호 · happy@olo-g.com · 010-2587-4082</div>
   <div class="legal">© 2026 OLO-G Games Inc. All rights reserved.</div>
   </div>
@@ -340,7 +494,7 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
     var p=dh>0?Math.min(1,Math.max(0,st/dh)):0;
     rfill.style.height=(p*206)+'px';
     sea.style.height=Math.round(p*p*24)+'vh';
-    ccs.forEach(function(e){var a=+e.getAttribute('data-a'),b=+e.getAttribute('data-b');e.style.opacity=Math.min(1,Math.max(0,(p-a)/(b-a))).toString();});
+    ccs.forEach(function(e){var a=+e.getAttribute('data-a'),b=+e.getAttribute('data-b');e.style.opacity=(Math.min(1,Math.max(0,(p-a)/(b-a)))*0.7).toString();});
     var mid=st+window.innerHeight*0.42,act=0;
     secs.forEach(function(s,i){if(s.offsetTop<=mid)act=i;});
     dots.forEach(function(d,i){d.classList.toggle('on',i===act);});
@@ -372,9 +526,21 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
   }
   ccs.forEach(function(el){
     el.addEventListener('animationend',function(ev){if(ev.animationName==='hop')el.style.animation='';});
-    el.addEventListener('click',function(){el.style.animation='none';void el.offsetWidth;el.style.animation='hop .55s ease';collect(el.getBoundingClientRect());});
   });
-  if(whale){whale.addEventListener('click',function(){var im=whale.querySelector('img');im.style.animation='none';void im.offsetWidth;im.style.animation='hop .55s ease';setTimeout(function(){im.style.animation='bobf 5s ease-in-out infinite';},560);collect(whale.getBoundingClientRect());});}
+  // 캐릭터가 콘텐츠 뒤에 있어도, 탭한 좌표에 캐릭터가 있으면 잡히게 (모바일 포함). 인터랙티브/시트는 제외
+  function popAt(x,y){
+    for(var i=ccs.length-1;i>=0;i--){var el=ccs[i],st=getComputedStyle(el);
+      if(st.display==='none'||(+st.opacity)<0.08)continue;
+      var r=el.getBoundingClientRect();if(r.width<1)continue;
+      if(x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom){el.style.animation='none';void el.offsetWidth;el.style.animation='hop .55s ease';collect(r);return true;}
+    }
+    return false;
+  }
+  document.addEventListener('click',function(e){
+    if(e.target.closest('a,button,summary,details,input,.sheet-bg,#whale,.rail,[data-sheet],[data-mem]'))return;
+    popAt(e.clientX,e.clientY);
+  });
+  if(whale){whale.addEventListener('click',function(){var im=whale.querySelector('img');im.style.animation='none';void im.offsetWidth;im.style.animation='hop .55s ease';setTimeout(function(){im.style.animation='bobf 5s ease-in-out infinite';},560);spout(whale.getBoundingClientRect());collect(whale.getBoundingClientRect());});}
   var footin=document.getElementById('footin');
   if(footin){var fo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){footin.classList.add('show');fo.unobserve(footin);}});},{threshold:0.25});fo.observe(footin);}
   var chars=[].slice.call(document.querySelectorAll('.floaters .cc')).map(function(sp){var L=parseFloat(sp.style.left)||50,img=sp.querySelector('img');return {sp:sp,img:img,px:(L<50?-(L+38):(100-L+38)),fx:(L<50?'-1':'1'),of:(img.style.getPropertyValue('--fx')||'1')};});
@@ -386,7 +552,80 @@ footer .legal{margin-top:.7rem;font-size:.78rem;color:rgba(255,255,255,.5)}
   var _ty=0;window.addEventListener('touchstart',function(e){_ty=e.touches[0].clientY;},{passive:true});
   window.addEventListener('touchmove',function(e){if(atBottom(2)&&(_ty-e.touches[0].clientY)>8)setPart(true);},{passive:true});
   window.addEventListener('scroll',function(){if(parted&&!atBottom(8))setPart(false);},{passive:true});
+
+  // 래디 마스코트: 커서 살짝 바라보기(fine 포인터) + 클릭 물뿜기 — 새 요소 추가 없이 기존 마스코트만 업그레이드
+  var rdy=document.getElementById('rdy');
+  var _reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var _fine=window.matchMedia&&window.matchMedia('(pointer:fine)').matches;
+  if(rdy&&whale&&_fine&&!_reduce){
+    var _rl=0;
+    window.addEventListener('mousemove',function(e){
+      if(_rl)return;
+      _rl=requestAnimationFrame(function(){_rl=0;
+        var r=whale.getBoundingClientRect(),cx=r.left+r.width/2;
+        var ang=Math.max(-7,Math.min(7,(e.clientX-cx)*0.02)); // 화면상 ±7도, 부모 scaleX(-1) 보정 위해 부호 반전
+        rdy.style.setProperty('--tilt',(-ang).toFixed(2)+'deg');
+      });
+    },{passive:true});
+  }
+  function spout(rect){
+    if(_reduce||!deco)return;
+    var ox=rect.left+rect.width*0.42, oy=rect.top+rect.height*0.16;
+    for(var i=0;i<9;i++){(function(i){setTimeout(function(){
+      var d=document.createElement('span'),sz=5+Math.random()*6;
+      d.style.cssText='position:fixed;left:'+ox+'px;top:'+oy+'px;width:'+sz+'px;height:'+sz+'px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#eaf9ff,#7fd0ec);box-shadow:0 0 8px rgba(127,208,236,.7);pointer-events:none;z-index:5';
+      deco.appendChild(d);
+      var dxp=(Math.random()*2-1)*26, up=46+Math.random()*40;
+      d.animate([{transform:'translate(0,0) scale(.5)',opacity:0},{transform:'translate('+(dxp*0.5)+'px,'+(-up)+'px) scale(1)',opacity:1,offset:.45},{transform:'translate('+dxp+'px,'+(up*0.5)+'px) scale(.8)',opacity:0}],{duration:900+Math.random()*400,easing:'cubic-bezier(.3,.7,.5,1)'}).onfinish=function(){d.remove();};
+    },i*28);})(i);}
+  }
   onScroll();
+})();
+</script>
+
+<script>
+// 인페이지 상세 시트 — data-sheet="id" → #d-id 콘텐츠를 시트로. 올록이는 시트 안에서 바이오 전환
+(function(){
+  var bg=document.getElementById('sheetBg');if(!bg)return;
+  var body=document.getElementById('sheetBody'),panel=bg.querySelector('.sheet');
+  var OLOGGIES={
+    weolha:{emoji:'🌕',name:'월하',role:'대표 · 기획·아트',intro:'하고 싶은 것도, 떠오르는 것도 너무 많은 사람. 한 순간도 놓치지 않고 행복하고 싶습니다.',
+      rows:[['🌙 목표','미야자키 하야오처럼, 머릿속 이야기들을 세상에 모두 털어놓는 것.'],['🧑‍💻 일하는 방식','일할 땐 완벽주의 — 콘텐츠 퀄리티에 눈이 높고, 자유롭되 체계 없는 건 싫어합니다. 뭐든 오래 고민하는 편.'],['🌟 관심사','지브리·픽사·판타지 영화, 레고·피규어·아트북 수집, 원피스·포켓몬, 뮤지컬, 위스키, 트롬본과 시티팝'],['🎮 좋아하는 게임','젤다·포켓몬·마리오·동물의 숲, 리그 오브 레전드, 겟앰프드'],['🎓 이력','서울대 건축학과 · 시각디자인 복수전공']],
+      skills:'경영 · 기획 · 아트 · 음악',projects:[['퐁퐁두두','pj-ppd'],['퐁퐁두두2','pj-ppd2'],['Aim! the Center','pj-aim'],['고!래디','pj-goraddy']],email:'weolha@olo-g.com'},
+    dothoven:{emoji:'🕹️',name:'도토벤',role:'개발 · 작곡',intro:'내일이 됐을 때 후회 없는 오늘을 보내고 싶습니다.',
+      rows:[['🌙 목표','지구정복 🌍'],['🧑‍💻 일하는 방식','기한은 잘 지키는 편. 버그가 두려워 작업할 땐 도 닦듯 꼼꼼히 봅니다. 아침형이라 늦은 시간 연락도 부담 없어요.'],['🌟 관심사','경제·주식, 신기한 IT 기기'],['🎮 좋아하는 게임','리니지, 크로스파이어'],['🎓 이력','동국대 컴퓨터공학과']],
+      skills:'프로그래밍 · 작곡 · 경영',projects:[['퐁퐁두두','pj-ppd'],['퐁퐁두두2','pj-ppd2'],['고!래디','pj-goraddy']],email:'dothoven@olo-g.com'},
+    wapu:{emoji:'🐶',name:'와푸',role:'기획 · 개발',intro:'Hello World!',
+      rows:[['🌙 목표','내가 만든 것으로 스스로를 소개하기. 그리고… 부자 되기!'],['🌟 관심사','술, 게임, 애니메이션, 영화'],['🎮 좋아하는 게임','Portal·Portal 2, 시드 마이어의 문명, 림월드, 언더테일, Slay the Spire'],['🎓 이력','서울대 전기정보공학부']],
+      skills:'프로그래밍 · 기획',projects:[['Aim! the Center','pj-aim'],['퐁퐁두두2','pj-ppd2'],['고!래디','pj-goraddy']],email:'wapu@olo-g.com'}
+  };
+  var rosterCache=null;
+  function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+  function bioHTML(m,slug){
+    var h='<button class="mm-back">‹ 올록이 목록</button>';
+    h+='<span class="mm-av"><span class="e">'+m.emoji+'</span><img class="pic" src="assets/members/'+slug+'.png" alt="" onerror="this.remove()"></span>';
+    h+='<div class="mm-name">'+esc(m.name)+'</div><div class="mm-role">'+esc(m.role)+'</div>';
+    h+='<p class="mm-intro">'+esc(m.intro)+'</p>';
+    (m.rows||[]).forEach(function(r){h+='<div class="mm-row"><b>'+r[0]+'</b>'+esc(r[1])+'</div>';});
+    if(m.skills)h+='<div class="mm-row"><b>🛠 스킬</b>'+esc(m.skills)+'</div>';
+    if(m.projects){h+='<div class="mm-row"><b>🎮 참여 게임</b><div class="mm-tags">';m.projects.forEach(function(p){h+='<span class="pill '+p[1]+'">'+esc(p[0])+'</span>';});h+='</div></div>';}
+    if(m.email)h+='<a class="mm-mail" href="mailto:'+m.email+'">✉️ '+esc(m.email)+'</a>';
+    return h;
+  }
+  function top(){if(panel)panel.scrollTop=0;}
+  function openSheet(id){var src=document.getElementById('d-'+id);if(!src)return;body.innerHTML=src.innerHTML;rosterCache=(id==='people')?body.innerHTML:null;bg.classList.add('open');document.body.style.overflow='hidden';top();}
+  function openBio(k){var m=OLOGGIES[k];if(!m)return;var src=document.getElementById('d-people');rosterCache=src?src.innerHTML:null;body.innerHTML=bioHTML(m,k);bg.classList.add('open');document.body.style.overflow='hidden';top();}
+  function closeSheet(){bg.classList.remove('open');document.body.style.overflow='';}
+  body.addEventListener('click',function(e){
+    var card=e.target.closest('[data-mem]');
+    if(card){var k=card.getAttribute('data-mem'),m=OLOGGIES[k];if(m){body.innerHTML=bioHTML(m,k);top();}return;}
+    if(e.target.closest('.mm-back')&&rosterCache){body.innerHTML=rosterCache;top();}
+  });
+  document.querySelectorAll('[data-sheet]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();openSheet(a.getAttribute('data-sheet'));});});
+  document.querySelectorAll('.coremem [data-mem]').forEach(function(c){c.addEventListener('click',function(){openBio(c.getAttribute('data-mem'));});});
+  bg.addEventListener('click',function(e){if(e.target===bg)closeSheet();});
+  var x=bg.querySelector('.sheet-x');if(x)x.addEventListener('click',closeSheet);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&bg.classList.contains('open'))closeSheet();});
 })();
 </script>
 </body>
