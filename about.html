@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var K='olog_lang',EN='en/index.html';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'){s('en');location.replace(EN);return}var p=g();if(p==='ko')return;if(p==='en'){location.replace(EN);return}if((navigator.language||'').toLowerCase().indexOf('ko')!==0)location.replace(EN)})();</script>
+<script>(function(){var K='olog_lang';document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a){try{localStorage.setItem(K,a.getAttribute('lang')||'en')}catch(e2){}}})})();</script>
 <title>소개 — OLO-G Games Inc. (오로지게임즈)</title>
 <meta name="description" content="OLO-G Games Inc.(오로지게임즈)의 이름·미션·비전·가치, 그리고 우리가 걸어가는 길. 세상 모두를 조금 더 행복하게.">
 <meta property="og:title" content="소개 — OLO-G Games Inc. (오로지게임즈)">
@@ -33,7 +33,7 @@
       <a href="about.html" class="on">소개</a>
       <a href="games.html">게임</a>
       <a href="contact.html">문의</a>
-      <a href="en/index.html" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
+      <a href="en/about.html" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
     </nav>
   </div>
 </header>
@@ -100,7 +100,7 @@
     </div>
   </div>
 
-  <h2 class="reveal">🐾 ologgies — 영원한 멤버십</h2>
+  <h2 id="ologgies" class="reveal">🐾 ologgies — 영원한 멤버십</h2>
   <p class="lead reveal">오로지의 핵심은 <strong>멤버십</strong>입니다. 잠깐이라도 함께한 사람은 기간과 상관없이 영원한 오로지의 일원, <strong>‘올록이(ologgies)’</strong>로 남습니다. 우리는 함께한 모든 순간을 자랑스럽게 여기고, 떠난 뒤에도 서로의 멋진 발전과 소식을 응원합니다.</p>
 
   <div class="member-sub reveal">🎮 지금 함께하는 올록이</div>

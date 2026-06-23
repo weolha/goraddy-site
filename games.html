@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var K='olog_lang',EN='en/index.html';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'){s('en');location.replace(EN);return}var p=g();if(p==='ko')return;if(p==='en'){location.replace(EN);return}if((navigator.language||'').toLowerCase().indexOf('ko')!==0)location.replace(EN)})();</script>
+<script>(function(){var K='olog_lang';document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a){try{localStorage.setItem(K,a.getAttribute('lang')||'en')}catch(e2){}}})})();</script>
 <title>게임 — OLO-G Games Inc. (오로지게임즈)</title>
 <meta name="description" content="오로지게임즈가 출시한 게임들 — 전진형 디펜스 '고!래디(Go! Raddy)', 힐링 키우기 '퐁퐁두두·퐁퐁두두2', 캐주얼 'Aim! the Center'. 스토어 다운로드 링크 제공.">
 <meta property="og:title" content="게임 — OLO-G Games Inc. (오로지게임즈)">
@@ -52,7 +52,7 @@
       <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
         <a class="btn" href="goraddy/index.html" target="_blank" rel="noopener">공식 사이트 ↗</a>
         <a class="btn sub" href="https://play.google.com/store/apps/details?id=com.ologgames.goraddy" target="_blank" rel="noopener">Google Play</a>
-        <a class="btn sub" href="https://apps.apple.com/kr/app/id6748856004" target="_blank" rel="noopener">App Store</a>
+        <a class="btn sub" href="https://apps.apple.com/kr/app/go-raddy/id6748856004" target="_blank" rel="noopener">App Store</a>
       </div>
     </div>
   </div>
