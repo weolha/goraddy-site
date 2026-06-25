@@ -36,8 +36,8 @@
 @font-face{font-family:'SeoulAlrim';src:url('assets/SeoulAlrim-XB.woff2') format('woff2');font-weight:800;font-display:swap}
 :root{--sky:#c9ecf7;--sky-light:#eaf6fb;--sea:#2ba3d4;--sea-deep:#1b7fc4;--navy:#14365c;--yellow:#f8d86a;--coral:#ff8a5c;--mint:#6fd1b0;--pink:#f5a8c8;--lav:#b3a8f0;--text:#1d3c5e;--dim:#5b7894}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden;background:var(--navy);overscroll-behavior-y:none}
-body{font-family:'Palanquin Dark',"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all}
+html{overflow-x:hidden;background:var(--navy)}
+body{font-family:'Palanquin Dark',"Pretendard Variable",Pretendard,"Apple SD Gothic Neo",system-ui,sans-serif;color:var(--text);background:#fff;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:clip;word-break:keep-all}
 .dsp{font-family:'Palanquin Dark','SeoulAlrim',"Apple SD Gothic Neo",sans-serif;font-weight:700;color:var(--navy);line-height:1.1;letter-spacing:-.01em}
 a{color:var(--sea-deep);text-decoration:none}
 
@@ -82,7 +82,7 @@ a{color:var(--sea-deep);text-decoration:none}
 .spoon.full{background:linear-gradient(135deg,#ffd76a,#ff9a5c);color:#fff;border-color:#ffce5a;box-shadow:0 6px 22px rgba(255,150,80,.4)}
 .fwave{position:absolute;left:0;top:-21px;width:100%;height:22px}
 .fwave path{fill:var(--navy)}
-.footin{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.85,.25,1.02)}
+.footin{opacity:0;transform:translateY(60px);transition:opacity .4s ease,transform .42s cubic-bezier(.18,.9,.28,1.08)}
 .footin.show{opacity:1;transform:none}
 .bark{position:absolute;top:-14px;left:30px;transform:translate(-50%,2px);background:var(--navy);color:#fff;font-size:13px;font-weight:700;padding:3px 9px;border-radius:10px;opacity:0;white-space:nowrap;pointer-events:none}
 @keyframes bp{0%{transform:translate(-50%,2px) scale(.5);opacity:0}25%{transform:translate(-50%,-9px) scale(1.14);opacity:1}80%{opacity:1}100%{transform:translate(-50%,-18px) scale(1);opacity:0}}
@@ -100,10 +100,11 @@ a{color:var(--sea-deep);text-decoration:none}
 .rail a.on .lbl{opacity:1;transform:none;color:var(--navy)}
 
 .wrap{position:relative;z-index:1}
-section{position:relative;max-width:840px;margin:0 auto;padding:9rem clamp(1.5rem,6vw,6rem);min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+section{position:relative;max-width:920px;margin:0 auto;padding:9rem clamp(1.5rem,6vw,6rem);min-height:90vh;display:flex;flex-direction:column;justify-content:center}
 .slabel{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--sea);margin-bottom:14px}
-html{scroll-snap-type:y proximity}
-section[data-s]{scroll-snap-align:start}
+html{scroll-snap-type:y mandatory}
+.hero{scroll-snap-align:start;scroll-snap-stop:always}                          /* 히어로는 상단 정렬 */
+.slabel{scroll-snap-align:start;scroll-snap-stop:always;scroll-margin-top:12vh} /* 각 섹션 타이틀을 화면 위 12% 위치에 고정 정렬 — 브라우저가 정확히 맞춤 */
 .reveal{opacity:0;transform:translateY(40px)}
 @keyframes swirlIn{0%{opacity:0;transform:translate(var(--rx,0px),46px) rotate(var(--rr,0deg)) scale(.9);filter:blur(6px)}55%{opacity:1;transform:translate(calc(var(--rx,0px)*-0.16),10px) rotate(calc(var(--rr,0deg)*-0.34)) scale(1.014);filter:blur(0)}100%{opacity:1;transform:none;filter:blur(0)}}
 .reveal.show{animation:swirlIn 1.05s cubic-bezier(.22,.9,.27,1.02) both}
@@ -165,7 +166,7 @@ section[data-s]{scroll-snap-align:start}
 .cta-box p{color:var(--dim);font-size:.95rem;margin-bottom:1.1rem}
 @keyframes spk{0%{transform:translateY(8px) scale(.4);opacity:0}25%{opacity:1}100%{transform:translateY(-54px) scale(1.1);opacity:0}}
 
-footer{background:var(--navy);color:rgba(255,255,255,.72);text-align:center;padding:3rem 1.4rem 2.4rem;position:relative;z-index:1;font-size:.85rem}
+footer{background:var(--navy);color:rgba(255,255,255,.72);text-align:center;padding:3rem 1.4rem 2.4rem;position:relative;z-index:1;font-size:.85rem;scroll-snap-align:end;scroll-snap-stop:always}
 footer .flogo{height:30px;filter:brightness(0) invert(1);opacity:.95;margin-bottom:.7rem}
 footer a{color:#fff;margin:0 .5rem}
 footer .biz{margin-top:.9rem;font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.6}
@@ -242,6 +243,7 @@ footer .social svg{width:18px;height:18px;fill:#fff}
 
 /* 캐릭터는 콘텐츠 뒤(z-index:0)에 깔려 어디서나 보이되 글을 안 가림. 모바일에선 하단 군집(.uc)만 솎아냄 */
 @media(max-width:760px){
+  html{scroll-snap-type:y proximity}
   .rail{display:none}
   .floaters .uc{display:none}
    .whale{width:clamp(120px,34vw,172px);top:3%}
@@ -467,7 +469,7 @@ footer .social svg{width:18px;height:18px;fill:#fff}
     <a href="https://www.instagram.com/olo_g_games/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.58 2.2 15.2 2.2 12s0-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.74.07-.9.04-1.38.2-1.7.32-.43.17-.74.37-1.06.7-.32.32-.52.63-.7 1.06-.12.32-.28.8-.32 1.7-.07 1.24-.07 1.6-.07 4.74s0 3.5.07 4.74c.04.9.2 1.38.32 1.7.17.43.37.74.7 1.06.32.32.63.52 1.06.7.32.12.8.28 1.7.32 1.24.07 1.6.07 4.74.07s3.5 0 4.74-.07c.9-.04 1.38-.2 1.7-.32.43-.17.74-.37 1.06-.7.32-.32.52-.63.7-1.06.12-.32.28-.8.32-1.7.07-1.24.07-1.6.07-4.74s0-3.5-.07-4.74c-.04-.9-.2-1.38-.32-1.7a2.85 2.85 0 0 0-.7-1.06 2.85 2.85 0 0 0-1.06-.7c-.32-.12-.8-.28-1.7-.32C15.5 4 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 7.06 12 4.94 4.94 0 0 1 12 7.06zm0 1.8A3.14 3.14 0 1 0 15.14 12 3.14 3.14 0 0 0 12 8.86zm6.3-2.96a1.15 1.15 0 1 1-1.15-1.15 1.15 1.15 0 0 1 1.15 1.15z"/></svg></a>
     <a href="https://twitter.com/olo_g_games" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 3h2.7l-5.9 6.74L21.3 21h-5.43l-4.25-5.56L6.76 21H4.05l6.3-7.2L2.4 3h5.57l3.84 5.08L17.5 3zm-.95 16.38h1.5L7.02 4.54H5.4l11.15 14.84z"/></svg></a>
     <a href="https://www.youtube.com/@olo_g_games" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.76-1.77C19.27 5.13 12 5.13 12 5.13s-7.27 0-8.84.4A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.76 1.77c1.57.4 8.84.4 8.84.4s7.27 0 8.84-.4a2.5 2.5 0 0 0 1.76-1.77C23 15.2 23 12 23 12zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg></a>
-    <a href="https://soundcloud.com/olo_g_games" target="_blank" rel="noopener" aria-label="SoundCloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 14.4h1.1v-3.9H1v3.9zm2.1.6h1.1V9h-1.1v6zm2.1 0h1.1V8H5.3v7zm2.1 0h1.1V7.2H7.4V15zm2.2 0h6.2a2.55 2.55 0 0 0 .3-5.08A4.15 4.15 0 0 0 9.9 8.2 3.05 3.05 0 0 0 9.6 15z"/></svg></a>
+    <a href="https://soundcloud.com/olo-g-games" target="_blank" rel="noopener" aria-label="SoundCloud"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 14.4h1.1v-3.9H1v3.9zm2.1.6h1.1V9h-1.1v6zm2.1 0h1.1V8H5.3v7zm2.1 0h1.1V7.2H7.4V15zm2.2 0h6.2a2.55 2.55 0 0 0 .3-5.08A4.15 4.15 0 0 0 9.9 8.2 3.05 3.05 0 0 0 9.6 15z"/></svg></a>
     <a href="https://linktr.ee/olo_g_games" target="_blank" rel="noopener" aria-label="모든 링크 (Linktree)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.6 13.4a3 3 0 0 0 4.24 0l2.83-2.83a3 3 0 0 0-4.24-4.24l-1.4 1.4 1.06 1.06 1.4-1.4a1.5 1.5 0 0 1 2.12 2.12l-2.82 2.83a1.5 1.5 0 0 1-2.13 0 .75.75 0 0 0-1.06 1.06zm2.8-2.8a3 3 0 0 0-4.24 0L6.33 13.4a3 3 0 0 0 4.24 4.24l1.4-1.4-1.06-1.06-1.4 1.4a1.5 1.5 0 0 1-2.12-2.12l2.82-2.83a1.5 1.5 0 0 1 2.13 0 .75.75 0 0 0 1.06-1.06z"/></svg></a>
   </div>
   <div class="biz">(주)오로지게임즈 · OLO-G Games Inc. · 사업자등록번호 722-86-02932<br>서울특별시 마포구 매봉산로 31, 시너지움 9층 909호 · happy@olo-g.com · 010-2587-4082</div>
@@ -492,12 +494,14 @@ footer .social svg{width:18px;height:18px;fill:#fff}
   function onScroll(){
     var st=window.scrollY||document.documentElement.scrollTop,dh=document.documentElement.scrollHeight-window.innerHeight;
     var p=dh>0?Math.min(1,Math.max(0,st/dh)):0;
-    rfill.style.height=(p*206)+'px';
     sea.style.height=Math.round(p*p*24)+'vh';
     ccs.forEach(function(e){var a=+e.getAttribute('data-a'),b=+e.getAttribute('data-b');e.style.opacity=(Math.min(1,Math.max(0,(p-a)/(b-a)))*0.7).toString();});
     var mid=st+window.innerHeight*0.42,act=0;
     secs.forEach(function(s,i){if(s.offsetTop<=mid)act=i;});
     dots.forEach(function(d,i){d.classList.toggle('on',i===act);});
+    // 레일 채움: 섹션 인덱스 기준(트랙 실제 높이)으로 마지막 점까지 확실히 도달
+    var trackEl=document.querySelector('.rail .track'),trackH=trackEl?trackEl.offsetHeight:206;
+    rfill.style.height=(secs.length>1?(act/(secs.length-1))*trackH:0)+'px';
   }
   window.addEventListener('scroll',onScroll,{passive:true});
 
@@ -544,14 +548,8 @@ footer .social svg{width:18px;height:18px;fill:#fff}
   var footin=document.getElementById('footin');
   if(footin){var fo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){footin.classList.add('show');fo.unobserve(footin);}});},{threshold:0.25});fo.observe(footin);}
   var chars=[].slice.call(document.querySelectorAll('.floaters .cc')).map(function(sp){var L=parseFloat(sp.style.left)||50,img=sp.querySelector('img');return {sp:sp,img:img,px:(L<50?-(L+38):(100-L+38)),fx:(L<50?'-1':'1'),of:(img.style.getPropertyValue('--fx')||'1')};});
+  // 바닥 도달 시 일제히 양옆으로 빠지던 연출 제거 — 커서/터치 헤치기로 대체. parted는 커서 로직 호환 위해 유지(항상 false)
   var parted=false;
-  function setPart(on){if(on===parted)return;parted=on;
-    chars.forEach(function(o){setTimeout(function(){o.sp.classList.toggle('fleeing',on);o.img.style.setProperty('--fx',on?o.fx:o.of);o.img.style.setProperty('--px',on?o.px+'vw':'0px');o.img.style.setProperty('--pr',on?(o.px<0?-9:9)+'deg':'0deg');},on?Math.random()*260:0);});}
-  function atBottom(g){return (window.innerHeight+window.scrollY)>=(document.documentElement.scrollHeight-(g||2));}
-  window.addEventListener('wheel',function(e){if(e.deltaY>2&&atBottom(2))setPart(true);},{passive:true});
-  var _ty=0;window.addEventListener('touchstart',function(e){_ty=e.touches[0].clientY;},{passive:true});
-  window.addEventListener('touchmove',function(e){if(atBottom(2)&&(_ty-e.touches[0].clientY)>8)setPart(true);},{passive:true});
-  window.addEventListener('scroll',function(){if(parted&&!atBottom(8))setPart(false);},{passive:true});
 
   // 래디 마스코트: 커서 살짝 바라보기(fine 포인터) + 클릭 물뿜기 — 새 요소 추가 없이 기존 마스코트만 업그레이드
   var rdy=document.getElementById('rdy');
@@ -579,6 +577,27 @@ footer .social svg{width:18px;height:18px;fill:#fff}
       d.animate([{transform:'translate(0,0) scale(.5)',opacity:0},{transform:'translate('+(dxp*0.5)+'px,'+(-up)+'px) scale(1)',opacity:1,offset:.45},{transform:'translate('+dxp+'px,'+(up*0.5)+'px) scale(.8)',opacity:0}],{duration:900+Math.random()*400,easing:'cubic-bezier(.3,.7,.5,1)'}).onfinish=function(){d.remove();};
     },i*28);})(i);}
   }
+  // 커서/터치로 물 헤치기 (아이디어2): 포인터가 다가오면 물고기가 푸터 flee처럼 화면 밖으로 확 빠지고, 지나가면 다시 모임. 측정은 span(홈위치)이라 진동 없음. 바닥 flee 중엔 패스. reduced-motion 제외
+  (function(){
+    if(_reduce) return;
+    var raf=0,px=-9999,py=-9999,active=false,R=260; // 감도(반경): 클수록 커서 닿기 전에 미리 도망
+    function step(){raf=0; if(parted) return;
+      for(var i=0;i<chars.length;i++){var o=chars[i];
+        var cs=getComputedStyle(o.sp); if(cs.display==='none'||(+cs.opacity)<0.05) continue;
+        var r=o.sp.getBoundingClientRect(); if(r.width<1) continue;
+        var dx=(r.left+r.width/2)-px, dy=(r.top+r.height/2)-py;
+        var want=active && (dx*dx+dy*dy)<R*R;
+        if(want && !o._fled){o._fled=true; o.sp.classList.add('fleeing'); o.img.style.setProperty('--fx',o.fx); o.img.style.setProperty('--px',o.px+'vw'); o.img.style.setProperty('--pr',(o.px<0?-9:9)+'deg');}
+        else if(!want && o._fled){o._fled=false; o.sp.classList.remove('fleeing'); o.img.style.setProperty('--fx',o.of); o.img.style.setProperty('--px','0px'); o.img.style.setProperty('--pr','0deg');}
+      }
+    }
+    function move(x,y){px=x;py=y;active=true;if(!raf)raf=requestAnimationFrame(step);}
+    function leave(){active=false;if(!raf)raf=requestAnimationFrame(step);}
+    if(_fine) window.addEventListener('mousemove',function(e){move(e.clientX,e.clientY);},{passive:true});
+    window.addEventListener('touchmove',function(e){var t=e.touches[0];if(t)move(t.clientX,t.clientY);},{passive:true});
+    window.addEventListener('mouseleave',leave,{passive:true});
+    window.addEventListener('touchend',leave,{passive:true});
+  })();
   onScroll();
 })();
 </script>
