@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var K='olog_lang',EN='en/patch-notes.html';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'){s('en');location.replace(EN);return}var p=g();if(p==='ko')return;if(p==='en'){location.replace(EN);return}if((navigator.language||'').toLowerCase().indexOf('ko')!==0)location.replace(EN)})();</script>
+<script>(function(){var K='olog_lang',EN='en/patch-notes';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'){s('en');location.replace(EN);return}var p=g();if(p==='ko')return;if(p==='en'){location.replace(EN);return}if((navigator.language||'').toLowerCase().indexOf('ko')!==0)location.replace(EN)})();</script>
 <title>패치노트 — 고!래디 Go! Raddy</title>
 <meta name="description" content="고!래디(Go! Raddy) 버전별 업데이트 내역 — 신규 콘텐츠, 밸런스 조정, 버그 수정 등 최신 패치 소식을 확인하세요.">
-<link rel="canonical" href="https://olo-g.com/goraddy/patch-notes.html">
+<link rel="canonical" href="https://olo-g.com/goraddy/patch-notes">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://olo-g.com/goraddy/patch-notes.html">
+<meta property="og:url" content="https://olo-g.com/goraddy/patch-notes">
 <meta property="og:title" content="패치노트 — 고!래디 Go! Raddy">
 <meta property="og:description" content="고!래디(Go! Raddy) 버전별 업데이트 내역 — 신규 콘텐츠·밸런스·버그 수정 소식.">
 <meta property="og:image" content="https://olo-g.com/goraddy/assets/og.jpg">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="패치노트 — 고!래디 Go! Raddy">
 <meta name="twitter:description" content="고!래디(Go! Raddy) 버전별 업데이트 내역.">
 <meta name="twitter:image" content="https://olo-g.com/goraddy/assets/og.jpg">
-<link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/patch-notes.html">
-<link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/patch-notes.html">
-<link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/patch-notes.html">
+<link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/patch-notes">
+<link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/patch-notes">
+<link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/patch-notes">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="stylesheet" href="style.css">
@@ -47,7 +47,7 @@
       "@type": "CollectionPage",
       "name": "패치노트 — 고!래디 Go! Raddy",
       "description": "고!래디(Go! Raddy) 버전별 업데이트 내역.",
-      "url": "https://olo-g.com/goraddy/patch-notes.html",
+      "url": "https://olo-g.com/goraddy/patch-notes",
       "inLanguage": "ko",
       "isPartOf": { "@id": "https://olo-g.com/goraddy/#game" },
       "publisher": { "@id": "https://olo-g.com/#org" }
@@ -56,7 +56,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://olo-g.com/goraddy/" },
-        { "@type": "ListItem", "position": 2, "name": "패치노트", "item": "https://olo-g.com/goraddy/patch-notes.html" }
+        { "@type": "ListItem", "position": 2, "name": "패치노트", "item": "https://olo-g.com/goraddy/patch-notes" }
       ]
     }
   ]
@@ -67,28 +67,28 @@
 
 <header class="site">
   <div class="nav-inner">
-    <a class="brand" href="index.html"><img src="assets/logo.webp" alt="고!래디 Go! Raddy"></a>
+    <a class="brand" href="./"><img src="assets/logo.webp" alt="고!래디 Go! Raddy"></a>
     <nav class="menu">
-      <a href="index.html" data-m="hide">홈</a>
-      <a href="notice.html" data-short="공지">공지사항</a>
-      <a href="patch-notes.html" class="on" data-short="패치">패치노트</a>
-      <a href="probability.html" data-short="확률">확률 고지</a>
-      <a href="support.html">문의</a>
-      <a href="en/patch-notes.html" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
+      <a href="./" data-m="hide">홈</a>
+      <a href="notice" data-short="공지">공지사항</a>
+      <a href="patch-notes" class="on" data-short="패치">패치노트</a>
+      <a href="probability" data-short="확률">확률 고지</a>
+      <a href="support">문의</a>
+      <a href="en/patch-notes" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
     </nav>
     <div class="allmenu">
       <button class="allmenu-btn" type="button" aria-label="전체 메뉴" aria-expanded="false" aria-haspopup="true">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
       </button>
       <div class="allmenu-panel" hidden>
-        <a href="index.html">홈</a>
-        <a href="notice.html">공지사항</a>
-        <a href="patch-notes.html">패치노트</a>
-        <a href="probability.html">확률 고지</a>
-        <a href="support.html">문의</a>
+        <a href="./">홈</a>
+        <a href="notice">공지사항</a>
+        <a href="patch-notes">패치노트</a>
+        <a href="probability">확률 고지</a>
+        <a href="support">문의</a>
         <div class="divider"></div>
-        <a href="terms.html">이용약관</a>
-        <a href="privacy.html">개인정보처리방침</a>
+        <a href="terms">이용약관</a>
+        <a href="privacy">개인정보처리방침</a>
       </div>
     </div>
   </div>
@@ -97,6 +97,51 @@
 <main>
 <h1>패치노트</h1>
 <p class="lead">고!래디의 버전별 업데이트 내역입니다. 최신 버전이 맨 위에 표시됩니다.</p>
+
+<!-- ===== v1.0094 ===== -->
+<article class="patch">
+  <span class="ver">v1.0094 · 2026.07.09</span>
+  <h2>2026.07.09 업데이트</h2>
+
+  <h3>신규 콘텐츠</h3>
+  <ul>
+    <li>새 버블이 한 무더기 밀려왔습니다. 원거리를 밀어주는 &lsquo;거리두기&rsquo;, 근접을 단단하게 하는 &lsquo;총대 메기&rsquo;, 같은 종류를 모을수록 세지는 &lsquo;끼리끼리&rsquo;, 유닛 버블을 많이 챙길수록 강해지는 &lsquo;초진화!&rsquo;까지. 그 외에도 &lsquo;나무 상자!&rsquo;&middot;&lsquo;기사회생&rsquo;&middot;&lsquo;돛새치 모드!&rsquo;&middot;&lsquo;고폭탄&rsquo;&middot;&lsquo;심호흡&rsquo;이 새로 합류했습니다.</li>
+    <li>&#10024; 황금 버블이 등장했습니다. 금빛 오라를 두른 특별한 고급 버블로, &lsquo;조준 표식&rsquo;&middot;&lsquo;초거대화&rsquo;&middot;&lsquo;보물상자&rsquo;&middot;&lsquo;모래주머니 해제!&rsquo;처럼 한 방이 있는 효과를 품고 있습니다. 추첨에서 반짝이면 눈여겨보세요.</li>
+    <li>버블 리롤이 개편됐습니다. 이제 다시 뽑을 기회를 그 자리에서 버리지 않고 누적 리롤 풀에 모아둘 수 있고, 풀이 비면 광고를 보고 채울 수 있습니다(1회 시청당 리롤 +3). 남은 리롤과 광고 편수가 카운트&middot;색상으로 한눈에 보입니다.</li>
+    <li>일일상점에 할인 슬롯이 생겼습니다. 가끔 할인 카드가 떠서, 조금 더 싸게 데려갈 수 있어요.</li>
+  </ul>
+
+  <h3>밸런스 조정</h3>
+  <ul>
+    <li>버블 추첨에 손을 봤습니다. 장착한 포탑 수에 맞춰 포탑 카드가 더 잘 나오도록 카테고리 가중치를 다시 잡고, 한동안 포탑 카드가 안 뜨면 다음 추첨엔 확실히 챙겨줍니다. 아직 설치하지 않은 포탑이 있으면 먼저 등장합니다. (포탑 편성이 뽑기 운에 덜 휘둘립니다.)</li>
+    <li>전투 시작 전 마린이 알아서 달아주던 포탑을, 매번 강제로 깔지 않고 확률로 조정했습니다(100% &rarr; 80%). (한 종류로 도배되던 체감을 줄였어요.)</li>
+    <li>그 외: &lsquo;마지막 춤&rsquo;&middot;&lsquo;돛새치 모드!&rsquo;&middot;&lsquo;초거대화&rsquo; 등 일부 버블 효과 수치를 다듬었습니다.</li>
+  </ul>
+
+  <h3>편의성</h3>
+  <ul>
+    <li>리롤 풀이 비었을 때, 광고를 한 번 보면 리롤 3회를 바로 채워줍니다. 남은 광고 편수는 도트로 표시됩니다.</li>
+    <li>상점 할인 표기가 -N% 형태로 또렷해지고, 접근 동선을 정리했습니다.</li>
+  </ul>
+
+  <h3>비주얼 및 연출</h3>
+  <ul>
+    <li>황금 버블은 뽑는 순간 금빛 오라가 카드를 감싸고, 배경이 은은하게 일렁입니다.</li>
+    <li>튜토리얼에서 빠져 있던 손맛(피드백) 연출을 되살렸습니다.</li>
+  </ul>
+
+  <h3>버그 수정</h3>
+  <ul>
+    <li>광고를 다 보고 나면 멀쩡한데도 &ldquo;네트워크가 불안정합니다&rdquo; 팝업이 뜨던 오탐을 없앴습니다.</li>
+    <li>광고 시청 퀘스트(6번)가 간혹 진행에서 누락되던 문제를 보정했습니다.</li>
+    <li>황금 버블 오라가 처음 로딩될 때 흰 사각형이 번쩍이던 문제를 잡았습니다.</li>
+    <li>재사용되는 버블 카드가 두 번째부터 파티클 연출이 빠지던 문제를 고쳤어요.</li>
+    <li>포탑 강화 버블의 공격력이 제대로 적용되지 않던 버그를 수정했습니다.</li>
+    <li>부착물 무기가 엉뚱한 자리에 붙던 데이터 오타를 바로잡았습니다.</li>
+    <li>그 밖에 여러 문구와 알림 텍스트를 다듬었습니다.</li>
+  </ul>
+
+</article>
 
 <!-- ===== v1.0091 ===== -->
 <article class="patch">
@@ -145,7 +190,7 @@
     <li>여러 유닛의 스킬 해금 레벨이 추가로 하향되고, 유닛별 소환 쿨타임이 일부 조정됩니다.</li>
     <li>일부 적 유닛의 체력과 공격력이 조정됩니다.</li>
     <li>스테이지에서 획득할 수 있는 크릴의 상한이 대폭 상향됩니다. 마린을 크릴 보너스에 투자하면 상한도 함께 늘어납니다.</li>
-    <li>상자에서 획득할 수 있는 보상의 확률과 수량이 조정됩니다. 변경된 확률은 <a href="probability.html">확률 고지</a>에서 확인하실 수 있습니다.</li>
+    <li>상자에서 획득할 수 있는 보상의 확률과 수량이 조정됩니다. 변경된 확률은 <a href="probability">확률 고지</a>에서 확인하실 수 있습니다.</li>
     <li>버블 '거품 병사'와 '마지막 춤'의 효과가 서로 교체됩니다.
       <ul>
         <li>거품 병사: 코스트가 0이 되는 대신, 체력이 매우 낮아집니다.</li>
@@ -260,10 +305,10 @@
 <footer class="site">
   <img class="foot-logo" src="assets/logo.webp" alt="고!래디">
   <div>
-    <a href="terms.html">이용약관</a> ·
-    <a href="privacy.html">개인정보처리방침</a> ·
-    <a href="probability.html">확률 고지</a> ·
-    <a href="../index.html">오로지게임즈 ↗</a>
+    <a href="terms">이용약관</a> ·
+    <a href="privacy">개인정보처리방침</a> ·
+    <a href="probability">확률 고지</a> ·
+    <a href="../">오로지게임즈 ↗</a>
   </div>
   <div class="legal">© 2026 OLO-G Games Inc. All rights reserved. · Go! Raddy™</div>
 </footer>

@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var K='olog_lang',EN='en/support.html';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'){s('en');location.replace(EN);return}var p=g();if(p==='ko')return;if(p==='en'){location.replace(EN);return}if((navigator.language||'').toLowerCase().indexOf('ko')!==0)location.replace(EN)})();</script>
+<script>(function(){var K='olog_lang',EN='en/support';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'){s('en');location.replace(EN);return}var p=g();if(p==='ko')return;if(p==='en'){location.replace(EN);return}if((navigator.language||'').toLowerCase().indexOf('ko')!==0)location.replace(EN)})();</script>
 <title>문의하기 — 고!래디 Go! Raddy</title>
 <meta name="description" content="고!래디(Go! Raddy) 고객 지원 — 버그 제보, 결제 문의, 건의사항.">
-<link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support.html">
-<link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support.html">
-<link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support.html">
-<link rel="canonical" href="https://olo-g.com/goraddy/support.html">
+<link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support">
+<link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support">
+<link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support">
+<link rel="canonical" href="https://olo-g.com/goraddy/support">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="stylesheet" href="style.css">
@@ -18,28 +18,28 @@
 
 <header class="site">
   <div class="nav-inner">
-    <a class="brand" href="index.html"><img src="assets/logo.webp" alt="고!래디 Go! Raddy"></a>
+    <a class="brand" href="./"><img src="assets/logo.webp" alt="고!래디 Go! Raddy"></a>
     <nav class="menu">
-      <a href="index.html" data-m="hide">홈</a>
-      <a href="notice.html" data-short="공지">공지사항</a>
-      <a href="patch-notes.html" data-short="패치">패치노트</a>
-      <a href="probability.html" data-short="확률">확률 고지</a>
-      <a href="support.html" class="on">문의</a>
-      <a href="en/support.html" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
+      <a href="./" data-m="hide">홈</a>
+      <a href="notice" data-short="공지">공지사항</a>
+      <a href="patch-notes" data-short="패치">패치노트</a>
+      <a href="probability" data-short="확률">확률 고지</a>
+      <a href="support" class="on">문의</a>
+      <a href="en/support" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
     </nav>
     <div class="allmenu">
       <button class="allmenu-btn" type="button" aria-label="전체 메뉴" aria-expanded="false" aria-haspopup="true">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
       </button>
       <div class="allmenu-panel" hidden>
-        <a href="index.html">홈</a>
-        <a href="notice.html">공지사항</a>
-        <a href="patch-notes.html">패치노트</a>
-        <a href="probability.html">확률 고지</a>
-        <a href="support.html">문의</a>
+        <a href="./">홈</a>
+        <a href="notice">공지사항</a>
+        <a href="patch-notes">패치노트</a>
+        <a href="probability">확률 고지</a>
+        <a href="support">문의</a>
         <div class="divider"></div>
-        <a href="terms.html">이용약관</a>
-        <a href="privacy.html">개인정보처리방침</a>
+        <a href="terms">이용약관</a>
+        <a href="privacy">개인정보처리방침</a>
       </div>
     </div>
   </div>
@@ -73,7 +73,7 @@
     <div>
       <label for="inqEmail">답변 받을 이메일 (선택)</label>
       <input id="inqEmail" name="email" type="email" placeholder="예: raddy@example.com" maxlength="80" autocomplete="email">
-      <p class="form-hint">남겨주시면 메일로 답변드려요. 답변 회신 목적으로만 사용하며, 처리 완료 후 파기됩니다. <a href="privacy.html" target="_blank">개인정보처리방침</a></p>
+      <p class="form-hint">남겨주시면 메일로 답변드려요. 답변 회신 목적으로만 사용하며, 처리 완료 후 파기됩니다. <a href="privacy" target="_blank">개인정보처리방침</a></p>
     </div>
 
     <div>
@@ -165,10 +165,10 @@
 <footer class="site">
   <img class="foot-logo" src="assets/logo.webp" alt="고!래디">
   <div>
-    <a href="terms.html">이용약관</a> ·
-    <a href="privacy.html">개인정보처리방침</a> ·
-    <a href="probability.html">확률 고지</a> ·
-    <a href="../index.html">오로지게임즈 ↗</a>
+    <a href="terms">이용약관</a> ·
+    <a href="privacy">개인정보처리방침</a> ·
+    <a href="probability">확률 고지</a> ·
+    <a href="../">오로지게임즈 ↗</a>
   </div>
   <div class="legal">© 2026 OLO-G Games Inc. All rights reserved. · Go! Raddy™</div>
 </footer>
@@ -183,7 +183,7 @@ const btn = document.getElementById('sendBtn');
 const typeSel = document.getElementById('inqType');
 
 // ===== 인게임 프리필 (URL 파라미터) =====
-// 예: support.html?source=ingame&nick=뽀찌&uid=u_12345&ver=1.0088&device=iPhone15%20iOS19&type=버그%20제보
+// 예: support?source=ingame&nick=뽀찌&uid=u_12345&ver=1.0088&device=iPhone15%20iOS19&type=버그%20제보
 (function prefill() {
   const q = new URLSearchParams(location.search);
   if (q.get('nick')) document.getElementById('inqNick').value = q.get('nick');

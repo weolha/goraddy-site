@@ -6,10 +6,10 @@
 <script>(function(){var K='olog_lang';document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a){try{localStorage.setItem(K,a.getAttribute('lang')||'ko')}catch(e2){}}})})();</script>
 <title>Support — Go! Raddy</title>
 <meta name="description" content="Go! Raddy customer support — bug reports, payment issues, suggestions.">
-<link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support.html">
-<link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support.html">
-<link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support.html">
-<link rel="canonical" href="https://olo-g.com/goraddy/en/support.html">
+<link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support">
+<link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support">
+<link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support">
+<link rel="canonical" href="https://olo-g.com/goraddy/en/support">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="stylesheet" href="../style.css">
@@ -18,28 +18,28 @@
 
 <header class="site">
   <div class="nav-inner">
-    <a class="brand" href="index.html"><img src="../assets/logo.webp" alt="Go! Raddy"></a>
+    <a class="brand" href="./"><img src="../assets/logo.webp" alt="Go! Raddy"></a>
     <nav class="menu">
-      <a href="index.html" data-m="hide">Home</a>
-      <a href="notice.html">News</a>
-      <a href="patch-notes.html" data-short="Patch">Patch Notes</a>
-      <a href="probability.html" data-short="Rates">Drop Rates</a>
-      <a href="support.html" class="on" data-short="Help">Support</a>
-      <a href="../support.html" class="lang" lang="ko"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.5" fill="#0047a0"/><path d="M4.5 10a5.5 5.5 0 0 1 11 0 2.75 2.75 0 0 0-5.5 0 2.75 2.75 0 0 1-5.5 0z" fill="#cd2e3a"/></svg>한국어</a>
+      <a href="./" data-m="hide">Home</a>
+      <a href="notice">News</a>
+      <a href="patch-notes" data-short="Patch">Patch Notes</a>
+      <a href="probability" data-short="Rates">Drop Rates</a>
+      <a href="support" class="on" data-short="Help">Support</a>
+      <a href="../support" class="lang" lang="ko"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.5" fill="#0047a0"/><path d="M4.5 10a5.5 5.5 0 0 1 11 0 2.75 2.75 0 0 0-5.5 0 2.75 2.75 0 0 1-5.5 0z" fill="#cd2e3a"/></svg>한국어</a>
     </nav>
     <div class="allmenu">
       <button class="allmenu-btn" type="button" aria-label="All menu" aria-expanded="false" aria-haspopup="true">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
       </button>
       <div class="allmenu-panel" hidden>
-        <a href="index.html">Home</a>
-        <a href="notice.html">News</a>
-        <a href="patch-notes.html">Patch Notes</a>
-        <a href="probability.html">Drop Rates</a>
-        <a href="support.html">Support</a>
+        <a href="./">Home</a>
+        <a href="notice">News</a>
+        <a href="patch-notes">Patch Notes</a>
+        <a href="probability">Drop Rates</a>
+        <a href="support">Support</a>
         <div class="divider"></div>
-        <a href="terms.html">Terms of Service</a>
-        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms">Terms of Service</a>
+        <a href="privacy">Privacy Policy</a>
       </div>
     </div>
   </div>
@@ -73,7 +73,7 @@
     <div>
       <label for="inqEmail">Email for reply (optional)</label>
       <input id="inqEmail" name="email" type="email" placeholder="e.g. raddy@example.com" maxlength="80" autocomplete="email">
-      <p class="form-hint">Leave it and we'll reply by email. Used only to respond to your inquiry, then deleted. <a href="privacy.html" target="_blank">Privacy Policy</a></p>
+      <p class="form-hint">Leave it and we'll reply by email. Used only to respond to your inquiry, then deleted. <a href="privacy" target="_blank">Privacy Policy</a></p>
     </div>
 
     <div>
@@ -165,10 +165,10 @@
 <footer class="site">
   <img class="foot-logo" src="../assets/logo.webp" alt="Go! Raddy">
   <div>
-    <a href="terms.html">Terms of Service</a> ·
-    <a href="privacy.html">Privacy Policy</a> ·
-    <a href="probability.html">Drop Rates</a> ·
-    <a href="../../index.html">OLO-G Games Inc. ↗</a>
+    <a href="terms">Terms of Service</a> ·
+    <a href="privacy">Privacy Policy</a> ·
+    <a href="probability">Drop Rates</a> ·
+    <a href="../../">OLO-G Games Inc. ↗</a>
   </div>
   <div class="legal">© 2026 OLO-G Games Inc. All rights reserved. · Go! Raddy™</div>
 </footer>
@@ -183,7 +183,7 @@ const btn = document.getElementById('sendBtn');
 const typeSel = document.getElementById('inqType');
 
 // ===== In-game prefill (URL params) =====
-// e.g. support.html?source=ingame&nick=Pochi&uid=u_12345&ver=1.0088&device=iPhone15%20iOS19&type=Bug%20Report
+// e.g. support?source=ingame&nick=Pochi&uid=u_12345&ver=1.0088&device=iPhone15%20iOS19&type=Bug%20Report
 (function prefill() {
   const q = new URLSearchParams(location.search);
   if (q.get('nick')) document.getElementById('inqNick').value = q.get('nick');

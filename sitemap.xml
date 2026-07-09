@@ -22,42 +22,42 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/"/>
   </url>
   <url>
-    <loc>https://olo-g.com/about.html</loc>
+    <loc>https://olo-g.com/about</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/about.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/about"/>
   </url>
   <url>
-    <loc>https://olo-g.com/en/about.html</loc>
+    <loc>https://olo-g.com/en/about</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/about.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/about"/>
   </url>
   <url>
-    <loc>https://olo-g.com/games.html</loc>
+    <loc>https://olo-g.com/games</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://olo-g.com/contact.html</loc>
+    <loc>https://olo-g.com/contact</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/contact"/>
   </url>
   <url>
-    <loc>https://olo-g.com/en/contact.html</loc>
+    <loc>https://olo-g.com/en/contact</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/contact"/>
   </url>
 
   <!-- ===== 고!래디 게임 사이트 — 한국어 ===== -->
@@ -71,58 +71,58 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/patch-notes.html</loc>
+    <loc>https://olo-g.com/goraddy/patch-notes</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/patch-notes.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/patch-notes.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/patch-notes.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/patch-notes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/patch-notes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/patch-notes"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/notice.html</loc>
+    <loc>https://olo-g.com/goraddy/notice</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/notice.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/notice.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/notice.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/notice"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/notice"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/notice"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/probability.html</loc>
+    <loc>https://olo-g.com/goraddy/probability</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/probability.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/probability.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/probability.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/probability"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/probability"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/probability"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/support.html</loc>
+    <loc>https://olo-g.com/goraddy/support</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/terms.html</loc>
+    <loc>https://olo-g.com/goraddy/terms</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/terms.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/terms.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/terms"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/privacy.html</loc>
+    <loc>https://olo-g.com/goraddy/privacy</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/privacy"/>
   </url>
 
   <!-- ===== 고!래디 게임 사이트 — English ===== -->
@@ -136,58 +136,58 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/en/patch-notes.html</loc>
+    <loc>https://olo-g.com/goraddy/en/patch-notes</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/patch-notes.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/patch-notes.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/patch-notes.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/patch-notes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/patch-notes"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/patch-notes"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/en/notice.html</loc>
+    <loc>https://olo-g.com/goraddy/en/notice</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/notice.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/notice.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/notice.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/notice"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/notice"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/notice"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/en/probability.html</loc>
+    <loc>https://olo-g.com/goraddy/en/probability</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/probability.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/probability.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/probability.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/probability"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/probability"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/probability"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/en/support.html</loc>
+    <loc>https://olo-g.com/goraddy/en/support</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/en/terms.html</loc>
+    <loc>https://olo-g.com/goraddy/en/terms</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/terms.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/terms.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/terms"/>
   </url>
   <url>
-    <loc>https://olo-g.com/goraddy/en/privacy.html</loc>
+    <loc>https://olo-g.com/goraddy/en/privacy</loc>
     <lastmod>2026-06-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/privacy"/>
   </url>
 
 </urlset>

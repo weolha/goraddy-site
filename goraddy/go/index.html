@@ -92,7 +92,7 @@ function buildIosUrl(p) {
   document.getElementById('btnGp').href = playUrl;
   document.getElementById('btnIos').href = iosUrl;
 
-  var dest = os === 'android' ? playUrl : os === 'ios' ? iosUrl : '../index.html';
+  var dest = os === 'android' ? playUrl : os === 'ios' ? iosUrl : '../';
   if (os === 'other') {
     document.getElementById('goMsg').textContent = '고!래디 공식 사이트로 이동합니다…';
     document.getElementById('goSub').textContent = '모바일에서 QR을 스캔하면 스토어로 바로 이동합니다.';
