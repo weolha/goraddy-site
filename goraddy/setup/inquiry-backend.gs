@@ -16,7 +16,7 @@
  * 설정 (최초 1회):
  * 1. Apps Script 편집기 → 프로젝트 설정 → 스크립트 속성 → API_TOKEN 추가
  *    (값: 긴 무작위 문자열. 이 토큰이 있으면 발송까지 가능하므로 외부 공개 금지)
- * 2. 발송 메일은 이 스크립트를 소유한 Google 계정(= goraddycs@olo-g.com 권장)으로 나감.
+ * 2. 발송 메일은 이 스크립트를 소유한 Google 계정으로 나감(회신 주소는 아래 CS_MAIL).
  *    첫 발송 시 Gmail 권한 승인 필요.
  *
  * 코드 수정 후엔 반드시: [배포] → [배포 관리] → 연필 → 버전 "새 버전" → 배포
@@ -24,7 +24,7 @@
 
 var SHEET_ID = '1tRmfAYqbOknDcFaX_DLeDNmcCSsvfgTBO_sztlIi5jY'; // 고래디 문의 접수
 var ATTACH_FOLDER = '고래디 문의 첨부';
-var CS_MAIL = 'goraddycs@olo-g.com'; // 회신 수신 주소 (replyTo)
+var CS_MAIL = 'cs@olo-g.com'; // 회신 수신 주소 (replyTo) — 2026-08-16 goraddycs@ 에서 통일(여러 게임 공용)
 // TODO: 도메인 전환(goraddy.olo-g.com) 완료 시 이 값만 교체
 var SITE_URL = 'https://weolha.github.io/goraddy-site';
 
