@@ -16,7 +16,7 @@
  * 설정 (최초 1회):
  * 1. Apps Script 편집기 → 프로젝트 설정 → 스크립트 속성 → API_TOKEN 추가
  *    (값: 긴 무작위 문자열. 이 토큰이 있으면 발송까지 가능하므로 외부 공개 금지)
- * 2. 발송 메일은 이 스크립트를 소유한 Google 계정으로 나감(회신 주소는 아래 CS_MAIL).
+ * 2. 발송 메일은 이 스크립트를 소유한 Google 계정으로 나감(회신 주소는 아래 CS_MAIL = 고래디 전용 함).
  *    첫 발송 시 Gmail 권한 승인 필요.
  *
  * 코드 수정 후엔 반드시: [배포] → [배포 관리] → 연필 → 버전 "새 버전" → 배포
@@ -24,9 +24,18 @@
 
 var SHEET_ID = '1tRmfAYqbOknDcFaX_DLeDNmcCSsvfgTBO_sztlIi5jY'; // 고래디 문의 접수
 var ATTACH_FOLDER = '고래디 문의 첨부';
-var CS_MAIL = 'cs@olo-g.com'; // 회신 수신 주소 (replyTo) — 2026-08-16 goraddycs@ 에서 통일(여러 게임 공용)
+// 고!래디 문의가 실제로 도착·처리되는 함. 접수 알림 수신처이자 답장의 replyTo 다.
+// ⚠ 약관·개인정보에 표기되는 대표 주소(cs@olo-g.com)와는 다른 것이다 —
+//    cs@ 는 오로지게임즈 전 게임의 CS 가 모이는 회사 창구이고,
+//    고래디 문의 파이프라인(접수→초안→발송)은 이 전용 함에서 굴린다. 섞으면 관리가 안 된다.
+var CS_MAIL = 'goraddycs@olo-g.com';
 // TODO: 도메인 전환(goraddy.olo-g.com) 완료 시 이 값만 교체
 var SITE_URL = 'https://weolha.github.io/goraddy-site';
+
+// 새 문의가 들어오면 CS_MAIL 로 알림을 보낸다(2026-08-17 추가).
+// 전엔 시트에 행만 쌓이고 아무 알림도 없어서, 시트를 직접 열어보기 전까지 접수를 몰랐다.
+// 메일이 성가시면 false 로 끄면 된다(끄면 시트 「도구 > 알림 규칙」이라도 걸어 둘 것).
+var NOTIFY_ON_NEW = true;
 
 // 주의: 이모지(🐳 등)는 Gmail 일반 텍스트 발송에서 깨지므로 메일 문구에 사용 금지
 var MAIL_KO = {
@@ -92,7 +101,14 @@ function doPost(e) {
     ]);
 
     // 접수번호: GR-yyMMdd-행번호 (행번호로 시트에서 바로 찾을 수 있음)
-    var ticket = 'GR-' + Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyMMdd') + '-' + sheet.getLastRow();
+    var row = sheet.getLastRow();
+    var ticket = 'GR-' + Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyMMdd') + '-' + row;
+
+    // 접수 알림. 발송이 실패해도 접수 자체는 성공으로 끝나야 하므로 통째로 감싼다.
+    if (NOTIFY_ON_NEW) {
+      try { notifyNewInquiry(ticket, row, p, attachLinks); } catch (me) {}
+    }
+
     return json({ ok: true, ticket: ticket });
   } catch (err) {
     return json({ ok: false, error: 'server' });
@@ -193,6 +209,39 @@ function authorizeGmailTest() {
 }
 
 // ───────────────────────── 유틸 ─────────────────────────
+// 새 문의 알림 메일 — 시트를 열지 않아도 내용까지 바로 보이게 본문에 다 넣는다.
+function notifyNewInquiry(ticket, row, p, attachLinks) {
+  var sheetUrl = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/edit#gid=0&range=A' + row;
+  var lines = [
+    '접수번호: ' + ticket,
+    '유형: ' + (s(p.type, 20) || '-'),
+    '닉네임: ' + (s(p.nick, 30) || '-') + '   UID: ' + (s(p.uid, 50) || '-'),
+    '앱버전: ' + (s(p.ver, 20) || '-') + '   기기: ' + (s(p.device, 80) || '-'),
+    '발생위치: ' + (s(p.where, 60) || '-') + '   주문번호: ' + (s(p.order, 60) || '-'),
+    '회신 이메일: ' + (s(p.email, 80) || '(없음 — 답장 불가)'),
+    '출처: ' + (s(p.source, 10) || 'web'),
+    '',
+    '── 내용 ──',
+    s(p.body, 1500),
+    ''
+  ];
+  if (attachLinks && attachLinks.length) lines.push('첨부: ' + attachLinks.join(' , '), '');
+  lines.push('시트에서 열기: ' + sheetUrl);
+
+  // 유저 이메일이 있으면 이 알림에 그대로 [답장]해서 보낼 수 있게 replyTo 를 유저로 건다.
+  // 급한 건은 이게 제일 빠르다. 다만 그렇게 보내면 시트 상태가 '신규'로 남으므로 손으로 닫아야 한다.
+  var userMail = s(p.email, 80);
+  var opts = { name: '고!래디 문의 알림' };
+  if (userMail && userMail.indexOf('@') !== -1) {
+    opts.replyTo = userMail;
+    lines.push('', '※ 이 메일에 그대로 [답장]하면 유저에게 바로 갑니다(회신처: ' + userMail + ').',
+               '   단 그 경우 시트 상태는 「신규」로 남으니 처리 후 「답변완료」로 바꿔 주세요.',
+               '   접수번호·서명까지 붙여 정식으로 보내려면 답변 API(send)를 쓰세요.');
+  }
+
+  GmailApp.sendEmail(CS_MAIL, '[고!래디 문의] ' + ticket + ' ' + (s(p.type, 20) || ''), lines.join('\n'), opts);
+}
+
 function s(v, n) { return String(v || '').slice(0, n); }
 
 function getOrCreateFolder(name) {

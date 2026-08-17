@@ -32,7 +32,7 @@ goraddy.olo-g.com 정적 사이트. 빌드 도구 없음 — HTML/CSS만. push�
 문의 폼 제출은 Apps Script 웹 앱을 거쳐 구글 시트에 쌓인다.
 
 - 설치: [setup/inquiry-backend.gs](setup/inquiry-backend.gs) 상단 주석의 5단계 (시트 생성 → Apps Script 붙여넣기 → 웹 앱 배포 → URL 복사)
-- 배포 URL을 `support.html`의 `ENDPOINT` 상수에 입력해야 폼이 활성화됨. 미입력 상태에선 이메일(cs@olo-g.com) 폴백으로 동작
+- 배포 URL을 `support.html`의 `ENDPOINT` 상수에 입력해야 폼이 활성화됨. 미입력 상태에선 이메일(goraddycs@olo-g.com) 폴백으로 동작
 - 시트 컬럼: 접수시각 | 유형 | 닉네임 | 기기 | 내용 | 상태(신규/확인중/답변완료) | 답변메모
 - 허니팟 필드로 단순 스팸 차단
 
