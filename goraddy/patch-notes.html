@@ -75,11 +75,17 @@
       <a href="patch-notes" class="on" data-short="패치">패치노트</a>
       <a href="probability" data-short="확률">확률 고지</a>
       <a href="support">문의</a>
-      <span class="langs">
-        <a href="en/patch-notes" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
-        <a href="ja/patch-notes" class="lang" lang="ja"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.2" fill="#bc002d"/></svg>日本語</a>
-      </span>
     </nav>
+    <div class="langsel">
+      <button class="langsel-btn" type="button" aria-label="언어 선택" aria-expanded="false" aria-haspopup="true">
+        <svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.5" fill="#0047a0"/><path d="M4.5 10a5.5 5.5 0 0 1 11 0 2.75 2.75 0 0 0-5.5 0 2.75 2.75 0 0 1-5.5 0z" fill="#cd2e3a"/></svg><span class="langsel-cur">한국어</span><svg class="caret" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M4 6.5 8 10.5 12 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="langsel-panel" hidden>
+        <a href="patch-notes" class="lang" lang="ko" hreflang="ko" aria-current="true"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.5" fill="#0047a0"/><path d="M4.5 10a5.5 5.5 0 0 1 11 0 2.75 2.75 0 0 0-5.5 0 2.75 2.75 0 0 1-5.5 0z" fill="#cd2e3a"/></svg>한국어</a>
+        <a href="en/patch-notes" class="lang" lang="en" hreflang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>English</a>
+        <a href="ja/patch-notes" class="lang" lang="ja" hreflang="ja"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.2" fill="#bc002d"/></svg>日本語</a>
+      </div>
+    </div>
     <div class="allmenu">
       <button class="allmenu-btn" type="button" aria-label="전체 메뉴" aria-expanded="false" aria-haspopup="true">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
@@ -429,19 +435,25 @@
 </footer>
 
 <script>
-// 전체 메뉴 토글
+// 드롭다운 토글 (전체 메뉴 · 언어 선택) — 하나를 열면 다른 하나는 닫는다
 (function () {
-  const btn = document.querySelector('.allmenu-btn');
-  const panel = document.querySelector('.allmenu-panel');
-  if (!btn || !panel) return;
-  const close = () => { panel.setAttribute('hidden', ''); btn.setAttribute('aria-expanded', 'false'); };
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (panel.hasAttribute('hidden')) { panel.removeAttribute('hidden'); btn.setAttribute('aria-expanded', 'true'); }
-    else close();
+  const groups = Array.from(document.querySelectorAll('.allmenu, .langsel'))
+    .map(root => ({ root, btn: root.querySelector('button'), panel: root.querySelector('.allmenu-panel, .langsel-panel') }))
+    .filter(g => g.btn && g.panel);
+  const close = g => { g.panel.setAttribute('hidden', ''); g.btn.setAttribute('aria-expanded', 'false'); };
+  const closeAll = () => groups.forEach(close);
+  groups.forEach(g => {
+    g.btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const wasClosed = g.panel.hasAttribute('hidden');
+      closeAll();
+      if (wasClosed) { g.panel.removeAttribute('hidden'); g.btn.setAttribute('aria-expanded', 'true'); }
+    });
   });
-  document.addEventListener('click', (e) => { if (!panel.hasAttribute('hidden') && !panel.contains(e.target)) close(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  document.addEventListener('click', e => {
+    groups.forEach(g => { if (!g.panel.hasAttribute('hidden') && !g.root.contains(e.target)) close(g); });
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
 })();
 </script>
 </body>

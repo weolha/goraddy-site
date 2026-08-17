@@ -42,6 +42,7 @@ goraddy.olo-g.com 정적 사이트. 빌드 도구 없음 — HTML/CSS만. push�
 
 - **sitemap·robots는 사이트 루트**(`/sitemap.xml`, `/robots.txt`)에 있다 — 회사+게임 전체 URL과 ko/en/ja hreflang 대응 포함. 새 페이지 추가 시 `sitemap.xml`에도 등록.
 - **언어 자동 전환:** KR 페이지 `<head>` 최상단 스크립트가 `?lang=` → `localStorage('olog_lang')` → `navigator.language` 순으로 판단해 `en/` 또는 `ja/`로 리다이렉트한다. 한국어 브라우저는 그대로 두고, 일본어(`ja*`)는 JA, 그 외는 EN. EN/JA 페이지의 스크립트는 리다이렉트 없이 언어 선택만 저장한다. 페이지를 추가하면 이 스크립트의 `P`(슬러그)도 맞춰야 한다.
+- **언어 선택 UI:** 헤더의 `.langsel` — **현재 언어를 보여주는 버튼 1개 + 드롭다운**이다. 언어마다 칩을 두면 언어가 늘 때마다 헤더가 좁아지고 모바일에서 메뉴를 덮어서 2026-08-17에 바꿨다. `nav.menu` **바깥**에 있어 가로 스크롤과 무관하다(예전 `position:sticky` 고정 꼼수 제거). 패널 링크는 `class="lang" lang="xx"`를 유지해야 자동 전환 스크립트가 선택을 저장한다 — **클래스를 바꾸면 선호 언어가 저장되지 않는다.** 현재 언어에는 `aria-current="true"`. 전체메뉴 햄버거와 같은 토글 스크립트를 쓰며 하나를 열면 다른 하나가 닫힌다.
 - patch-notes(ko/en): canonical + OpenGraph/Twitter 카드 + JSON-LD(Organization·VideoGame·CollectionPage·BreadcrumbList) 적용됨.
 - 게임 하위 페이지(공지·확률·문의·약관·개인정보)에 canonical 적용됨. 새 페이지엔 canonical 누락 주의.
 - 배포 후 1회: Google Search Console에 `https://olo-g.com/sitemap.xml` 제출.
