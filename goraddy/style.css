@@ -104,6 +104,25 @@ nav.menu a.lang .flag {
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(20, 54, 92, 0.15);
 }
+/* 3개 국어 전환: .lang 하나하나가 sticky/right:0 이라 나란히 두면 겹친다.
+   그룹을 sticky로 만들고 내부 링크는 static으로 되돌린다. */
+nav.menu .langs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: none;
+  margin-left: 0.35rem;
+  position: sticky;
+  right: 0;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: -10px 0 10px rgba(255, 255, 255, 0.9);
+}
+nav.menu .langs a.lang {
+  position: static;
+  margin-left: 0;
+  background: transparent;
+  box-shadow: none;
+}
 
 /* ----- 전체 메뉴 (마스터 탭) ----- */
 .allmenu { position: relative; flex: none; margin-left: 0.1rem; }

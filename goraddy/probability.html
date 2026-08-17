@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script>(function(){var K='olog_lang',EN='en/probability';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'){s('en');location.replace(EN);return}var p=g();if(p==='ko')return;if(p==='en'){location.replace(EN);return}if((navigator.language||'').toLowerCase().indexOf('ko')!==0)location.replace(EN)})();</script>
+<script>(function(){var K='olog_lang',P='probability';function g(){try{return localStorage.getItem(K)}catch(e){return null}}function s(v){try{localStorage.setItem(K,v)}catch(e){}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a)s(a.getAttribute('lang')||'en')});function go(v){location.replace(v+'/'+P)}var q=new URLSearchParams(location.search).get('lang');if(q==='ko'){s('ko');return}if(q==='en'||q==='ja'){s(q);go(q);return}var p=g();if(p==='ko')return;if(p==='en'||p==='ja'){go(p);return}var n=(navigator.language||'').toLowerCase();if(n.indexOf('ko')===0)return;if(n.indexOf('ja')===0){go('ja');return}go('en')})();</script>
 <title>확률 고지 — 고!래디 Go! Raddy</title>
 <meta name="description" content="고!래디(Go! Raddy) 상자·낚시 보상 확률 안내.">
 <link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/probability">
 <link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/probability">
+<link rel="alternate" hreflang="ja" href="https://olo-g.com/goraddy/ja/probability">
 <link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/probability">
 <link rel="canonical" href="https://olo-g.com/goraddy/probability">
 <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -25,7 +26,10 @@
       <a href="patch-notes" data-short="패치">패치노트</a>
       <a href="probability" class="on" data-short="확률">확률 고지</a>
       <a href="support">문의</a>
-      <a href="en/probability" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
+      <span class="langs">
+        <a href="en/probability" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
+        <a href="ja/probability" class="lang" lang="ja"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.2" fill="#bc002d"/></svg>日本語</a>
+      </span>
     </nav>
     <div class="allmenu">
       <button class="allmenu-btn" type="button" aria-label="전체 메뉴" aria-expanded="false" aria-haspopup="true">

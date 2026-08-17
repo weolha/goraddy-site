@@ -1,0 +1,26 @@
+/* ===== 日本語版オーバーライド =====
+   ../style.css の後に読み込む。
+   - 韓国語向けの word-break:keep-all は日本語で不自然な行送りになるため normal に戻す
+   - 見出し用の 'SeoulAlrim' は韓国語専用サブセットのため日本語フォントに置き換える
+   - 'Palanquin Dark' はラテン文字専用なので先頭に残す(欧文の見た目を ko/en と揃える)
+*/
+
+:root {
+  --jp-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
+}
+
+body {
+  font-family: 'Palanquin Dark', var(--jp-sans);
+  word-break: normal;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, .brand, .store-btn, .ver, .badge, .btn,
+.spec dt, .aqua-counter, .allmenu-panel a {
+  font-family: 'Palanquin Dark', var(--jp-sans);
+}
+
+/* word-break:normal ではハイフンが改行位置になるため、
+   「OLO-G」のような固有名詞は明示的に折り返しを止める */
+.nobr { white-space: nowrap; }

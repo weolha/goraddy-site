@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var K='olog_lang';document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a){try{localStorage.setItem(K,a.getAttribute('lang')||'ko')}catch(e2){}}})})();</script>
+<title>お問い合わせ — ゴー!ラディ</title>
+<meta name="description" content="ゴー!ラディのお問い合わせ — 不具合のご報告、決済、アカウントに関するお困りごとをサポートします。">
+<link rel="alternate" hreflang="ko" href="https://olo-g.com/goraddy/support">
+<link rel="alternate" hreflang="en" href="https://olo-g.com/goraddy/en/support">
+<link rel="alternate" hreflang="ja" href="https://olo-g.com/goraddy/ja/support">
+<link rel="alternate" hreflang="x-default" href="https://olo-g.com/goraddy/support">
+<link rel="canonical" href="https://olo-g.com/goraddy/ja/support">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="ja.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <a class="brand" href="./"><img src="../assets/logo.webp" alt="ゴー!ラディ"></a>
+    <nav class="menu">
+      <a href="./" data-m="hide">ホーム</a>
+      <a href="notice">お知らせ</a>
+      <a href="patch-notes" data-short="パッチ">パッチノート</a>
+      <a href="probability">提供割合</a>
+      <a href="support" class="on">サポート</a>
+      <span class="langs">
+        <a href="../support" class="lang" lang="ko"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#fff"/><circle cx="10" cy="10" r="5.5" fill="#0047a0"/><path d="M4.5 10a5.5 5.5 0 0 1 11 0 2.75 2.75 0 0 0-5.5 0 2.75 2.75 0 0 1-5.5 0z" fill="#cd2e3a"/></svg>한국어</a>
+        <a href="../en/support" class="lang" lang="en"><svg class="flag" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="fEn"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#fEn)"><rect width="20" height="20" fill="#fff"/><g fill="#d23b3b"><rect width="20" height="2.3"/><rect y="4.4" width="20" height="2.3"/><rect y="8.9" width="20" height="2.3"/><rect y="13.3" width="20" height="2.3"/><rect y="17.7" width="20" height="2.3"/></g><rect width="10.5" height="8.9" fill="#3c5a9a"/></g></svg>EN</a>
+      </span>
+    </nav>
+    <div class="allmenu">
+      <button class="allmenu-btn" type="button" aria-label="メニュー" aria-expanded="false" aria-haspopup="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <div class="allmenu-panel" hidden>
+        <a href="./">ホーム</a>
+        <a href="notice">お知らせ</a>
+        <a href="patch-notes">パッチノート</a>
+        <a href="probability">提供割合</a>
+        <a href="support">サポート</a>
+        <div class="divider"></div>
+        <a href="terms">利用規約</a>
+        <a href="privacy">プライバシーポリシー</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<h1>お問い合わせ</h1>
+<p class="lead">不具合のご報告、決済に関する問題、ご要望など、以下のフォームからお送りください。折り返しご連絡いたします。</p>
+
+<div class="card">
+  <form class="inquiry" id="inqForm">
+    <p class="form-hint" id="prefillNotice" style="display:none;">🐳 ゲームからお越しですね!アカウント情報を自動で入力しました。</p>
+
+    <div>
+      <label for="inqType">お問い合わせ種別</label>
+      <select id="inqType" name="type">
+        <option value="不具合のご報告">不具合のご報告</option>
+        <option value="決済に関する問題">決済に関する問題</option>
+        <option value="アカウントに関する問題">アカウントに関する問題</option>
+        <option value="ご意見・ご要望">ご意見・ご要望</option>
+        <option value="アカウント・データ削除のご依頼">アカウント・データ削除のご依頼</option>
+        <option value="その他">その他</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="inqNick">ゲーム内ニックネーム</label>
+      <input id="inqNick" name="nick" type="text" placeholder="例: ポチファン" maxlength="20" required>
+    </div>
+
+    <div>
+      <label for="inqEmail">ご返信用メールアドレス(任意)</label>
+      <input id="inqEmail" name="email" type="email" placeholder="例: raddy@example.com" maxlength="80" autocomplete="email">
+      <p class="form-hint">ご記入いただければメールで返信いたします。お問い合わせへの対応のみに利用し、対応後は削除します。<a href="privacy" target="_blank">プライバシーポリシー</a></p>
+    </div>
+
+    <div>
+      <label for="inqDevice">端末 / OS(任意)</label>
+      <input id="inqDevice" name="device" type="text" placeholder="例: iPhone 15 / iOS 19">
+    </div>
+
+    <!-- 不具合のご報告のみ -->
+    <div class="cond cond-bug">
+      <label for="inqWhere">発生した場所</label>
+      <input id="inqWhere" name="where" type="text" placeholder="例: ステージ 3-8 / 釣り画面 / ロビー">
+    </div>
+
+    <!-- 決済に関する問題のみ -->
+    <div class="cond cond-pay" style="display:none;">
+      <label for="inqOrder">ストアの注文番号</label>
+      <input id="inqOrder" name="order" type="text" placeholder="Google Play: GPA.XXXX-XXXX… / App Store の領収書の注文ID">
+      <p class="form-hint">注文番号はストアからの領収書メールに記載されています。ご記入いただくと確認がとても早くなります!</p>
+    </div>
+
+    <div>
+      <label for="inqBody">お問い合わせ内容</label>
+      <textarea id="inqBody" name="body" required placeholder="いつ・どの画面で・どのような症状が起きたかをお書きください。詳しいほど早く対応できます。"></textarea>
+    </div>
+
+    <div>
+      <label for="inqFile">スクリーンショットの添付(任意・1枚)</label>
+      <input id="inqFile" type="file" accept="image/*">
+      <p class="form-hint">画像は送信前に自動で圧縮されます。</p>
+    </div>
+
+    <div class="cond cond-bug">
+      <label>動画をお持ちですか?(任意)</label>
+      <p class="form-hint">動画は<strong>メールでお送りいただくのが簡単です</strong>。下のボタンを押すと、入力内容が反映されたメールが開きます。動画ファイルを添付して送信してください。</p>
+      <button type="button" class="btn sub" id="videoMailBtn" style="margin-top:0.2rem;">📎 動画をメールで送る</button>
+      <p class="form-hint" style="margin-top:0.6rem;">リンクでも大丈夫です <input id="inqVideo" name="video" type="url" placeholder="YouTube(限定公開)/ Drive の共有リンク" style="margin-top:0.3rem;"></p>
+    </div>
+
+    <!-- ゲーム内からの自動入力(hidden) -->
+    <input type="hidden" name="uid" id="inqUid">
+    <input type="hidden" name="ver" id="inqVer">
+    <input type="hidden" name="source" id="inqSource" value="web-ja">
+    <!-- ハニーポット(スパム対策) -->
+    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+
+    <div class="form-actions">
+      <button type="submit" class="btn" id="sendBtn">送信する</button>
+    </div>
+    <p class="form-hint" id="formHint">メールアドレスをご記入いただければ、そちらへ返信いたします。補償アイテムはニックネーム宛にゲーム内メールボックスへお届けしますので、お間違いのないようご確認ください。</p>
+    <p class="form-hint">フォームが動かないときは <a href="#" id="mailFallback">goraddycs@olo-g.com へメールでお問い合わせください</a></p>
+    <p class="form-hint" id="mailManual" style="display:none;">メールアプリが開きませんでしたか?<strong>goraddycs@olo-g.com</strong> へ直接お送りください。<button type="button" class="btn sub" id="copyMailBtn" style="margin-left:0.4rem;">内容をコピー</button></p>
+  </form>
+</div>
+
+<h2>お問い合わせの前に(よくあるご質問)</h2>
+
+<div class="card">
+  <h3>購入したのにアイテムが届きません</h3>
+  <p>まずはアプリを完全に終了して再起動してください。それでも届かない場合は、<strong>ストアの購入領収書(注文番号)</strong>とゲーム内ニックネームをお知らせください。確認のうえお届けいたします。</p>
+</div>
+
+<div class="card">
+  <h3>報酬を受け取ったのに見当たりません</h3>
+  <p>まずはゲーム内のメールボックスとイベントタブをご確認ください。ネットワークが不安定な場合、受け取りが遅れることがあります。それでも表示されない場合は、ニックネームと受け取れていない報酬をお知らせください。</p>
+</div>
+
+<div class="card">
+  <h3>ゲームが固まる・先に進めません</h3>
+  <p>アプリの再起動 → 端末の再起動 → ストアから最新バージョンへの更新、の順にお試しください。改善しない場合は、<strong>端末の機種名・OSバージョン・固まった画面</strong>をお知らせいただけると、原因を早く特定できます。</p>
+</div>
+
+<div class="card">
+  <h3>アカウントやデータを削除したい</h3>
+  <p>お問い合わせ種別で<strong>アカウント・データ削除のご依頼</strong>を選び、ニックネームを添えてお送りください。ゲーム内からお問い合わせいただくと、アカウントの確認がより早く行えます。削除されたデータ(進行状況・アイテム・購入履歴)は<strong>復元できません</strong>ので、十分ご検討のうえご依頼ください。</p>
+</div>
+
+<div class="card">
+  <h3>返金について知りたい</h3>
+  <p>アプリ内課金の返金は各ストアのポリシーに従います。Google Play は<a href="https://support.google.com/googleplay/answer/2479637?hl=ja" target="_blank" rel="noopener">Play の返金に関するヘルプ</a>を、App Store は<a href="https://support.apple.com/ja-jp/118223" target="_blank" rel="noopener">Apple の返金リクエスト</a>をご確認ください。返金されたアイテムは、ゲーム内で回収される場合があります。</p>
+</div>
+
+<h2>コミュニティ</h2>
+<div class="card">
+  <p>ゴー!ラディの最新情報をいち早くお届けします。(チャンネルは準備中です。公開され次第、こちらにリンクを掲載します)</p>
+</div>
+
+</main>
+
+<footer class="site">
+  <img class="foot-logo" src="../assets/logo.webp" alt="ゴー!ラディ">
+  <div>
+    <a href="terms">利用規約</a> ·
+    <a href="privacy">プライバシーポリシー</a> ·
+    <a href="probability">提供割合</a> ·
+    <a href="../../" class="nobr">OLO-G Games Inc. ↗</a>
+  </div>
+  <div class="legal">© 2026 OLO-G Games Inc. All rights reserved. · Go! Raddy™</div>
+</footer>
+
+<script>
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxvRgyYcMjzOMdC-4JXPaOndKpVzodgOpzZgiONIjSyQMtO5nhtotLg8d0N-iljhi4mjg/exec';
+const CS_EMAIL = 'goraddycs@olo-g.com';
+
+const form = document.getElementById('inqForm');
+const hint = document.getElementById('formHint');
+const btn = document.getElementById('sendBtn');
+const typeSel = document.getElementById('inqType');
+
+// ===== ゲーム内からの自動入力 (URL パラメータ) =====
+// 例: support?source=ingame&nick=Pochi&uid=u_12345&ver=1.0088&device=iPhone15%20iOS19&type=不具合のご報告
+(function prefill() {
+  const q = new URLSearchParams(location.search);
+  if (q.get('nick')) document.getElementById('inqNick').value = q.get('nick');
+  if (q.get('device')) document.getElementById('inqDevice').value = q.get('device');
+  if (q.get('uid')) document.getElementById('inqUid').value = q.get('uid');
+  if (q.get('ver')) document.getElementById('inqVer').value = q.get('ver');
+  if (q.get('type')) typeSel.value = q.get('type');
+  if (q.get('source') === 'ingame') {
+    document.getElementById('inqSource').value = 'ingame-ja';
+    document.getElementById('prefillNotice').style.display = 'block';
+  }
+  updateCond();
+})();
+
+// ===== 種別による項目の出し分け =====
+function updateCond() {
+  const t = typeSel.value;
+  document.querySelectorAll('.cond-bug').forEach(el => el.style.display = (t === '不具合のご報告') ? '' : 'none');
+  document.querySelectorAll('.cond-pay').forEach(el => el.style.display = (t === '決済に関する問題') ? '' : 'none');
+}
+typeSel.addEventListener('change', updateCond);
+
+// ===== 画像リサイズ (最大 1600px, JPEG) =====
+function fileToResizedDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const MAX = 1600;
+      let { width: w, height: h } = img;
+      if (w > MAX || h > MAX) { const r = Math.min(MAX / w, MAX / h); w = Math.round(w * r); h = Math.round(h * r); }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      c.getContext('2d').drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(img.src);
+      resolve(c.toDataURL('image/jpeg', 0.82));
+    };
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+// ===== 送信 =====
+form.addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  btn.disabled = true;
+  btn.textContent = '送信中...';
+
+  try {
+    const data = new URLSearchParams(new FormData(form));
+    const fileInput = document.getElementById('inqFile');
+    if (fileInput.files[0]) {
+      const f = fileInput.files[0];
+      if (!f.type.startsWith('image/')) throw new Error('img');
+      data.set('attach', await fileToResizedDataURL(f));
+    }
+    const res = await fetch(ENDPOINT, { method: 'POST', body: data });
+    let ticket = '';
+    try {
+      const j = JSON.parse(await res.text());
+      if (!j.ok) throw new Error('server');
+      ticket = j.ticket || '';
+    } catch (pe) {
+      if (!res.ok) throw pe; // 旧形式のテキスト応答は成功として扱う
+    }
+    form.reset();
+    updateCond();
+    btn.textContent = '送信しました!';
+    hint.innerHTML = '✅ お問い合わせを受け付けました。' + (ticket ? ' 受付番号: <strong>' + ticket + '</strong>(再度お問い合わせの際はこちらをお知らせください)' : '') + '<br>メールアドレスをご記入いただいた場合はそちらへ返信いたします。補償アイテムはゲーム内メールボックスへお届けします。(1〜3営業日)';
+    setTimeout(() => { btn.disabled = false; btn.textContent = '送信する'; }, 4000);
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = '送信する';
+    hint.innerHTML = '⚠️ 送信に失敗しました。下のメールリンクをご利用ください。';
+  }
+});
+
+// ===== メール (動画添付・フォールバック) — 入力内容を反映 =====
+function mailFallback(withVideo) {
+  const type = typeSel.value;
+  const nick = document.getElementById('inqNick').value.trim();
+  const device = document.getElementById('inqDevice').value.trim();
+  const where = document.getElementById('inqWhere').value.trim();
+  const order = document.getElementById('inqOrder').value.trim();
+  const uid = document.getElementById('inqUid').value.trim();
+  const ver = document.getElementById('inqVer').value.trim();
+  const body = document.getElementById('inqBody').value.trim();
+
+  const subject = `[ゴー!ラディ サポート] [${type}] ${nick || 'ニックネーム未記入'}${withVideo ? '(動画添付)' : ''}`;
+  const lines = [
+    `■ お問い合わせ種別: ${type}`,
+    `■ ゲーム内ニックネーム: ${nick || '(ここにニックネームをご記入ください)'}`,
+    `■ 端末/OS: ${device || '(例: iPhone 15 / iOS 19)'}`
+  ];
+  if (type === '不具合のご報告') lines.push(`■ 発生した場所: ${where || '(例: ステージ 3-8 / 釣り画面)'}`);
+  if (type === '決済に関する問題') lines.push(`■ ストアの注文番号: ${order || '(ストアからの領収書メールに記載されています)'}`);
+  if (uid) lines.push(`■ UID: ${uid}`);
+  if (ver) lines.push(`■ アプリバージョン: ${ver}`);
+  lines.push('', '■ お問い合わせ内容:', body || '(いつ・どの画面で・どのような症状が起きたかをお書きください)');
+  lines.push('', withVideo
+    ? '※ このメールに動画ファイルを添付してください!(スクリーンショットも歓迎します)'
+    : '※ スクリーンショットや動画がある場合は、このメールに直接添付してください。');
+
+  location.href = `mailto:${CS_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+
+  // メールアプリがない環境(PCブラウザなど)向けのフォールバック
+  const m = document.getElementById('mailManual');
+  m.style.display = 'block';
+  m.dataset.copy = `To: ${CS_EMAIL}\nSubject: ${subject}\n\n${lines.join('\n')}`;
+}
+document.getElementById('mailFallback').addEventListener('click', (e) => { e.preventDefault(); mailFallback(false); });
+document.getElementById('videoMailBtn').addEventListener('click', () => mailFallback(true));
+document.getElementById('copyMailBtn').addEventListener('click', async () => {
+  const b = document.getElementById('copyMailBtn');
+  try {
+    await navigator.clipboard.writeText(document.getElementById('mailManual').dataset.copy || '');
+    b.textContent = 'コピーしました!';
+  } catch (e) { b.textContent = 'コピーできませんでした。手入力でお願いします'; }
+  setTimeout(() => { b.textContent = '内容をコピー'; }, 3000);
+});
+</script>
+
+<script>
+// 전체 메뉴 토글
+(function () {
+  const btn = document.querySelector('.allmenu-btn');
+  const panel = document.querySelector('.allmenu-panel');
+  if (!btn || !panel) return;
+  const close = () => { panel.setAttribute('hidden', ''); btn.setAttribute('aria-expanded', 'false'); };
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (panel.hasAttribute('hidden')) { panel.removeAttribute('hidden'); btn.setAttribute('aria-expanded', 'true'); }
+    else close();
+  });
+  document.addEventListener('click', (e) => { if (!panel.hasAttribute('hidden') && !panel.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+})();
+</script>
+</body>
+</html>
