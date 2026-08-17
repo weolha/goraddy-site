@@ -16,10 +16,24 @@ goraddy.olo-g.com 정적 사이트. 빌드 도구 없음 — HTML/CSS만. push�
 | go/index.html | **QR/단축링크 리다이렉트** `/go/<코드>` — UA 보고 Play(referrer)/App Store(ct)/홈 분기. 코드 체계는 GoRaddy repo `docs/marketing/마케팅_링크체계.md` (새 코드는 문서에 먼저 추가 → `CODES` 반영). ⚠️ `GA_MEASUREMENT_ID`·`APPLE_PT` 치환 잔여 |
 | 404.html | 404 + `/go/<코드>` 경로를 `/go/?c=<코드>`로 재작성하는 폴백 |
 | en/*.html | **영어 버전** (글로벌 유저용) — KR 7개 페이지와 1:1 대응. 스토어 버튼은 국가 없는 범용 링크 |
-| ja/*.html | **일본어 버전** — KR 7개 페이지와 1:1 대응. 스토어 버튼은 JP 링크(`?hl=ja`, `apps.apple.com/jp`). `ja/ja.css`가 폰트와 `word-break`를 일본어용으로 덮어씀 (`keep-all`은 한국어 전용이라 일본어에서 줄바꿈이 깨짐) |
+| ja/*.html | **일본어 버전** — KR 7개 페이지와 1:1 대응. 스토어 버튼은 JP 링크(`?hl=ja`, `apps.apple.com/jp`). `ja/ja.css`가 폰트와 `word-break`를 일본어용으로 덮어씀 |
+| ja/ja.css | **일본어 오버라이드.** ja 7페이지 + `notice-embed-ja.html`이 `style.css` **뒤에** 불러온다. ① 견출 폰트를 게임과 같은 **M PLUS 1p ExtraBold**로 (서울알림체는 가나만 있고 한자가 0자라, 안 바꾸면 한 문장 안에서 가나/한자 자형이 갈린다) ② `word-break: keep-all`(한국어 어절용)을 `normal`로 되돌림 — 안 하면 일본어가 구두점에서만 줄바꿈된다 |
 | privacy-policy/en·ko/ | **스토어 등록 개인정보처리방침 URL 경로** (`/privacy-policy/en`, `/privacy-policy/ko`) → privacy.html로 리다이렉트. **삭제 금지** — App Store/Play에 이 URL이 등록돼 있음 |
 | style.css | 디자인 시스템 (서울알림체 + 바다 팔레트 + 네이비 라인) |
-| assets/ | 키아트·로고·스크린샷(webp), 서울알림체 woff2, 파비콘, OG 이미지 |
+| assets/ | 키아트·로고·스크린샷(webp), 폰트 woff2, 파비콘, OG 이미지 |
+
+## 폰트 (게임과 동일 구성)
+
+게임(`GoRaddy/Assets/Resources/Fonts/TTF/`)과 같은 3종을 쓴다 — 로케일별로 **견출 폰트만** 갈린다. 본문은 어느 언어든 중립적인 UI 폰트다.
+
+| 용도 | ko | en | ja |
+|---|---|---|---|
+| 견출(h1~h3·badge·btn·ver·brand) | SeoulAlrim XB | Palanquin Dark | **M PLUS 1p XB** |
+| 본문 | Pretendard | Pretendard | 시스템 일본어 고딕 |
+
+- 라틴 글자는 세 언어 모두 **Palanquin Dark**가 먼저 잡는다(폰트 스택 맨 앞). 欧文 인상이 언어별로 안 갈린다.
+- `assets/MPLUS1p-XB.woff2`(738KB)는 게임의 `MPLUS1p-ExtraBold.ttf`를 **서브셋 없이** woff2로 변환한 것. **서브셋 금지** — 패치노트에 새 한자가 들어올 때마다 그 글자만 폴백 폰트로 튀어 자형이 섞인다(게임 `docs/localization/새_언어_추가_가이드.md` §3-②와 같은 함정). 참고로 서브셋이 오히려 더 커진다(합성 글리프 분해).
+- 라이선스: M PLUS 1p = SIL OFL 1.1 / `fsType 0`(임베딩 제한 없음). 웹 배포에 문제없다.
 
 ## 갱신 규칙
 

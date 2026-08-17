@@ -7,7 +7,11 @@
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="stylesheet" href="style.css">
-<style>body,body.embed{font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",system-ui,sans-serif;}</style>
+<!-- 見出しのフォントまで ja/ja.css に任せる。
+     以前は body だけをインラインで上書きしていたため、h2 は style.css の 'SeoulAlrim'
+     を拾っていた。SeoulAlrim は仮名を持つが漢字は0字なので、一つの見出しの中で
+     仮名=SeoulAlrim / 漢字=フォールバック と字形が混ざっていた。 -->
+<link rel="stylesheet" href="ja/ja.css">
 </head>
 <body class="embed">
 <!-- 인게임 NoticeWebView 전용 경량 페이지: 네비/푸터 없음, 최신 공지만 -->

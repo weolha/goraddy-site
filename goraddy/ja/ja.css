@@ -1,12 +1,32 @@
 /* ===== 日本語版オーバーライド =====
    ../style.css の後に読み込む。
-   - 韓国語向けの word-break:keep-all は日本語で不自然な行送りになるため normal に戻す
-   - 見出し用の 'SeoulAlrim' は韓国語専用サブセットのため日本語フォントに置き換える
-   - 'Palanquin Dark' はラテン文字専用なので先頭に残す(欧文の見た目を ko/en と揃える)
+
+   - 見出しはゲームと同じ M PLUS 1p ExtraBold。ko/en が使う 'SeoulAlrim' は
+     韓国語専用で漢字を1文字も持たないため、そのままでは日本語が化ける。
+     （ゲーム側のフォント構成も Palanquin Dark + SeoulAlrim + M PLUS 1p で、
+      日本語ロケールは M PLUS 1p を使う）
+   - 本文は ko/en の Pretendard に相当する中立的な UI フォント（システムの日本語ゴシック）。
+     見出し=表示書体 / 本文=UI書体という ko/en の役割分担をそのまま踏襲する。
+   - 'Palanquin Dark' はラテン文字専用なので先頭に残す（欧文の見た目を ko/en と揃える）。
+   - 韓国語向けの word-break:keep-all は日本語で行送りがほぼ効かなくなるため normal に戻す。
 */
 
+/* M PLUS 1p ExtraBold — SIL Open Font License 1.1 / fsType 0（埋め込み制限なし）
+   出典: GoRaddy repo の Assets/Resources/Fonts/TTF/MPLUS1p-ExtraBold.ttf をそのまま woff2 化。
+   サブセットしていない — パッチノートに新しい漢字が入るたびに欠字が出て、
+   一文の中で字形が混ざるため（ゲーム側ガイド「新_언어_추가_가이드」§3-② と同じ罠）。 */
+@font-face {
+  font-family: 'MPLUS1p';
+  src: url('../assets/MPLUS1p-XB.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
 :root {
+  /* 本文用: システムの日本語ゴシック */
   --jp-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "YuGothic", Meiryo, system-ui, sans-serif;
+  /* 見出し用: ゲームと同じ表示書体 */
+  --jp-display: 'Palanquin Dark', 'MPLUS1p', var(--jp-sans);
 }
 
 body {
@@ -17,8 +37,8 @@ body {
 }
 
 h1, h2, h3, .brand, .store-btn, .ver, .badge, .btn,
-.spec dt, .aqua-counter, .allmenu-panel a {
-  font-family: 'Palanquin Dark', var(--jp-sans);
+.spec dt, .aqua-counter, .allmenu-panel a, .langsel-btn, .langsel-panel a {
+  font-family: var(--jp-display);
 }
 
 /* word-break:normal ではハイフンが改行位置になるため、
