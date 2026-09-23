@@ -22,6 +22,7 @@ const BASE = 'https://olo-g.com/ponpondoodoo/';
 const APP_ID = '6445818248';
 const PKG = 'com.ologgames.ponpondoodoo2';
 const YT = 'EPKgzmQz-ak'; // 공식 애니메이션 트레일러
+const OST = 'https://youtube.com/playlist?list=PLWgOZVBH_79UrZrzA5u2sDYmbCNWAPXtN'; // ponpondoodoo 2nd album
 // 종전(2024) 약관·개인정보 — 노션. 인게임 SettingPanel이 1.210 전까지 이 URL을 연다. 시행일 전 안내 띠에서 링크한다
 const OLD_TERMS = 'https://olog.notion.site/ee395d8b243d4778ac88c33ea2d62145';
 const OLD_PRIVACY = 'https://olog.notion.site/bcee3608a5844db4b888027e46a55098';
@@ -60,13 +61,7 @@ const STR = {
     closing: '게임 곳곳에 재미있는 디테일들이 숨어 있으니 찾아보세요.',
     friendsH: '이스랜드의 퐁퐁이들', friendsSub: '퐁퐁이를 톡 눌러보세요!',
     videoH: '공식 애니메이션 트레일러', videoAria: '트레일러 재생',
-    badges: ['구글 플레이 ‘교사 추천’', '앱스토어 피처드 선정', '한국 · 일본 출시'],
-    linksH: '퐁퐁두두 더 보기',
-    links: [
-      ['https://x.com/ponpondoodoo2', '𝕏', 'var(--sky)', '공식 X', '@ponpondoodoo2'],
-      ['https://youtube.com/playlist?list=PLWgOZVBH_79UrZrzA5u2sDYmbCNWAPXtN', '♪', 'var(--pink)', 'OST 앨범', 'ponpondoodoo 2nd album'],
-      ['https://charactertest.olo-g.com/', '?', 'var(--yellow)', '캐릭터 테스트', '나와 닮은 퐁퐁이는?'],
-    ],
+    badges: ['구글 플레이 ‘교사 추천’', '앱스토어 피처드 선정', '한국 · 미국 · 일본 출시'], ost: 'OST 앨범 듣기',
     infoH: '게임 정보',
     spec: [['타이틀', '퐁퐁두두2'], ['장르', '힐링 키우기'], ['플랫폼', 'iOS (App Store) / Android (Google Play)'],
       ['가격', '무료 (일부 유료 아이템 포함)'], ['지원 언어', '한국어 · English · 日本語'], ['출시', '2024년 2월'],
@@ -104,13 +99,7 @@ const STR = {
     closing: 'The game is full of little details to find — have fun discovering them!',
     friendsH: 'The ponpons of Ysland', friendsSub: 'Give a ponpon a tap!',
     videoH: 'Official Animated Trailer', videoAria: 'Play trailer',
-    badges: ['Google Play “Teacher Approved”', 'Featured on the App Store', 'Available in 3 languages'],
-    linksH: 'More ponpondoodoo',
-    links: [
-      ['https://x.com/ponpondoodoo2', '𝕏', 'var(--sky)', 'Official X', '@ponpondoodoo2'],
-      ['https://youtube.com/playlist?list=PLWgOZVBH_79UrZrzA5u2sDYmbCNWAPXtN', '♪', 'var(--pink)', 'Soundtrack', 'ponpondoodoo 2nd album'],
-      ['https://charactertest.olo-g.com/', '?', 'var(--yellow)', 'Character Test', 'Which ponpon are you?'],
-    ],
+    badges: ['Google Play “Teacher Approved”', 'Featured on the App Store', 'Out now in Korea, the US & Japan'], ost: 'Listen to the soundtrack',
     infoH: 'Game Info',
     spec: [['Title', 'ponpondoodoo (퐁퐁두두2 in Korea)'], ['Genre', 'Healing · Raising'], ['Platform', 'iOS (App Store) / Android (Google Play)'],
       ['Price', 'Free (offers in-app purchases)'], ['Languages', 'English · 한국어 · 日本語'], ['Released', 'February 2024'],
@@ -148,13 +137,7 @@ const STR = {
     closing: 'ゲームのあちこちに楽しい仕掛けが隠れています。ぜひ探してみてください。',
     friendsH: 'イースランドのポンポンたち', friendsSub: 'ポンポンをタップしてみてね！',
     videoH: '公式アニメーショントレーラー', videoAria: 'トレーラーを再生',
-    badges: ['Google Play「Teacher Approved」', 'App Store でフィーチャー', '日本語対応'],
-    linksH: 'もっとポンポンドゥードゥー',
-    links: [
-      ['https://x.com/ponpondoodoo2', '𝕏', 'var(--sky)', '公式X', '@ponpondoodoo2'],
-      ['https://youtube.com/playlist?list=PLWgOZVBH_79UrZrzA5u2sDYmbCNWAPXtN', '♪', 'var(--pink)', 'サウンドトラック', 'ponpondoodoo 2nd album'],
-      ['https://charactertest.olo-g.com/', '?', 'var(--yellow)', 'キャラクター診断', 'あなたに似たポンポンは？'],
-    ],
+    badges: ['Google Play「Teacher Approved」', 'App Store でフィーチャー', '日本・韓国・アメリカで配信中'], ost: 'サウンドトラックを聴く',
     infoH: 'ゲーム情報',
     spec: [['タイトル', 'ポンポンドゥードゥー'], ['ジャンル', '癒し系育成'], ['対応OS', 'iOS (App Store) / Android (Google Play)'],
       ['価格', '基本無料（アプリ内課金あり）'], ['対応言語', '日本語 · English · 한국어'], ['リリース', '2024年2月'],
@@ -178,6 +161,10 @@ const LANG_SCRIPT_KO = `<script>(function(){var K='olog_lang',P='';function g(){
 const LANG_SCRIPT_OTHER = `<script>(function(){var K='olog_lang';document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.lang');if(a){try{localStorage.setItem(K,a.getAttribute('lang')||'en')}catch(x){}}})})();</script>`;
 
 const CHARS = Array.from({ length: 27 }, (_, i) => String(i + 1).padStart(2, '0'));
+// 캐릭터 이미지 크기(px). 원본 600 캔버스를 같은 배율로 줄여서 저장했으므로 크기 차이 = 실제 체구 차이.
+// 화면에는 절반 크기(레티나 2배)로 표시한다. 캐릭터를 다시 뽑으면 이 json도 같이 갱신.
+const CHAR_SIZE = JSON.parse(fs.readFileSync(path.join(__dirname, 'ponpondoodoo-chars.json'), 'utf8'));
+const charImg = (a, n, extra = '') => { const [w, h] = CHAR_SIZE['c' + n]; return `<img src="${a}chars/c${n}.webp" alt="" width="${Math.round(w / 2)}" height="${Math.round(h / 2)}" style="--w:${Math.round(w / 2)}"${extra}>`; };
 
 // ---------- 하위 페이지 문구 (약관·개인정보·문의·공통 푸터) ----------
 const SUB = {
@@ -338,7 +325,6 @@ ${langScript}
 <meta property="og:site_name" content="${L.name}">
 <meta property="og:locale" content="${{ ko: 'ko_KR', en: 'en_US', ja: 'ja_JP' }[code]}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@ponpondoodoo2">
 <meta name="twitter:title" content="${o.title}">
 <meta name="twitter:description" content="${o.desc}">
 <meta name="twitter:image" content="${BASE}assets/og.jpg">
@@ -428,12 +414,12 @@ function home(code) {
       url, description: L.ogDesc, image: BASE + 'assets/og.jpg', genre: L.tags.slice(0, 2), gamePlatform: ['iOS', 'Android'],
       operatingSystem: 'iOS, Android', applicationCategory: 'Game', inLanguage: ['ko', 'en', 'ja'], datePublished: '2024-02-04',
       publisher: { '@id': 'https://olo-g.com/#org' },
-      sameAs: ['https://apps.apple.com/app/id' + APP_ID, 'https://play.google.com/store/apps/details?id=' + PKG, 'https://x.com/ponpondoodoo2'] }] };
+      sameAs: ['https://apps.apple.com/app/id' + APP_ID, 'https://play.google.com/store/apps/details?id=' + PKG] }] };
   const body = `<div class="visit-banner" id="visitBanner" role="status">${L.visit}</div>
 
 <section class="hero">
   <div class="hero-inner">
-    <img class="hero-art" src="${a}keyart.webp" alt="${L.heroAlt}" width="1600" height="1155" fetchpriority="high">
+    <img class="hero-art" src="${a}keyart.webp" alt="${L.heroAlt}" width="1600" height="1148" fetchpriority="high">
     <div class="hero-copy">
       <img class="hero-logo" src="${a}logo.webp" alt="${L.name}" width="1000" height="161">
       <h1>${L.h1}</h1>
@@ -507,7 +493,7 @@ function home(code) {
       <h3>${L.friend}</h3><p>${L.friendD}</p>
     </div>
     <div class="fun-card reveal">
-      <div class="art mini"><img src="${a}fun-mini-space.webp" alt="" width="700" height="394" loading="lazy"><img src="${a}fun-mini-lava.webp" alt="" width="700" height="394" loading="lazy"><img src="${a}fun-mini-select.webp" alt="" width="900" height="506" loading="lazy" style="grid-column:span 2"></div>
+      <div class="art"><img class="shot" src="${a}fun-mini-select.webp" alt="" width="900" height="506" loading="lazy"><img class="overlay arcade" src="${a}fun-arcade.webp" alt="" width="500" height="650" loading="lazy"></div>
       <h3>${L.mini}</h3><p>${L.miniD}</p>
     </div>
   </div>
@@ -518,7 +504,7 @@ function home(code) {
   <h2 class="reveal">${L.friendsH}</h2>
   <p class="sub reveal">${L.friendsSub}</p>
   <div class="marquee" id="marquee" aria-hidden="true">
-${[...CHARS, ...CHARS].map(n => `    <button type="button" tabindex="-1"><img src="${a}chars/c${n}.webp" alt="" loading="lazy"></button>`).join('\n')}
+${[...CHARS, ...CHARS].map(n => `    <button type="button" tabindex="-1">${charImg(a, n, ' loading="lazy"')}</button>`).join('\n')}
   </div>
 </section>
 
@@ -527,17 +513,11 @@ ${[...CHARS, ...CHARS].map(n => `    <button type="button" tabindex="-1"><img sr
   <button class="video reveal" type="button" data-yt="${YT}" aria-label="${L.videoAria}" style="background-image:url('https://i.ytimg.com/vi/${YT}/hqdefault.jpg')">
     <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg></span>
   </button>
+  <p class="ost reveal"><a href="${OST}" target="_blank" rel="noopener">♪ ${L.ost}</a></p>
 </section>
 
 <section class="section">
   <div class="badges reveal">${L.badges.map(b => `<span class="tag">${b}</span>`).join('')}</div>
-</section>
-
-<section class="section">
-  <h2 class="reveal">${L.linksH}</h2>
-  <div class="links reveal">
-${L.links.map(([href, ico, bg, t, s]) => `    <a href="${href}" target="_blank" rel="noopener"><span class="ico" style="background:${bg}">${ico}</span><span><b>${t}</b><small>${s}</small></span></a>`).join('\n')}
-  </div>
 </section>
 
 <section class="section">
@@ -629,7 +609,7 @@ function support(code) {
     <p>${S.supLead}</p>
   </div>
   <section class="mail-card">
-    <img src="${a}chars/c08.webp" alt="" width="280" height="280" loading="lazy">
+    ${charImg(a, '08', ' loading="lazy"')}
     <div>
       <h2>${S.mailH}</h2>
       <p>${S.mailD}</p>

@@ -60,7 +60,7 @@
         play: 'https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo2',
         appstore: 'https://apps.apple.com/kr/app/id6445818248'
       },
-      descKo: '하루 10분, 나의 성격을 알아가는 힐링 키우기 게임. 잔잔한 음악과 함께 몽글몽글한 퐁퐁이를 키워보세요. 구글 ‘교사 추천’·앱스토어 피처드 선정, 일본에도 출시되었습니다.',
+      descKo: '하루 10분, 나의 성격을 알아가는 힐링 키우기 게임. 잔잔한 음악과 함께 몽글몽글한 퐁퐁이를 키워보세요. 구글 ‘교사 추천’·앱스토어 피처드 선정, 한국·미국·일본에 출시되었습니다.',
       descEn: 'A cute, relaxing game that teaches you about your own personality. Listen to relaxing music and watch ponpons waddle around.'
     },
     {

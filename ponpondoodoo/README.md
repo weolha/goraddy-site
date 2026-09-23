@@ -35,6 +35,8 @@ node tools/render-ponpondoodoo.cjs --check  # HTML이 생성 결과와 같은지
 
 ## 명칭·문구 규칙
 
+- 출시 국가: **한국·미국·일본**. 운영 중단 채널(공식 X `@ponpondoodoo2`, 캐릭터 테스트 사이트)은 **링크하지 않는다**(2026-09-23 월하). 외부 링크는 OST 플레이리스트와 트레일러만.
+
 - 게임명: ko **퐁퐁두두2** / en **ponpondoodoo** / ja **ポンポンドゥードゥー** (각 스토어 표기. 해외는 숫자 없음 — 1편이 한국 전용 출시였기 때문). 영문은 소문자 `ponpondoodoo` 그대로 — "PonPonDoodoo 2"·"PonPon Doodoo" 쓰지 말 것(2026-09-23 월하 확인)
 - 고유명사는 게임 `LocalizationTable` 기준: 이스랜드·잉크·돌보미 / Ysland·Ink·Caretaker / イースランド·インク·シッター
 - 대외 문구는 **새로 쓰지 않는다.** 출처 = 시놀로지 `00_지원사업 및 행사/자료/소개문.pages`(공식 소개문 국·영문) → ALT+G 사이니지 캡슐 제목 → 스토어 설명. 일본어 특징 설명 4줄은 공식 한국어 문장을 옮긴 번역이다(일본어 원문 없음).
@@ -57,9 +59,10 @@ node tools/render-ponpondoodoo.cjs --check  # HTML이 생성 결과와 같은지
 
 | 에셋 | 원본 |
 |---|---|
-| 특징 섹션 그림 전부(personality-*, question-ui, evolution-tree, egg1~4, ponpon-crowd, deco-*, fun-*, walking, logo) | ALT+G 사이니지 `~/Downloads/altg_2026_submission/1_사이니지.ai`에 **임베드된 원본 래스터**(투명 배경)를 PyMuPDF로 추출 |
-| keyart.webp · og.jpg | 테이블커버 `2_테이블커버(현수막).ai` 임베드 키아트(= `1_출시/대표이미지/maintitle.png` 9000×8000). 흰 여백 크롭 |
-| chars/c01~c27 | `2_홍보/4_사이트/characters/character1~27.png` — 흰 배경을 가장자리 flood fill로 투명화 |
+| 특징 섹션 그림(personality-*, question-ui, evolution-tree, egg1~4, ponpon-crowd, deco-*, fun-*; 미사용 fun-blob·fun-mini-lava·fun-mini-space는 2026-09-23 삭제) | ALT+G 사이니지 `1_사이니지.ai`에 임베드된 래스터를 PyMuPDF로 추출. ⚠️ **사이니지 이미지는 인쇄용 DeviceCMYK라 RGB 원본보다 약간 탁하다** — 월하 판단으로 이 섹션은 그대로 둠(2026-09-23). 나중에 교체한다면 RGB 원본 후보: 슬라이더 `1_출시/피그마용/4 페이지.png`, 진화 트리 `피그마용/characters.png`, 물음표 `피그마용/레이어 70.png`, 오락기 `22_굿즈/현수막배너/배너/레이어_20.png`, 질문 화면 `1_출시/screenshots/스샷/IMG_0102 1.png` |
+| logo.webp · walking.webp | RGB 원본 `1_출시/대표이미지/title.png` · `walking.png` |
+| keyart.webp · og.jpg | **`1_출시/대표이미지/maintitle.png`(9000×8000, Display P3)** 직접. keyart.webp에는 P3 ICC를 **그대로 넣었다**(넓은 색역 화면에서 원래 색). og.jpg는 P3→sRGB 변환(SNS가 ICC를 버리기 때문). ⚠️ 인쇄용 PDF(테이블커버·사이니지)에서 뽑으면 CMYK라 탁해진다 — 2026-09-23에 그렇게 넣었다가 교체함 |
+| chars/c01~c27 | `2_홍보/4_사이트/characters/character1~27.png`(모두 600×600 캔버스, 캐릭터 체구 비율대로 그려져 있음) — 흰 배경을 flood fill로 투명화하고 **캔버스 기준 같은 배율(0.5)로 축소 후 trim**. 그래서 이미지 크기 차이 = 실제 체구 차이. 크기표 `tools/ponpondoodoo-chars.json`을 생성기가 읽어 절반 크기로 표시(레티나 2배). 다시 뽑으면 json도 갱신 |
 | icon.webp · favicon.png | `1_출시/app icon.png` |
 | 폰트 | ponpondoodoo2 리포 `Assets/MyAsset/Fonts/GameFont.ttf`·`KiwiMaru-Medium.ttf` |
 
