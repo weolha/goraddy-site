@@ -61,7 +61,7 @@ node tools/render-ponpondoodoo.cjs --check  # HTML이 생성 결과와 같은지
 |---|---|
 | 특징 섹션 그림(personality-*, question-ui, evolution-tree, egg1~4, ponpon-crowd, deco-*, fun-*; 미사용 fun-blob·fun-mini-lava·fun-mini-space는 2026-09-23 삭제) | ALT+G 사이니지 `1_사이니지.ai`에 임베드된 래스터를 PyMuPDF로 추출. ⚠️ **사이니지 이미지는 인쇄용 DeviceCMYK라 RGB 원본보다 약간 탁하다** — 월하 판단으로 이 섹션은 그대로 둠(2026-09-23). 나중에 교체한다면 RGB 원본 후보: 슬라이더 `1_출시/피그마용/4 페이지.png`, 진화 트리 `피그마용/characters.png`, 물음표 `피그마용/레이어 70.png`, 오락기 `22_굿즈/현수막배너/배너/레이어_20.png`, 질문 화면 `1_출시/screenshots/스샷/IMG_0102 1.png` |
 | logo.webp · walking.webp | RGB 원본 `1_출시/대표이미지/title.png` · `walking.png` |
-| keyart.webp · og.jpg | **`1_출시/대표이미지/maintitle.png`(9000×8000, Display P3)** 직접. keyart.webp에는 P3 ICC를 **그대로 넣었다**(넓은 색역 화면에서 원래 색). og.jpg는 P3→sRGB 변환(SNS가 ICC를 버리기 때문). ⚠️ 인쇄용 PDF(테이블커버·사이니지)에서 뽑으면 CMYK라 탁해진다 — 2026-09-23에 그렇게 넣었다가 교체함 |
+| keyart.webp · og.jpg | **게임 빌드 타이틀과 동일하게 합성**: ponpondoodoo2 리포 `Assets/MyAsset/Image/UI/12_Title/newtitle.png`(배경 타원) 위에 `titleimage2.png`(앞 캐릭터)를 `Login.unity`의 RectTransform 값(TitleImg_Back/Front 위치·크기)대로 겹침. 시놀로지 사본 = `1_출시/대표이미지/게임타이틀_빌드사용본/`(원본 3장 + 합성본 `game_title_composite.png`). ⚠️ `1_출시/대표이미지/maintitle.png`는 흰 안개를 씌운 **흐린 별도 버전**이고, 인쇄용 PDF(테이블커버·사이니지) 추출본은 CMYK라 더 탁하다 — 둘 다 쓰지 말 것(2026-09-23 교체 이력) |
 | chars/c01~c27 | `2_홍보/4_사이트/characters/character1~27.png`(모두 600×600 캔버스, 캐릭터 체구 비율대로 그려져 있음) — 흰 배경을 flood fill로 투명화하고 **캔버스 기준 같은 배율(0.5)로 축소 후 trim**. 그래서 이미지 크기 차이 = 실제 체구 차이. 크기표 `tools/ponpondoodoo-chars.json`을 생성기가 읽어 절반 크기로 표시(레티나 2배). 다시 뽑으면 json도 갱신 |
 | icon.webp · favicon.png | `1_출시/app icon.png` |
 | 폰트 | ponpondoodoo2 리포 `Assets/MyAsset/Fonts/GameFont.ttf`·`KiwiMaru-Medium.ttf` |

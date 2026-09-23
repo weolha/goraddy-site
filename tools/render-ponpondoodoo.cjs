@@ -419,7 +419,7 @@ function home(code) {
 
 <section class="hero">
   <div class="hero-inner">
-    <img class="hero-art" src="${a}keyart.webp" alt="${L.heroAlt}" width="1600" height="1148" fetchpriority="high">
+    <img class="hero-art" src="${a}keyart.webp" alt="${L.heroAlt}" width="1600" height="1141" fetchpriority="high">
     <div class="hero-copy">
       <img class="hero-logo" src="${a}logo.webp" alt="${L.name}" width="1000" height="161">
       <h1>${L.h1}</h1>
