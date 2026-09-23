@@ -21,7 +21,7 @@
       icon: 'assets/games/goraddy/icon.png',
       feature: 'assets/games/goraddy/feature.webp',
       shots: ['assets/games/goraddy/shot1.webp', 'assets/games/goraddy/shot2.webp', 'assets/games/goraddy/shot3.webp'],
-      site: 'goraddy/index.html', siteEn: 'goraddy/en/index.html',
+      site: 'goraddy/', siteEn: 'goraddy/en/',
       store: {
         play: 'https://play.google.com/store/apps/details?id=com.ologgames.goraddy',
         appstore: 'https://apps.apple.com/kr/app/go-raddy/id6748856004'
@@ -48,24 +48,24 @@
     },
     {
       id: 'ponpondoodoo2',
-      name: '퐁퐁두두2', nameEn: 'PonPonDoodoo 2', sub: 'ponpondoodoo2',
+      name: '퐁퐁두두2', nameEn: 'ponpondoodoo', sub: 'ponpondoodoo2',
       genreKo: '힐링 키우기', genreEn: 'Healing & Raising',
       tagsKo: ['힐링', '키우기', 'iOS · Android', '2024'],
       tagsEn: ['Healing', 'Raising', 'iOS · Android', '2024'],
-      year: 2024, tier: 'catalog', status: 'live',
+      year: 2024, tier: 'flagship', status: 'live',
       icon: 'assets/games/ponpondoodoo2/icon.png',
       feature: 'assets/games/ponpondoodoo2/feature.webp',
-      shots: [], site: null, siteEn: null,
+      shots: [], site: 'ponpondoodoo/', siteEn: 'ponpondoodoo/en/',
       store: {
         play: 'https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo2',
         appstore: 'https://apps.apple.com/kr/app/id6445818248'
       },
       descKo: '하루 10분, 나의 성격을 알아가는 힐링 키우기 게임. 잔잔한 음악과 함께 몽글몽글한 퐁퐁이를 키워보세요. 구글 ‘교사 추천’·앱스토어 피처드 선정, 일본에도 출시되었습니다.',
-      descEn: 'The sequel to our warm healing game about collecting and raising what you treasure.'
+      descEn: 'A cute, relaxing game that teaches you about your own personality. Listen to relaxing music and watch ponpons waddle around.'
     },
     {
       id: 'ponpondoodoo',
-      name: '퐁퐁두두', nameEn: 'PonPonDoodoo', sub: 'ponpondoodoo',
+      name: '퐁퐁두두', nameEn: 'ponpondoodoo (Korea only)', sub: 'ponpondoodoo',
       genreKo: '힐링 키우기', genreEn: 'Healing & Raising',
       tagsKo: ['힐링', '키우기', 'iOS · Android', '2021'],
       tagsEn: ['Healing', 'Raising', 'iOS · Android', '2021'],

@@ -60,6 +60,129 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/en/contact"/>
   </url>
 
+  <!-- ===== 퐁퐁두두 시리즈 사이트 (ko/en/ja) ===== -->
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/en/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/ja/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/"/>
+  </url>
+
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/support</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/support"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/support"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/support"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/en/support</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/support"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/support"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/support"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/ja/support</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/support"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/support"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/support"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/support"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/terms</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/terms"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/en/terms</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/terms"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/ja/terms</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/terms"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/terms"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/privacy</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/privacy"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/en/privacy</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/privacy"/>
+  </url>
+  <url>
+    <loc>https://olo-g.com/ponpondoodoo/ja/privacy</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://olo-g.com/ponpondoodoo/privacy"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://olo-g.com/ponpondoodoo/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://olo-g.com/ponpondoodoo/ja/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://olo-g.com/ponpondoodoo/privacy"/>
+  </url>
+
   <!-- ===== 고!래디 게임 사이트 — 한국어 ===== -->
   <url>
     <loc>https://olo-g.com/goraddy/</loc>

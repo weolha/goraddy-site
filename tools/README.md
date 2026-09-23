@@ -31,3 +31,14 @@ node tools/render-games.cjs --check
 - ⚠️ **클라이언트 런타임 렌더로 바꾸지 말 것** — games.html의 게임 설명·수상은 SEO 자산이라 정적 HTML로 둔다. 이 생성기는 "데이터→정적 HTML"을 찍어내는 빌드 보조이지, 페이지를 JS로 그리는 게 아니다.
 
 설계 근거: [docs/marketing/회사사이트_IA_확장계획.md §5·§6](../../GoRaddy/docs/marketing/회사사이트_IA_확장계획.md)
+
+## render-ponpondoodoo.cjs — 퐁퐁두두 사이트 생성기
+
+`ponpondoodoo/` 12개 페이지(홈·약관·개인정보·문의 × ko/en/ja)를 찍어낸다. 약관·개인정보 본문은 `tools/ponpondoodoo-legal/*.txt`에서 변환. 결과물은 정적 HTML.
+
+```bash
+node tools/render-ponpondoodoo.cjs          # 생성(덮어쓰기)
+node tools/render-ponpondoodoo.cjs --check  # 현재 HTML이 생성 결과와 같은지
+```
+
+생성된 HTML을 직접 고치면 다음 생성 때 덮인다 — 홈 문구는 `STR`, 하위 페이지는 `SUB`, 공통 틀은 `shell()`, 약관 본문은 txt에서 고친다. 규칙은 [ponpondoodoo/README.md](../ponpondoodoo/README.md).

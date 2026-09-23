@@ -1,0 +1,183 @@
+# Privacy Policy
+
+OLO-G Games Inc. (hereinafter the "Company") establishes the following Privacy Policy in accordance with the Personal Information Protection Act in order to protect the personal information and rights of users and to handle user grievances relating to personal information smoothly.
+
+## 1. Items of Personal Information Collected and Collection Method
+Items of Personal Information Collected
+
+The Company collects and uses personal information for the following purposes:
+
+### Account Linking and Login
+    - Apple/Google account linking: e-mail address, user identification number
+
+    - Guest play: user identification number (generated automatically on first launch)
+
+### Friends and Social Features
+    - Nickname, profile image, friend list, friend invitation link identifier, village and ponpon decoration information
+
+    - When you use the friend features, your nickname and village/ponpon information are visible to other users you are friends with.
+
+### Customer Support and Service Assistance
+    - Required: e-mail address, user ID (PID), game version, OS version, device information
+
+    - Optional: screenshots (for error verification), payment receipt number (for payment-related inquiries)
+
+### Information Automatically Collected in the Course of Using the Service
+    - Device information (model name, OS information, unique device identifier, advertising identifier (ADID/IDFA)), IP address, service usage records, access logs, payment records (including subscriptions), push notification tokens, in-game data (ponpons owned and their growth, question responses, item acquisition and usage history, etc.)
+
+* Payments are processed through Google Play and the App Store; the Company does not directly collect or store payment method information such as card numbers.
+
+* The above information may be generated and collected in the course of using the Service for purposes such as providing a stable service, protecting accounts and items, complying with laws, and preventing fraudulent use.
+
+* Where unavoidably necessary for payment and similar purposes during the use of free or paid services (recovery, refunds, etc.), the Company may collect e-mail addresses, purchase history details, and proof of real name or family relationship (to verify payments made by someone other than the user).
+
+### Collection of Personal Information of Children Under 14
+As a rule, the Company does not collect personal information from children under the age of 14 who require the consent of a legal representative. If a legal representative requests that a child be withdrawn from the Company's service, the Company will provide guidance on the withdrawal procedure. Where processing a child's personal information is unavoidable in order to handle a user's request, the Company will obtain the consent of the legal representative and destroy the information without delay once the task is completed.
+
+### Personal Information Collection Method
+Collection through consent procedures at the time of service registration
+
+Collection when receiving customer inquiries and consultations
+
+Automatic generation and collection in the course of using the Service
+
+## 2. Purpose of Processing Personal Information
+The Company processes personal information for the following purposes. Personal information processed will not be used for purposes other than those set forth below. Where the purpose of use changes, the Company will take necessary measures, such as obtaining separate consent pursuant to Article 18 of the "Personal Information Protection Act."
+
+Service provision and operation: providing game content, verifying accounts, authenticating identity, and preventing fraudulent use.
+
+Customer support: handling complaints, delivering notices, and providing payment refunds and recovery services.
+
+Marketing and advertising: informing users of new services, delivering event information, and providing customized advertising (using advertising identifiers).
+
+Service improvement: optimizing the Service and developing new features through analysis of usage patterns.
+
+## 3. Provision of Personal Information to Third Parties
+The Company processes users' personal information only within the scope set forth in "2. Purpose of Processing Personal Information." Personal information is provided to third parties only where it falls under Articles 17 and 18 of the "Personal Information Protection Act," such as with the user's consent or under special provisions of law.
+
+## 4. Retention and Use Period of Personal Information
+The Company processes and retains personal information within the retention and use period prescribed by law, or within the period consented to by the data subject at the time the personal information was collected.
+
+The retention and use periods are as follows:
+
+### 1. Service Usage Records
+    - Reason: management of withdrawn members, prevention and handling of disputes relating to service use, prevention of fraudulent use
+
+    - Period: 1 month from the date of withdrawal
+
+### 2. Customer Inquiry and Consultation Records
+    - Reason: management of complaint-handling history and prevention of subsequent disputes
+
+    - Period: 3 years from the date of completion of handling
+
+### 3. Records on Contracts, Withdrawal of Subscription, Payment, and Supply of Goods
+    - Reason: Act on Consumer Protection in Electronic Commerce
+
+    - Period: 5 years
+
+## 5. Destruction of Personal Information
+The Company destroys personal information without delay when it becomes unnecessary, such as upon expiration of the retention period, achievement of the processing purpose, or withdrawal of consent.
+
+Where personal information must continue to be preserved under other laws despite the expiration of the retention period or the achievement of the processing purpose, the information is moved to a separate database (DB) or stored in a different location.
+
+### Destruction Procedure and Method
+Procedure: The Company selects the personal information for which grounds for destruction have arisen and destroys it.
+
+Method: Information recorded and stored in electronic file format is destroyed in a manner that makes the records irreproducible. Information recorded and stored on paper is destroyed by shredding or incineration.
+
+## 6. Entrustment of Processing and Overseas Transfer
+In order to provide the game service smoothly, the Company entrusts the processing of personal information to the following overseas entities.
+
+Google LLC (United States) - Firebase (Authentication, Cloud Firestore, Analytics, Crashlytics, Cloud Messaging, Remote Config) / Google Analytics
+
+    - Items transferred: user identification number, account linking information, in-game data, device identifiers, advertising identifiers, push notification tokens, service usage records
+
+    - Purpose: account authentication, game data storage, sending push notifications, service quality analysis, error diagnosis, usage statistics
+
+    - Period: until termination of the entrustment contract
+
+Google LLC (United States) - AdMob
+
+    - Items transferred: advertising identifiers, ad impression and click records
+
+    - Purpose: provision of advertising and performance measurement
+
+    - Period: until termination of the entrustment contract
+
+Google LLC (United States) - Google Workspace (Gmail)
+
+    - Items transferred: inquiry content, e-mail address, (optional) nickname and screenshots
+
+    - Purpose: receipt and management of customer inquiries and sending of responses
+
+    - Period: until termination of the entrustment contract
+
+Google LLC / Apple Inc. - Google Play, App Store
+
+    - Items transferred: information necessary for payment processing (the Company does not store payment method information)
+
+    - Purpose: payment processing for paid content
+
+    - Period: until termination of the entrustment contract
+
+Amazon Web Services Inc. (United States)
+
+    - Contact: https://aws.amazon.com/contact-us/
+
+    - Purpose: service registration and use, provision of cloud services
+
+    - Period: until termination of the entrustment contract
+
+The privacy policy of each service applies in addition, and the transfers above occur through the network when the Service is used.
+
+The Company specifies in contracts and other documents, in accordance with Article 26 of the "Personal Information Protection Act," matters concerning responsibilities such as the prohibition of processing personal information beyond the purpose of the entrusted work, technical and administrative protective measures, restrictions on re-entrustment, management and supervision of the trustee, and liability for damages, and supervises whether the trustee processes personal information safely.
+
+Where the content of the entrusted work or the trustee changes, the Company will disclose this without delay through this Privacy Policy.
+
+## 7. Rights of Users and Legal Representatives and How to Exercise Them
+Users may at any time exercise their rights, such as requesting access to, correction of, deletion of, or suspension of the processing of their personal information, and withdrawing consent.
+
+Users under the age of 14 may exercise their rights directly or through a legal representative.
+
+Rights may be exercised by contacting the Personal Information Protection Officer in writing or by e-mail, and the Company will take action without delay.
+
+The Company verifies whether the person making the request is the user or a legitimate representative.
+
+Customized advertising based on advertising identifiers (ADID/IDFA) may be restricted or reset by the user directly in the device settings.
+
+## 8. Measures to Ensure the Safety of Personal Information
+In accordance with Article 29 of the Personal Information Protection Act, OLO-G Games Inc. takes the following technical, administrative, and physical measures:
+
+Regular self-audits: conducted quarterly to ensure the safety of personal information handling.
+
+Minimization and training of personnel handling personal information: access is limited to the minimum necessary personnel, with regular training provided.
+
+## 9. Personal Information Protection Officer
+The Company has designated a Personal Information Protection Officer to oversee the processing of personal information and to handle user complaints and damage relief.
+
+### Personal Information Protection Officer
+Name: Kwon Joonyoung
+
+Position: Chief Executive Officer
+
+E-mail: cs@olo-g.com
+
+## 10. Remedies for Infringement of Rights
+If you need to report or consult regarding an infringement of personal information, you may contact the following organizations.
+
+    - Personal Information Infringement Report Center: (no area code) 118 / privacy.kr
+
+    - Personal Information Dispute Mediation Committee: 1833-6972 / kopico.go.kr
+
+    - Supreme Prosecutors' Office Cyber Investigation Division: (no area code) 1301 / spo.go.kr
+
+    - National Police Agency Cyber Investigation Bureau: (no area code) 182 / ecrm.police.go.kr
+
+## 11. Changes to the Privacy Policy
+This Privacy Policy is effective from October 1, 2026.
+
+If there are any changes to this Privacy Policy, the Company will notify users through its website or application at least 7 days before the revision takes effect (30 days in advance for changes unfavorable to users).
+
+Announcement Date: September 23, 2026
+
+Effective Date: October 1, 2026

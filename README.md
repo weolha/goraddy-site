@@ -3,7 +3,7 @@
 `olo-g.com` 정적 사이트. 빌드 도구 없음 — HTML/CSS만. push하면 GitHub Pages 자동 배포.
 
 향후 배포 구조: **루트 = 회사 사이트(OLO-G), `/goraddy/` = 게임 사이트(고!래디)**.
-즉 `olo-g.com` = 회사, `olo-g.com/goraddy` = 게임.
+즉 `olo-g.com` = 회사, `olo-g.com/goraddy` · `olo-g.com/ponpondoodoo` = 게임.
 
 ## 구조
 
@@ -16,6 +16,9 @@
 ├─ en/index.html          English 원페이지
 ├─ 404.html               회사 404 + /go/<코드> 딥링크 폴백(루트에서 서브패스까지 대응)
 ├─ style.css, assets/     회사 디자인 시스템·로고·파비콘
+│
+├─ ponpondoodoo/          ← 게임 사이트 (퐁퐁두두 시리즈, ko/en/ja) — HTML은 tools/render-ponpondoodoo.cjs 생성물
+│                            운영 문서 ponpondoodoo/README.md
 │
 └─ goraddy/               ← 게임 사이트 (고!래디) — 통째로 이동됨
    ├─ index.html, notice.html, patch-notes.html, probability.html ...
