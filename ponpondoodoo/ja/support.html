@@ -108,7 +108,7 @@
     <nav class="menu">
       <a href="./#features" data-m="hide">ゲーム紹介</a>
       <a href="./#friends" data-m="hide">ポンポン</a>
-      <a href="support" data-m="hide" aria-current="page">お問い合わせ</a>
+      <a href="support" data-short="お問合せ" aria-current="page">お問い合わせ</a>
       <a href="./#download" class="cta">ダウンロード</a>
     </nav>
     <div class="langsel">
@@ -180,6 +180,17 @@
   if (!('IntersectionObserver' in window)) { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('show'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+// 측정 이벤트 — GA_ID가 비어 있으면 gtag가 없어 조용히 넘어간다
+(function(){
+  function ev(n,p){ if (typeof gtag === 'function') gtag('event', n, p || {}); }
+  if (new URLSearchParams(location.search).get('from') === 'altg') ev('altg_visit', { lang: document.documentElement.lang });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a,button'); if (!a) return;
+    if (a.classList.contains('store-btn')) ev('store_click', { store: a.getAttribute('data-os'), lang: document.documentElement.lang, place: a.closest('#download') ? 'bottom' : 'hero' });
+    else if (a.matches('.video[data-yt]')) ev('trailer_play');
+    else if (a.closest('.ost')) ev('ost_click');
+  }, true);
 })();
 // 드롭다운(언어 선택)
 (function(){

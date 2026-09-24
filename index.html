@@ -177,9 +177,9 @@ footer .social a:hover{background:rgba(255,255,255,.18);transform:translateY(-2p
 footer .social svg{width:18px;height:18px;fill:#fff}
 
 /* 인페이지 상세 시트 — '더보기'를 같은 톤으로 그 자리에서 */
-.sheet-bg{position:fixed;inset:0;z-index:60;background:rgba(20,54,92,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;align-items:flex-end;justify-content:center}
+.sheet-bg{position:fixed;top:0;left:0;width:100%;height:100vh;height:100dvh;z-index:60;background:rgba(20,54,92,.5);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .35s ease;display:flex;align-items:flex-end;justify-content:center}
 .sheet-bg.open{opacity:1;pointer-events:auto}
-.sheet{background:#fff;width:min(680px,100%);max-height:88vh;overflow:auto;border-radius:24px 24px 0 0;padding:2.4rem clamp(1.3rem,5vw,2.6rem) 2.6rem;transform:translateY(46px);opacity:0;transition:transform .42s cubic-bezier(.2,.85,.25,1.02),opacity .42s;box-shadow:0 -18px 60px rgba(27,127,196,.22);position:relative}
+.sheet{background:#fff;width:min(680px,100%);max-height:88vh;max-height:88dvh;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;border-radius:24px 24px 0 0;padding:2.4rem clamp(1.3rem,5vw,2.6rem) 2.6rem;transform:translateY(46px);opacity:0;transition:transform .42s cubic-bezier(.2,.85,.25,1.02),opacity .42s;box-shadow:0 -18px 60px rgba(27,127,196,.22);position:relative}
 .sheet-bg.open .sheet{transform:none;opacity:1}
 @media(min-width:761px){.sheet-bg{align-items:center}.sheet{border-radius:24px}}
 .sheet-x{position:absolute;top:14px;right:16px;width:36px;height:36px;border:none;background:var(--sky-light);color:var(--navy);border-radius:50%;font-size:20px;cursor:pointer;line-height:1;transition:background .15s;z-index:1}
@@ -430,7 +430,7 @@ footer .social svg{width:18px;height:18px;fill:#fff}
     <div class="gcat">
       <a class="grow" href="goraddy/"><span class="gi" style="background-image:url('assets/games/goraddy/icon.png')"></span><span class="gt"><strong>고!래디 <span>Go! Raddy</span></strong><span class="gm">전진형 횡스크롤 디펜스 · 2026 · iOS·Android</span><span class="gd">고래 래디가 직접 전진하며 ‘아쿠아’를 모으고, 실시간 ‘버블’로 매 판 다른 전략을 짜며 끝없이 성장하는 오로지의 주력작.</span></span></a>
       <a class="grow" href="https://play.google.com/store/apps/details?id=com.OlogGames.AimtheCenter" target="_blank" rel="noopener"><span class="gi" style="background-image:url('assets/games/aim/icon.png')"></span><span class="gt"><strong>Aim! the Center</strong><span class="gm">하이퍼캐주얼 · 2025 · iOS·Android</span><span class="gd">한 손으로 즐기는 직관적인 캐주얼. 짧고 굵게 몰입하는 라이트 게임.</span></span></a>
-      <a class="grow" href="ponpondoodoo/"><span class="gi" style="background-image:url('assets/games/ponpondoodoo2/icon.png')"></span><span class="gt"><strong>퐁퐁두두2</strong><span class="gm">힐링 키우기 · 2024 · iOS·Android</span><span class="gd">소중한 것을 모으고 키우는 따뜻한 힐링 게임의 후속작.</span></span></a>
+      <a class="grow" href="ponpondoodoo/"><span class="gi" style="background-image:url('assets/games/ponpondoodoo2/icon.png')"></span><span class="gt"><strong>퐁퐁두두2</strong><span class="gm">힐링 키우기 · 2024 · iOS·Android</span><span class="gd">하루 10분, 나의 성격을 알아가는 힐링 키우기. 잔잔한 음악과 함께 몽글몽글한 퐁퐁이를 키워보세요.</span></span></a>
       <a class="grow" href="https://play.google.com/store/apps/details?id=com.ologgames.ponpondoodoo" target="_blank" rel="noopener"><span class="gi" style="background-image:url('assets/games/ponpondoodoo/icon.png')"></span><span class="gt"><strong>퐁퐁두두</strong><span class="gm">힐링 키우기 · 2021 · 앱스토어 4위·45만 다운로드</span><span class="gd">오로지를 알린 첫 힐링작. 잔잔하게 모으고 가꾸는 재미.</span></span></a>
     </div>
     <p style="margin-top:1.3rem"><a class="btn ghost" href="games">게임 페이지 전체 보기 →</a></p>
@@ -632,9 +632,16 @@ footer .social svg{width:18px;height:18px;fill:#fff}
     return h;
   }
   function top(){if(panel)panel.scrollTop=0;}
-  function openSheet(id){var src=document.getElementById('d-'+id);if(!src)return;body.innerHTML=src.innerHTML;rosterCache=(id==='people')?body.innerHTML:null;bg.classList.add('open');document.body.style.overflow='hidden';top();}
-  function openBio(k){var m=OLOGGIES[k];if(!m)return;var src=document.getElementById('d-people');rosterCache=src?src.innerHTML:null;body.innerHTML=bioHTML(m,k);bg.classList.add('open');document.body.style.overflow='hidden';top();}
-  function closeSheet(){bg.classList.remove('open');document.body.style.overflow='';}
+  function openSheet(id){var src=document.getElementById('d-'+id);if(!src)return;body.innerHTML=src.innerHTML;rosterCache=(id==='people')?body.innerHTML:null;bg.classList.add('open');lock();top();}
+  function openBio(k){var m=OLOGGIES[k];if(!m)return;var src=document.getElementById('d-people');rosterCache=src?src.innerHTML:null;body.innerHTML=bioHTML(m,k);bg.classList.add('open');lock();top();}
+  // 스크롤 잠금 — iOS Safari는 body overflow:hidden을 무시해 시트 뒤 페이지가 같이 스크롤되고,
+  // 모바일 scroll-snap이 겹치면 닫을 때 페이지가 엉뚱한 섹션으로 튄다. body를 제자리에 고정했다가 되돌린다.
+  var savedY=0,locked=false,H=document.documentElement;
+  function lock(){if(locked)return;locked=true;savedY=window.scrollY;H.style.scrollSnapType='none';H.style.scrollBehavior='auto';
+    var b=document.body.style;b.position='fixed';b.top=(-savedY)+'px';b.left='0';b.right='0';b.width='100%';b.overflow='hidden';}
+  function unlock(){if(!locked)return;locked=false;var b=document.body.style;b.position='';b.top='';b.left='';b.right='';b.width='';b.overflow='';
+    window.scrollTo(0,savedY);setTimeout(function(){H.style.scrollSnapType='';H.style.scrollBehavior='';},60);}
+  function closeSheet(){bg.classList.remove('open');unlock();}
   body.addEventListener('click',function(e){
     var card=e.target.closest('[data-mem]');
     if(card){var k=card.getAttribute('data-mem'),m=OLOGGIES[k];if(m){body.innerHTML=bioHTML(m,k);top();}return;}

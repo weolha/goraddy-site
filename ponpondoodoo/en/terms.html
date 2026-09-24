@@ -64,7 +64,7 @@
     <nav class="menu">
       <a href="./#features" data-m="hide">Features</a>
       <a href="./#friends" data-m="hide">Ponpons</a>
-      <a href="support" data-m="hide">Support</a>
+      <a href="support" data-short="Help">Support</a>
       <a href="./#download" class="cta">Download</a>
     </nav>
     <div class="langsel">
@@ -83,7 +83,7 @@
 <main class="doc-page">
   <div class="page-head">
     <h1>Terms of Service</h1>
-    <p class="dates">Announced September 23, 2026 · <b>Effective October 1, 2026</b></p>
+    <p class="dates">Announced September 23, 2026 · <b>Effective October 1, 2026</b> · <a href="https://olog.notion.site/ee395d8b243d4778ac88c33ea2d62145" target="_blank" rel="noopener">Previous versions</a></p>
   </div>
   <p class="doc-band" data-until="2026-10-01">These Terms of Service take effect on <b>October 1, 2026</b>. Until then, the previous version applies. <a href="https://olog.notion.site/ee395d8b243d4778ac88c33ea2d62145" target="_blank" rel="noopener">View previous version ↗</a></p>
   <details class="doc-toc" open>
@@ -551,6 +551,17 @@ Where a dispute arises between the Company and a Member, the parties shall endea
   if (!('IntersectionObserver' in window)) { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('show'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+// 측정 이벤트 — GA_ID가 비어 있으면 gtag가 없어 조용히 넘어간다
+(function(){
+  function ev(n,p){ if (typeof gtag === 'function') gtag('event', n, p || {}); }
+  if (new URLSearchParams(location.search).get('from') === 'altg') ev('altg_visit', { lang: document.documentElement.lang });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a,button'); if (!a) return;
+    if (a.classList.contains('store-btn')) ev('store_click', { store: a.getAttribute('data-os'), lang: document.documentElement.lang, place: a.closest('#download') ? 'bottom' : 'hero' });
+    else if (a.matches('.video[data-yt]')) ev('trailer_play');
+    else if (a.closest('.ost')) ev('ost_click');
+  }, true);
 })();
 // 드롭다운(언어 선택)
 (function(){

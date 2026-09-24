@@ -144,10 +144,11 @@ nav.menu a.cta:hover { background: #3f352e; }
 .tag { background: var(--cream); border: 1.5px solid var(--line); border-radius: 999px; padding: 0.2rem 0.8rem; font-size: 0.98rem; }
 
 /* 걸어가는 퐁퐁이 행렬 */
-.parade { position: relative; height: 120px; margin-top: 1.6rem; overflow: hidden; }
-.parade img { position: absolute; bottom: 8px; height: 96px; width: auto; left: 0; animation: walk 38s linear infinite; }
+/* 같은 그림 4장을 이어 붙여 절반(2장)만큼 흘려보낸다 — 화면 폭과 상관없이 늘 누군가 걷고 있다 */
+.parade { position: relative; height: 116px; margin-top: 1.6rem; overflow: hidden; }
+.parade-track { position: absolute; bottom: 8px; left: 0; display: flex; width: max-content; animation: slide 46s linear infinite; }
+.parade-track img { height: 96px; width: auto; max-width: none; margin-right: 90px; }
 .parade::after { content: ""; position: absolute; left: 0; right: 0; bottom: 6px; height: 2px; background: var(--line); border-radius: 2px; }
-@keyframes walk { from { transform: translateX(-110%); } to { transform: translateX(100vw); } }
 
 /* ----- 스토리 한 줄 ----- */
 .story { background: var(--cream); text-align: center; padding: 3rem 1.2rem; }
@@ -350,6 +351,12 @@ footer.site .biz { margin-top: 0.9rem; font-size: 0.78rem; line-height: 1.7; }
   .brand img { height: 20px; }
   nav.menu a { font-size: 0.95rem; padding: 0.3rem 0.45rem; }
   nav.menu a[data-m="hide"] { display: none; }
+  nav.menu a[data-short] { font-size: 0; padding: 0.3rem 0.5rem; }
+  nav.menu a[data-short]::before { content: attr(data-short); font-size: 0.9rem; }
+  :lang(ja) nav.menu a[data-short]::before { font-size: 0.74rem; }
+  :lang(ja) nav.menu a[data-short] { padding: 0.3rem 0.35rem; }
+  :lang(ja) .brand img { height: 18px; }
+  .nav-inner { gap: 0.4rem; }
   nav.menu a.cta { font-size: 0.9rem; padding: 0.3rem 0.75rem; }
   .langsel-btn .langsel-cur { display: none; }
   .langsel-btn { padding: 0.3rem 0.34rem; gap: 0.2rem; }
@@ -363,9 +370,17 @@ footer.site .biz { margin-top: 0.9rem; font-size: 0.78rem; line-height: 1.7; }
   .f-question .eggs { grid-template-columns: repeat(4, 52px); }
   .f-question .eggs img { height: 52px; }
   .f-deco .who { min-height: 240px; width: 100%; }
-  .parade img { height: 72px; }
-  .parade { height: 94px; }
-  .marquee button { height: 124px; margin: 0 0.6rem; }
+  .parade-track img { height: 70px; margin-right: 60px; }
+  .parade { height: 88px; margin-top: 1.2rem; }
+  .store-btn { font-size: 1.02rem; padding: 0.75rem 1.1rem; gap: 0.45rem; }
+  .store-btn svg { width: 18px; height: 18px; }
+  :lang(ja) .store-btn { font-size: 0.92rem; }
+  :lang(ja) nav.menu a.cta { font-size: 0.74rem; letter-spacing: 0; padding: 0.32rem 0.6rem; }
+  .hero .tags { gap: 0.3rem; }
+  .tag { font-size: 0.88rem; padding: 0.15rem 0.65rem; }
+  .friends { padding: 3rem 0 2.6rem; margin-top: 3rem; }
+  .marquee button { height: 112px; }
+  .marquee button { margin: 0 0.6rem; }
   .marquee button img { width: calc(var(--w) * 0.72px); }
   .spec { padding: 1.2rem; gap: 0.4rem 1rem; }
   .mail-card { flex-direction: column; text-align: center; padding: 1.4rem 1.2rem; }
@@ -373,7 +388,10 @@ footer.site .biz { margin-top: 0.9rem; font-size: 0.78rem; line-height: 1.7; }
   .box { padding: 1.2rem 1.1rem; }
   .doc-page { padding-top: 1.8rem; }
 }
+/* 초소형 화면(≤340px): 일본어 헤더는 문의 링크를 빼야 다운로드 버튼이 안 잘린다(푸터에 있음) */
+@media (max-width: 340px) { :lang(ja) nav.menu a[data-short] { display: none; } }
+
 @media (prefers-reduced-motion: reduce) {
-  .parade img, .marquee { animation: none; }
+  .parade-track, .marquee { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }

@@ -29,6 +29,10 @@ const OLD_PRIVACY = 'https://olog.notion.site/bcee3608a5844db4b888027e46a55098';
 const LEGAL_DIR = path.join(__dirname, 'ponpondoodoo-legal'); // 약관·개인정보 정본(txt, ko/en/ja)
 const LEGAL_EFFECTIVE = '2026-10-01'; // 시행일 — 이 날짜가 지나면 '시행 전' 안내 띠가 스스로 숨는다
 const CS_MAIL = 'cs@olo-g.com';
+// GA4 측정 ID — 퐁퐁두두2 GA4 속성의 '웹' 데이터 스트림 ID를 넣으면 전 페이지에서 켜진다. 비어 있으면 GA 코드 자체를 안 넣는다.
+// ⚠️ goraddy/go의 G-QERZLTF3XD(고!래디 QR 측정)는 쓰지 말 것 — 두 게임 데이터가 섞인다.
+// 이벤트: page_view(자동, ?from=altg 포함) · altg_visit · store_click{store,lang,place} · trailer_play · ost_click
+const GA_ID = '';
 
 const STR = {
   ko: {
@@ -61,7 +65,7 @@ const STR = {
     closing: '게임 곳곳에 재미있는 디테일들이 숨어 있으니 찾아보세요.',
     friendsH: '이스랜드의 퐁퐁이들', friendsSub: '퐁퐁이를 톡 눌러보세요!',
     videoH: '공식 애니메이션 트레일러', videoAria: '트레일러 재생',
-    badges: ['구글 플레이 ‘교사 추천’', '앱스토어 피처드 선정', '한국 · 미국 · 일본 출시'], ost: 'OST 앨범 듣기',
+    badges: ['앱스토어 피처드 선정', '한국 · 미국 · 일본 출시'], ost: 'OST 앨범 듣기',
     infoH: '게임 정보',
     spec: [['타이틀', '퐁퐁두두2'], ['장르', '힐링 키우기'], ['플랫폼', 'iOS (App Store) / Android (Google Play)'],
       ['가격', '무료 (일부 유료 아이템 포함)'], ['지원 언어', '한국어 · English · 日本語'], ['출시', '2024년 2월'],
@@ -99,7 +103,7 @@ const STR = {
     closing: 'The game is full of little details to find — have fun discovering them!',
     friendsH: 'The ponpons of Ysland', friendsSub: 'Give a ponpon a tap!',
     videoH: 'Official Animated Trailer', videoAria: 'Play trailer',
-    badges: ['Google Play “Teacher Approved”', 'Featured on the App Store', 'Out now in Korea, the US & Japan'], ost: 'Listen to the soundtrack',
+    badges: ['Featured on the App Store', 'Out now in Korea, the US & Japan'], ost: 'Listen to the soundtrack',
     infoH: 'Game Info',
     spec: [['Title', 'ponpondoodoo (퐁퐁두두2 in Korea)'], ['Genre', 'Healing · Raising'], ['Platform', 'iOS (App Store) / Android (Google Play)'],
       ['Price', 'Free (offers in-app purchases)'], ['Languages', 'English · 한국어 · 日本語'], ['Released', 'February 2024'],
@@ -137,7 +141,7 @@ const STR = {
     closing: 'ゲームのあちこちに楽しい仕掛けが隠れています。ぜひ探してみてください。',
     friendsH: 'イースランドのポンポンたち', friendsSub: 'ポンポンをタップしてみてね！',
     videoH: '公式アニメーショントレーラー', videoAria: 'トレーラーを再生',
-    badges: ['Google Play「Teacher Approved」', 'App Store でフィーチャー', '日本・韓国・アメリカで配信中'], ost: 'サウンドトラックを聴く',
+    badges: ['App Store でフィーチャー', '日本・韓国・アメリカで配信中'], ost: 'サウンドトラックを聴く',
     infoH: 'ゲーム情報',
     spec: [['タイトル', 'ポンポンドゥードゥー'], ['ジャンル', '癒し系育成'], ['対応OS', 'iOS (App Store) / Android (Google Play)'],
       ['価格', '基本無料（アプリ内課金あり）'], ['対応言語', '日本語 · English · 한국어'], ['リリース', '2024年2月'],
@@ -169,13 +173,13 @@ const charImg = (a, n, extra = '') => { const [w, h] = CHAR_SIZE['c' + n]; retur
 // ---------- 하위 페이지 문구 (약관·개인정보·문의·공통 푸터) ----------
 const SUB = {
   ko: {
-    navSupport: '문의',
+    navSupport: '문의', navShort: '문의',
     biz: '(주)오로지게임즈 · 대표 권준영 · 사업자등록번호 722-86-02932 · 통신판매업 2025-마포-2730<br>서울특별시 마포구 매봉산로 31, 시너지움 9층 909호 · <a href="mailto:cs@olo-g.com">cs@olo-g.com</a>',
     termsT: '이용약관', privacyT: '개인정보처리방침',
     termsDesc: '퐁퐁두두2 서비스 이용약관', privacyDesc: '퐁퐁두두2 개인정보처리방침',
     dates: ['공고일 2026.09.23', '시행일 2026.10.01'],
     band: kind => `이 ${kind}은 <b>2026년 10월 1일</b>부터 적용됩니다. 시행일 전까지는 종전 ${kind}이 적용됩니다.`,
-    oldLink: '종전 버전 보기 ↗', toc: '목차',
+    oldLink: '종전 버전 보기 ↗', prevLink: '이전 버전', toc: '목차',
     supT: '문의하기', supDesc: '퐁퐁두두2 고객 문의 · 자주 묻는 질문 · 계정 삭제 안내',
     supLead: '게임을 하다가 불편한 점이 있으면 언제든 알려주세요. 돌보미님의 이야기를 꼼꼼히 읽고 답해 드릴게요.',
     mailH: '이메일로 문의하기', mailD: '아래 버튼을 누르면 문의 양식이 채워진 메일이 열려요. 보통 영업일 기준 1~3일 안에 답장을 드립니다.',
@@ -196,13 +200,13 @@ const SUB = {
     delD: '게임 안 <b>설정 → 계정 삭제</b>에서 계정과 게임 데이터를 직접 삭제할 수 있어요. 삭제한 데이터는 되돌릴 수 없습니다. 앱을 사용할 수 없는 상황이라면 <a href="mailto:cs@olo-g.com">cs@olo-g.com</a>으로 닉네임 또는 ID와 함께 삭제를 요청해 주세요. 관계 법령에 따라 보관해야 하는 결제 기록은 <a href="privacy">개인정보처리방침</a>에 정한 기간 동안 보관한 뒤 파기합니다.',
   },
   en: {
-    navSupport: 'Support',
+    navSupport: 'Support', navShort: 'Help',
     biz: 'OLO-G Games Inc. · CEO Kwon Joonyoung · Business Reg. No. 722-86-02932 · Mail-order Reg. No. 2025-Mapo-2730<br>909, 9F Synergium, 31 Maebongsan-ro, Mapo-gu, Seoul 03909, Republic of Korea · <a href="mailto:cs@olo-g.com">cs@olo-g.com</a>',
     termsT: 'Terms of Service', privacyT: 'Privacy Policy',
     termsDesc: 'ponpondoodoo Terms of Service', privacyDesc: 'ponpondoodoo Privacy Policy',
     dates: ['Announced September 23, 2026', 'Effective October 1, 2026'],
     band: kind => `${kind === 'Terms of Service' ? 'These Terms of Service take' : 'This ' + kind + ' takes'} effect on <b>October 1, 2026</b>. Until then, the previous version applies.`,
-    oldLink: 'View previous version ↗', toc: 'Contents',
+    oldLink: 'View previous version ↗', prevLink: 'Previous versions', toc: 'Contents',
     supT: 'Support', supDesc: 'ponpondoodoo customer support, FAQ and account deletion',
     supLead: 'If anything feels off while playing, just let us know. We read every message carefully and will get back to you.',
     mailH: 'Contact us by e-mail', mailD: 'The button below opens an e-mail with a short form already filled in. We usually reply within 1–3 business days.',
@@ -223,13 +227,13 @@ const SUB = {
     delD: 'You can delete your account and game data yourself in the in-game <b>Settings → Delete Account</b>. Deleted data cannot be recovered. If you cannot use the app, e-mail <a href="mailto:cs@olo-g.com">cs@olo-g.com</a> with your nickname or ID to request deletion. Payment records that must be kept by law are retained for the period stated in our <a href="privacy">Privacy Policy</a> and then destroyed.',
   },
   ja: {
-    navSupport: 'お問い合わせ',
+    navSupport: 'お問い合わせ', navShort: 'お問合せ',
     biz: '株式会社オロジゲームズ（OLO-G Games Inc.）· 代表者 クォン・ジュンヨン · 事業者登録番号 722-86-02932 · 通信販売業申告番号 2025-マポ-2730<br>ソウル特別市麻浦区メボンサン路31、シナジウム9階909号 (03909) · <a href="mailto:cs@olo-g.com">cs@olo-g.com</a>',
     termsT: '利用規約', privacyT: 'プライバシーポリシー',
     termsDesc: 'ポンポンドゥードゥー 利用規約', privacyDesc: 'ポンポンドゥードゥー プライバシーポリシー',
     dates: ['公示日 2026.09.23', '施行日 2026.10.01'],
     band: kind => `この${kind}は<b>2026年10月1日</b>から適用されます。施行日までは従前の${kind}が適用されます。`,
-    oldLink: '従前の版を見る ↗', toc: '目次',
+    oldLink: '従前の版を見る ↗', prevLink: '以前の版', toc: '目次',
     supT: 'お問い合わせ', supDesc: 'ポンポンドゥードゥーのお問い合わせ・よくある質問・アカウント削除のご案内',
     supLead: 'ゲーム中に困ったことがあれば、いつでもお知らせください。シッターさんからのメッセージは一つひとつ丁寧に読んでお返事します。',
     mailH: 'メールでお問い合わせ', mailD: '下のボタンを押すと、入力欄つきのメールが開きます。通常、1〜3営業日以内にお返事します。',
@@ -337,7 +341,9 @@ ${slug ? '' : `<meta name="apple-itunes-app" content="app-id=${APP_ID}">\n`}<lin
 <link rel="apple-touch-icon" href="${a}favicon.png">
 <link rel="preload" href="${a}${code === 'ja' ? 'KiwiMaru-Medium' : 'GameFont'}.woff2" as="font" type="font/woff2" crossorigin>
 ${code === 'ja' ? '' : '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">\n'}<link rel="stylesheet" href="${up}style.css">
-<script type="application/ld+json">
+${GA_ID ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}',{site_lang:'${code}'});</script>
+` : ''}<script type="application/ld+json">
 ${JSON.stringify(o.ld, null, 2)}
 </script>
 </head>
@@ -349,7 +355,7 @@ ${JSON.stringify(o.ld, null, 2)}
     <nav class="menu">
       <a href="./#features" data-m="hide">${L.nav[0]}</a>
       <a href="./#friends" data-m="hide">${L.nav[1]}</a>
-      <a href="support" data-m="hide"${slug === 'support' ? ' aria-current="page"' : ''}>${S.navSupport}</a>
+      <a href="support" data-short="${S.navShort}"${slug === 'support' ? ' aria-current="page"' : ''}>${S.navSupport}</a>
       <a href="./#download" class="cta">${L.nav[3]}</a>
     </nav>
     <div class="langsel">
@@ -382,6 +388,17 @@ ${o.body}
   if (!('IntersectionObserver' in window)) { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('show'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+// 측정 이벤트 — GA_ID가 비어 있으면 gtag가 없어 조용히 넘어간다
+(function(){
+  function ev(n,p){ if (typeof gtag === 'function') gtag('event', n, p || {}); }
+  if (new URLSearchParams(location.search).get('from') === 'altg') ev('altg_visit', { lang: document.documentElement.lang });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a,button'); if (!a) return;
+    if (a.classList.contains('store-btn')) ev('store_click', { store: a.getAttribute('data-os'), lang: document.documentElement.lang, place: a.closest('#download') ? 'bottom' : 'hero' });
+    else if (a.matches('.video[data-yt]')) ev('trailer_play');
+    else if (a.closest('.ost')) ev('ost_click');
+  }, true);
 })();
 // 드롭다운(언어 선택)
 (function(){
@@ -428,7 +445,7 @@ function home(code) {
       <div class="tags">${L.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
     </div>
   </div>
-  <div class="parade" aria-hidden="true"><img src="${a}walking.webp" alt="" width="1400" height="287"></div>
+  <div class="parade" aria-hidden="true"><div class="parade-track">${'<img src="' + a + 'walking.webp" alt="" width="1400" height="287">'.repeat(4)}</div></div>
 </section>
 
 <section class="story">
@@ -572,7 +589,7 @@ function legal(code, kind) {
   const body = `<main class="doc-page">
   <div class="page-head">
     <h1>${title}</h1>
-    <p class="dates">${S.dates[0]} · <b>${S.dates[1]}</b></p>
+    <p class="dates">${S.dates[0]} · <b>${S.dates[1]}</b> · <a href="${old}" target="_blank" rel="noopener">${S.prevLink}</a></p>
   </div>
   <p class="doc-band" data-until="${LEGAL_EFFECTIVE}">${S.band(LEGAL_KIND[code][kind])} <a href="${old}" target="_blank" rel="noopener">${S.oldLink}</a></p>
   <details class="doc-toc" open>

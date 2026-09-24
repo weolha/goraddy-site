@@ -35,6 +35,7 @@ node tools/render-ponpondoodoo.cjs --check  # HTML이 생성 결과와 같은지
 
 ## 명칭·문구 규칙
 
+- 구글 플레이 '교사 추천(Teacher Approved)'은 **쓰지 않는다** — 예전에 받았다가 회수된 것으로 보임(2026-09-24 스토어 페이지에 없음, 월하 확인). 수상·선정 표기는 '앱스토어 피처드'만.
 - 출시 국가: **한국·미국·일본**. 운영 중단 채널(공식 X `@ponpondoodoo2`, 캐릭터 테스트 사이트)은 **링크하지 않는다**(2026-09-23 월하). 외부 링크는 OST 플레이리스트와 트레일러만.
 
 - 게임명: ko **퐁퐁두두2** / en **ponpondoodoo** / ja **ポンポンドゥードゥー** (각 스토어 표기. 해외는 숫자 없음 — 1편이 한국 전용 출시였기 때문). 영문은 소문자 `ponpondoodoo` 그대로 — "PonPonDoodoo 2"·"PonPon Doodoo" 쓰지 말 것(2026-09-23 월하 확인)
@@ -69,7 +70,10 @@ node tools/render-ponpondoodoo.cjs --check  # HTML이 생성 결과와 같은지
 ## 동작 메모
 
 - **언어 자동 전환:** KR 페이지만 `?lang=` → `localStorage('olog_lang')` → 브라우저 언어 순으로 `en/`·`ja/`로 보낸다(goraddy와 같은 키라 선택이 공유된다). 리다이렉트 때 **쿼리를 유지**한다 — 일본어 브라우저로 QR을 찍어도 `?from=altg`가 살아 있다.
-- **`?from=altg`:** 상단에 ALT+G 환영 배너를 띄운다. ⚠️ 회사 사이트에 GA가 아직 없어 **유입 수는 측정되지 않는다**(루트 README의 GA4 블로커).
+- **`?from=altg`:** 상단에 ALT+G 환영 배너를 띄운다.
+- **GA4 (코드 준비 완료, ID 대기):** 생성기 맨 위 `GA_ID`에 측정 ID를 넣고 다시 생성하면 12페이지 전부에 켜진다. 비어 있으면 GA 코드가 아예 안 들어간다. 이벤트 = 자동 page_view(쿼리 포함) · `altg_visit`(부스 QR 유입) · `store_click{store,lang,place}` · `trailer_play` · `ost_click`.
+  - ID 발급: 퐁퐁두두2 Firebase 프로젝트의 GA4 속성 → 관리 → 데이터 스트림 → **웹** 추가(`olo-g.com`) → `G-…` 복사.
+  - ⚠️ `goraddy/go`의 `G-QERZLTF3XD`는 고!래디 QR 측정용 — 쓰면 두 게임 데이터가 섞인다.
 - **스토어 버튼:** UA로 iOS/Android를 판별해 해당 버튼에 노란 테두리. 링크는 ko=KR, en=국가 없는 범용, ja=`apps.apple.com/jp`·`hl=ja`.
 - **트레일러:** 클릭할 때만 youtube-nocookie iframe을 붙인다(첫 화면 무게 절약).
 - **게임 연결:** 퐁퐁두두2 리포 `LegalLinks.cs`가 `terms?lang=ko|en|ja`·`privacy?lang=…`·`support?lang=…`를 연다(게임에서 고른 언어로 열리게). 1.210부터 반영. 구버전 앱은 계속 노션을 여니 **노션 페이지는 지우지 말 것.**

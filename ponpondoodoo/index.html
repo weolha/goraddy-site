@@ -92,7 +92,7 @@
     <nav class="menu">
       <a href="./#features" data-m="hide">게임 소개</a>
       <a href="./#friends" data-m="hide">퐁퐁이</a>
-      <a href="support" data-m="hide">문의</a>
+      <a href="support" data-short="문의">문의</a>
       <a href="./#download" class="cta">다운로드</a>
     </nav>
     <div class="langsel">
@@ -124,7 +124,7 @@
       <div class="tags"><span class="tag">힐링</span><span class="tag">키우기</span><span class="tag">성격 테스트</span><span class="tag">iOS · Android</span></div>
     </div>
   </div>
-  <div class="parade" aria-hidden="true"><img src="assets/walking.webp" alt="" width="1400" height="287"></div>
+  <div class="parade" aria-hidden="true"><div class="parade-track"><img src="assets/walking.webp" alt="" width="1400" height="287">walking.webp" alt="" width="1400" height="287">walking.webp" alt="" width="1400" height="287">walking.webp" alt="" width="1400" height="287"></div></div>
 </section>
 
 <section class="story">
@@ -266,7 +266,7 @@
 </section>
 
 <section class="section">
-  <div class="badges reveal"><span class="tag">구글 플레이 ‘교사 추천’</span><span class="tag">앱스토어 피처드 선정</span><span class="tag">한국 · 미국 · 일본 출시</span></div>
+  <div class="badges reveal"><span class="tag">앱스토어 피처드 선정</span><span class="tag">한국 · 미국 · 일본 출시</span></div>
 </section>
 
 <section class="section">
@@ -310,6 +310,17 @@
   if (!('IntersectionObserver' in window)) { document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('show'); }); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } }); }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+// 측정 이벤트 — GA_ID가 비어 있으면 gtag가 없어 조용히 넘어간다
+(function(){
+  function ev(n,p){ if (typeof gtag === 'function') gtag('event', n, p || {}); }
+  if (new URLSearchParams(location.search).get('from') === 'altg') ev('altg_visit', { lang: document.documentElement.lang });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a,button'); if (!a) return;
+    if (a.classList.contains('store-btn')) ev('store_click', { store: a.getAttribute('data-os'), lang: document.documentElement.lang, place: a.closest('#download') ? 'bottom' : 'hero' });
+    else if (a.matches('.video[data-yt]')) ev('trailer_play');
+    else if (a.closest('.ost')) ev('ost_click');
+  }, true);
 })();
 // 드롭다운(언어 선택)
 (function(){
